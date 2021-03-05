@@ -49,7 +49,7 @@ body{
 			<div>
 				<ul class="nav navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="join.jsp">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
