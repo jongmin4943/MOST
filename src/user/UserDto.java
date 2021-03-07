@@ -5,16 +5,17 @@ public class UserDto {
 	private String userPassword;
 	private String useName;
 	private String useEmail;
+	private String joinedDate;
 	
 	public UserDto() {
-		this("","","","");
+		this("","","","","");
 	}
-	public UserDto(String userID, String userPassword, String useName, String useEmail) {
-		super();
+	public UserDto(String userID, String userPassword, String useName, String useEmail, String joinedDate) {
 		this.userID = userID;
 		this.userPassword = userPassword;
 		this.useName = useName;
 		this.useEmail = useEmail;
+		this.joinedDate = joinedDate;
 	}
 	public String getUserID() {
 		return userID;
@@ -40,10 +41,16 @@ public class UserDto {
 	public void setUseEmail(String useEmail) {
 		this.useEmail = useEmail;
 	}
+	
+	public String getJoinedDate() {
+		return joinedDate;
+	}
+	public void setJoinedDate(String joinedDate) {
+		this.joinedDate = joinedDate;
+	}
 	@Override
 	public String toString() {
 		return "UserDto [userID=" + userID + ", userPassword=" + userPassword + ", useName=" + useName + ", useEmail="
-				+ useEmail + "]";
+				+ useEmail + ", joinedDate=" + joinedDate + "]";
 	}
-	
 }

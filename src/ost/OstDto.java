@@ -4,16 +4,13 @@ public class OstDto {
 	private String no;
 	private String ostName;
 	private String artist;
-	private String likes;
 	public OstDto() {
-		this("","","","");
+		this("","","");
 	}
-	public OstDto(String no, String ostName, String artist, String likes) {
-		super();
+	public OstDto(String no, String ostName, String artist) {
 		this.no = no;
 		this.ostName = ostName;
 		this.artist = artist;
-		this.likes = likes;
 	}
 	public String getNo() {
 		return no;
@@ -33,11 +30,8 @@ public class OstDto {
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
-	public String getLikes() {
-		return likes;
+	@Override
+	public String toString() {
+		return "OstDto [no=" + no + ", ostName=" + ostName + ", artist=" + artist + "]";
 	}
-	public void setLikes(String likes) {
-		this.likes = likes;
-	}
-	
 }
