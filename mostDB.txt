@@ -1,0 +1,6 @@
+create table user(
+userID varchar(20) primary key,
+userPassword varchar(20) not null,
+userName varchar(20) not null,
+userEmail varchar(50) not null
+);
