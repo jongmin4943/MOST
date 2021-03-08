@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MOST</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <script type="text/javascript">
 function checkValue(){
 	var input = document.userInfo;
+	var emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     if(!input.userID.value){
         alert("아이디를 입력하세요.");
         return false;
@@ -21,9 +22,24 @@ function checkValue(){
         alert("비밀번호를 입력하세요.");
         return false;
     }
+    if(!input.userPasswordCheck.value){
+        alert("비밀번호를 입력하세요.");
+        return false;
+    }
+    if(!input.userName.value){
+        alert("이름을 입력하세요.");
+        return false;
+    }
+    if(!input.userEmail.value){
+        alert("이메일을 입력하세요.");
+        return false;
+    } else if(!(emailCheck.test(input.userEmail.value))){
+    	alert("이메일 형식이 틀렸습니다.")
+    	return false;
+    }
 }
 function goLogInForm() {
-	location.href="login.jsp";
+	location.href="login.action";
 }
 </script>
 <style>
@@ -41,12 +57,12 @@ body{
 	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">M<em style="color: #0037ffa1;">ovie</em> OST</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}">M<em style="color: #0037ffa1;">ovie</em> OST</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="join.jsp">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="login.action">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="join.action">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
@@ -60,8 +76,7 @@ body{
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
 				<div class="jumbotron" style="padding-top: 10px;">
-					<form method="post" action="signUpCheck.jsp" name="userInfo"
-					onsubmit="return checkValue()">
+					<form method="POST" action="signUpCheck.jsp" name="userInfo" onsubmit="return checkValue()">
 					<h3 style="text-align: center;">회원가입</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="ID" name="userID" maxlength="20" id="userID">
@@ -87,6 +102,6 @@ body{
 			<div class="col-lg-4"></div>
 		</div>
 	</div>
-	<script src="js/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>

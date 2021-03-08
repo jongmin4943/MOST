@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MOST</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <style>
@@ -26,12 +26,12 @@ body{
 	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">M<em style="color: #0037ffa1;">ovie</em> OST</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}">M<em style="color: #0037ffa1;">ovie</em> OST</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="join.jsp">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="user/login.action">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="user/join.action">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
@@ -116,6 +116,6 @@ body{
 		
 	</div>	
 	
-	<script src="js/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>

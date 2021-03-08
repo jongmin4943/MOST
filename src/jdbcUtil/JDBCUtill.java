@@ -6,24 +6,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class JDBCUtill {
-	
-	private static String url = "";
-	private static String user = "root";
-	private static String password = "12345";
-	
-	public static Connection getConnection() {
+ 	public static Connection getConnection() {
+		Connection conn;
 		try {
-			Class.forName("");
-			Connection conn = DriverManager.getConnection(url, user, password);
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)
+			  envCtx.lookup("jdbc/MOST");
+
+			conn = ds.getConnection();
 			return conn;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
-			System.out.println("드이버 검색 실패");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 	public static void close(Connection conn) {
