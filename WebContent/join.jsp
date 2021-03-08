@@ -22,11 +22,8 @@ function checkValue(){
         return false;
     }
 }
-function goSignUpForm() {
-	location.href="join.jsp";
-}
-function goForgotPwForm() {
-	location.href="forgotPw.jsp";
+function goLogInForm() {
+	location.href="login.jsp";
 }
 </script>
 <style>
@@ -44,7 +41,7 @@ body{
 	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">M<em>ovie</em> OST</a>
+				<a class="navbar-brand" href="index.jsp">M<em style="color: #0037ffa1;">ovie</em> OST</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
@@ -83,12 +80,13 @@ body{
 						<input type="email" class="form-control" placeholder="Email Address" name="userEmail" maxlength="30">
 					</div>
 					<input class="btn btn-primary btn-sm" type="submit" value="회원가입"> 
-					<input class="btn btn-primary btn-sm" type="button" value="취소" onclick="goSignInForm()">
+					<input class="btn btn-primary btn-sm" type="button" value="취소" onclick="goLogInForm()">
 				</form>
 				</div>
 			</div>
 			<div class="col-lg-4"></div>
 		</div>
 	</div>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>

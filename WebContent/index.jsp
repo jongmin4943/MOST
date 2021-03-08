@@ -26,7 +26,7 @@ body{
 	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">M<em>ovie</em> OST</a>
+				<a class="navbar-brand" href="index.jsp">M<em style="color: #0037ffa1;">ovie</em> OST</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
