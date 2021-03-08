@@ -21,9 +21,12 @@ function checkValue(){
     if(!input.userPassword.value){
         alert("비밀번호를 입력하세요.");
         return false;
+    } else if (input.userPassword.value.length < 4) {
+    	alert("비밀번호가 너무 짧습니다.(4자 이상)")
+    	return false;
     }
-    if(!input.userPasswordCheck.value){
-        alert("비밀번호를 입력하세요.");
+    if(input.userPassword.value != input.userPasswordCheck.value ){
+        alert("비밀번호를 동일하게 입력하세요.");
         return false;
     }
     if(!input.userName.value){
