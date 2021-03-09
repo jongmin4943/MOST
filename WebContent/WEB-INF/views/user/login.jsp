@@ -40,21 +40,10 @@ body{
 }
 </style>
 <body>
-<!-- nav bar -->
-	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}">M<em style="color: #0037ffa1;">ovie</em> OST</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="login.action">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="join.action">회원가입</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-<!-- end nav -->
+<%
+String navbarPath = "/subpage/navbar.jsp";
+%>
+<jsp:include page="<%=navbarPath %>"></jsp:include>
 	<br>
 	<br>
 	<br>
@@ -63,7 +52,7 @@ body{
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
 				<div class="jumbotron" style="padding-top: 10px;">
-					<form action="signInCheck.jsp" method="POST" name="userInfo"
+					<form action="login.action" method="POST" name="userInfo"
 						onsubmit="return checkValue()">
 						<h3 style="text-align: center;">로그인</h3>
 						<div class="form-group">

@@ -1,4 +1,4 @@
-package likedOST;
+package org.most.likedOST.model;
 
 public class LikedOstDto {
 	private String userID;

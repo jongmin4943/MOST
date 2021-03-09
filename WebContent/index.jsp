@@ -22,21 +22,10 @@ body{
 }
 </style>
 <body>
-<!-- nav bar -->
-	<nav class="navbar navbar-expand-sm bg-info navbar-dark">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}">M<em style="color: #0037ffa1;">ovie</em> OST</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="user/login.action">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="user/join.action">회원가입</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-<!-- end nav -->
+<%
+String navbarPath = "/subpage/navbar.jsp";
+%>
+<jsp:include page="<%=navbarPath %>"></jsp:include>
 	<div class="container-fluid">
 		<div class="row">
 		<!--회원정보가 표시될곳  -->
@@ -53,6 +42,9 @@ body{
 					<div>
 						<img src="img/Ex1.jpg" class="img-thumbnail" width="300">
 						표 올곳
+					</div>
+					<div>
+						<a href="ost.action">OstList</a>
 					</div>
 				</div>
 			</div>

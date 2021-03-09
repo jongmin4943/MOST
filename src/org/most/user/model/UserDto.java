@@ -1,10 +1,10 @@
-package user;
+package org.most.user.model;
 
 public class UserDto {
 	private String userID;
 	private String userPassword;
-	private String useName;
-	private String useEmail;
+	private String userName;
+	private String userEmail;
 	private String joinedDate;
 	
 	public UserDto() {
@@ -13,8 +13,8 @@ public class UserDto {
 	public UserDto(String userID, String userPassword, String useName, String useEmail, String joinedDate) {
 		this.userID = userID;
 		this.userPassword = userPassword;
-		this.useName = useName;
-		this.useEmail = useEmail;
+		this.userName = useName;
+		this.userEmail = useEmail;
 		this.joinedDate = joinedDate;
 	}
 	public String getUserID() {
@@ -30,16 +30,16 @@ public class UserDto {
 		this.userPassword = userPassword;
 	}
 	public String getUseName() {
-		return useName;
+		return userName;
 	}
 	public void setUseName(String useName) {
-		this.useName = useName;
+		this.userName = useName;
 	}
 	public String getUseEmail() {
-		return useEmail;
+		return userEmail;
 	}
 	public void setUseEmail(String useEmail) {
-		this.useEmail = useEmail;
+		this.userEmail = useEmail;
 	}
 	
 	public String getJoinedDate() {
@@ -50,7 +50,7 @@ public class UserDto {
 	}
 	@Override
 	public String toString() {
-		return "UserDto [userID=" + userID + ", userPassword=" + userPassword + ", useName=" + useName + ", useEmail="
-				+ useEmail + ", joinedDate=" + joinedDate + "]";
+		return "UserDto [userID=" + userID + ", userPassword=" + userPassword + ", useName=" + userName + ", useEmail="
+				+ userEmail + ", joinedDate=" + joinedDate + "]";
 	}
 }

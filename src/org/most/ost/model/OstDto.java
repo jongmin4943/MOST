@@ -1,4 +1,4 @@
-package ost;
+package org.most.ost.model;
 
 public class OstDto {
 	private String no;

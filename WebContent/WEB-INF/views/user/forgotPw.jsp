@@ -68,7 +68,7 @@ body{
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
 				<div class="jumbotron" style="padding-top: 10px;">
-					<form action="confirmUser.jsp" method="GET" name="userInfo" onsubmit="return checkValue()">
+					<form action="forgotPw.action" method="POST" name="userInfo" onsubmit="return checkValue()">
 					<h3 style="text-align: center;">비밀번호 찾기</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="ID" name="userID" maxlength="20">

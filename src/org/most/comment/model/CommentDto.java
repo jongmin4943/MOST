@@ -1,4 +1,4 @@
-package comment;
+package org.most.comment.model;
 
 public class CommentDto {
 	private String no;
