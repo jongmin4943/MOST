@@ -28,6 +28,7 @@ function goLoginForm() {
 <body>
 <%
 String navbarPath = "/subpage/navbar.jsp";
+String userID = request.getParameter("userID");
 %>
 <jsp:include page="<%=navbarPath %>"></jsp:include>
 	<br>
@@ -38,16 +39,14 @@ String navbarPath = "/subpage/navbar.jsp";
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
 				<div class="jumbotron" style="padding-top: 10px;">
-					<form action="resetPw.action" method="POST" name="userInfo"
-						onsubmit="return checkValue()">
+					<form action="resetPw.action" method="POST" name="userInfo" onsubmit="return checkValue()">
+					<input type="hidden" name="userID"> 
 						<h3 style="text-align: center;">비밀번호 변경</h3>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="new Password"
-								name="userPassword" maxlength="20">
+							<input type="text" class="form-control" placeholder="new Password" name="userPassword" maxlength="20">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="confirm Password"
-								name="userPasswordCheck" maxlength="20">
+							<input type="password" class="form-control" placeholder="confirm Password" name="userPasswordCheck" maxlength="20">
 						</div>
 						<input class="btn btn-primary btn-sm" type="submit" value="비밀번호 바꾸기"> 
 						<input class="btn btn-primary btn-sm" type="button" value="취소" onclick="goLoginForm()">

@@ -24,7 +24,7 @@ public class ModifyCmd implements UserCommand {
 			UserDao uDao = new UserDao();
 			UserDto uDto = uDao.selectOne(new UserDto(userID,"","","",""));
 			if(uDto != null && uDto.getUseName().equals(userName) && uDto.getUseEmail().equals(userEmail)) {
-				mav.setViewName("resetPw.action");
+				mav.setViewName("resetPw.action?userID="+userID);
 				mav.setRedirect(true);
 			} else {
 				mav.setViewName("login.action");

@@ -6,7 +6,6 @@ String userID = null;
 if(session.getAttribute("userID") != null) {
 	userID = (String)session.getAttribute("userID");
 }
-	System.out.print(userID);
 %>
 <title>Insert title here</title>
 <!-- nav bar -->
