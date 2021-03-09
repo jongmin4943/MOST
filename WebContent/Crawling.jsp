@@ -32,7 +32,7 @@ int count = 0;
 String refinedTitle = "";
 
 for(Element e: song){
-	if(!e.select(".fc_gray").text().trim().equals("California Dreamin' (Single Version)")) {
+	if(!e.select(".fc_gray").text().trim().equals("California Dreamin' (Single Version)") && !e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2).equals("The Mamas & Papas") && !e.select(".fc_mgray").text().trim().equals("Zhong Qing Sen Lin ( Dian Ying Yuan Sheng Da Die ) (Original Motion Picture Soundtrack)")) {
 		if(e.select(".fc_gray").text().trim() != null && !e.select(".fc_gray").text().trim().equals("")){
 			titles.add(e.select(".fc_gray").text().trim());
 		}
