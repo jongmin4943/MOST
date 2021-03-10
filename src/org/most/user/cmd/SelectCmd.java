@@ -24,6 +24,7 @@ public class SelectCmd implements UserCommand {
 			UserDto uDto = uDao.selectOne(new UserDto(userID,"","","",""));
 			if(uDto == null) {
 				System.out.println("아이디가 존재하지 않음");
+				req.setAttribute("loginFail", "fail");
 				mav.setViewName("/WEB-INF/views/user/login.jsp");
 			} else if(uDto.getUserPassword().equals(userPassword)) {
 				System.out.println("로그인성공");
@@ -32,6 +33,7 @@ public class SelectCmd implements UserCommand {
 				req.getSession(true).setAttribute("userID", userID);
 			} else {
 				System.out.println("비밀번호 틀림");
+				req.setAttribute("loginFail", "fail");
 				mav.setViewName("/WEB-INF/views/user/login.jsp");
 			}
 		}
