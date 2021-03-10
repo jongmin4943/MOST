@@ -1,0 +1,11 @@
+select count(ostNum) from likedOst where userID='jongmin';
+종민이라는 유저가 좋아요한 ost 갯수
+
+종민이라는 유저가 좋아요한 ost list
+select ost.ostName, ost.artist from ostList as ost Join likedOst as liked On liked.ostNum = ost.no where liked.userID = 'jongmin';
+
+해당 OST의 좋아요갯수
+select count(userID) from likedOst where ostNum = ?
+
+종민이라는 유저가 댓글단 ost 갯수
+종민이라는 유저가 댓글단 ost list....//.//
