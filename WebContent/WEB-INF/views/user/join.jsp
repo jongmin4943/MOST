@@ -13,11 +13,19 @@
 </head>
 <%
 String userID = null;
+String exist = null;
 PrintWriter pr = response.getWriter();
 if(session.getAttribute("userID") != null) {
 	pr.print("<script>");
-	pr.print("<alert('잘못된 접근입니다.')>");
-	pr.print("<history.back()>");
+	pr.print("alert('잘못된 접근입니다.');");
+	pr.print("history.back();");
+	pr.print("</script>");
+}
+if(request.getAttribute("exist") != null) {
+	request.removeAttribute("exist");
+	pr.print("<script>");
+	pr.print("alert('이미 존재하는 아이디 입니다.');");
+	pr.print("history.back();");
 	pr.print("</script>");
 }
 %>

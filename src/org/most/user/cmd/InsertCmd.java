@@ -23,9 +23,17 @@ public class InsertCmd implements UserCommand {
 			String userName = req.getParameter("userName");
 			String userEmail = req.getParameter("userEmail");
 			UserDao uDao = new UserDao();
-			uDao.insert(new UserDto(userID,userPassword,userName,userEmail,""));
-			mav.setViewName("login.action");
-			mav.setRedirect(true);
+			UserDto newUser = new UserDto(userID,userPassword,userName,userEmail,"");
+			UserDto check = uDao.selectOne(newUser);
+			System.out.println(check);
+			if(check == null) {
+				uDao.insert(newUser);
+				mav.setViewName("login.action");
+				mav.setRedirect(true);
+			} else {
+				req.setAttribute("exist", "exist");
+				mav.setViewName("/WEB-INF/views/user/join.jsp");
+			}
 		}
 		
 		return mav;

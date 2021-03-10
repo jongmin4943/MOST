@@ -19,5 +19,6 @@
   </environments>
   <mappers>
     <mapper resource="org/most/mybatis/user.xml"/>
+    <mapper resource="org/most/mybatis/ost.xml"/>
   </mappers>
 </configuration>

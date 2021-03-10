@@ -36,8 +36,8 @@ public class DispatcherServlet extends HttpServlet {
 		Controller ctrl = null;
 		if("/user".equals(frontPath)) {
 			ctrl = new UserController();
-		} else if("/movie".equals(frontPath)) {
-			ctrl = new MoiveController();
+		} else if("/ost".equals(frontPath)) {
+			ctrl = new OstController();
 		}
 		
 		if(ctrl != null)

@@ -24,6 +24,7 @@ body{
 <body>
 <%
 String navbarPath = "/subpage/navbar.jsp";
+String searchbarPath ="/subpage/searchbar.jsp";
 %>
 <jsp:include page="<%=navbarPath %>"></jsp:include>
 	<div class="container-fluid">
@@ -44,19 +45,14 @@ String navbarPath = "/subpage/navbar.jsp";
 						표 올곳
 					</div>
 					<div>
-						<a href="ost.action">OstList</a>
+						<a href="${pageContext.request.contextPath}/ost/list.action">OstList</a>
 					</div>
 				</div>
 			</div>
 		<!--회원정보 끝 메인시작  -->
 			<div class="col-md-10">
-				<div style="float:right; margin-top:12px;">
-				<!-- 검색 -->
-					<form action="#" method="get">
-						<input type="search" id="search" name="search" placeholder="검색" maxlength="20" />
-						<input class="btn btn-primary btn-sm" type="submit" value="검색" />
-					</form>
-				</div>
+			<!-- 검색창 -->
+				<jsp:include page="<%=searchbarPath %>"></jsp:include>
 				<div>
 					<h1>역대 최고 인기 OST</h1>
 					<img src="img/Ex1.jpg" class="img-thumbnail" width="500">

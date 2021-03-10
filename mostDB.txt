@@ -5,3 +5,15 @@ userName varchar(20) not null,
 userEmail varchar(50) not null,
 joinedDate Timestamp default now()
 );
+
+
+create table ostList(
+no int primary key auto_increment,
+ostName varchar(50) not null,
+artist varchar(50) not null
+);
+
+create table likedOst(
+userID varchar(20) not null,
+ostNum int not null
+);

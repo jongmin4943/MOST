@@ -34,7 +34,7 @@ public class UserController extends Controller {
 	}
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = (String)request.getAttribute("path");
-		System.out.println("path => " + path);
+		//System.out.println("path =>" + path);
 		UserCommand cmd = cmdMapper.get(path);
 		ModelAndView mav = cmd.action(request, response);
 		mav.forward(request, response);

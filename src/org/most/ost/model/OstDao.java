@@ -1,5 +1,57 @@
 package org.most.ost.model;
 
-public class OstDao {
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class OstDao {
+	private SqlSession mybatis;
+	public OstDao() {
+		String url = "org/most/mybatis/mybatis-config.xml";
+		try {
+			InputStream inputStream = Resources.getResourceAsStream(url);
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			mybatis = sqlSessionFactory.openSession(true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<Object> selectAll() {
+		List<Object> list = new ArrayList<>();
+		list = mybatis.selectList("OstMapper.selectAll");
+		return list;
+	}
+	
+	public OstDto selectOne(OstDto dto) {
+		return mybatis.selectOne("OstMapper.selectUser",dto.getNo());
+	}
+	
+	public String selectLikes(OstDto dto) {
+		return mybatis.selectOne("OstMapper.selectLikes",dto.getNo());
+	} // 해당 ost의 like 갯수가 넘어온다.
+	
+	public List<Object> selectUserOst(String userID) {
+		List<Object> list = new ArrayList<>();
+		list = mybatis.selectList("OstMapper.selectUserOst", userID);
+		return list;
+	} // 해당 유저가 like를 누른 ost 리스트를 뽑아온다.
+	
+	public void insert(OstDto dto) {
+		mybatis.insert("OstMapper.insertUser",dto);
+	}
+	
+//	public void update(UserDto dto) {
+//		mybatis.update("OstMapper.updateUser", dto);
+//	}
+	
+	public void delete(OstDto dto) {
+		mybatis.delete("OstMapper.deleteUser", dto);
+	}
 }

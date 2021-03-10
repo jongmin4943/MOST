@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OstMapper">
+	<select id="selectOst" resultType="OstDto"> <!--resultType은 원래org.comstudy21.model.SaramDto지만 config에서 alias설정해서 짧다  -->
+    select * from ostList where no=#{no}
+	</select>
+	<select id="selectAll" resultType="OstDto">
+		SELECT * FROM ostList
+	</select>
+	<select id="selectUserOst" resultType="OstDto">
+	 select ost.ostName, ost.artist from ostList as ost Join likedOst as liked On liked.ostNum = ost.no where liked.userID = #{userID}
+	</select>
+	<select id="selectlikes" resultType="String">
+	select count(userID) from likedOst where ostNum = #{no}
+	</select>
+	<insert id="insertOst">
+		insert into ostList (ostName, artist)
+		values (#{ostName},#{artist})
+	</insert>
+
+	<!-- <update id="updateOst">
+		update ostList set
+		 = #{},
+		where no = #{ostNo}
+	</update> -->
+
+	<delete id="deleteOst">
+		delete from ostList where no = #{ostNo}
+	</delete>
+</mapper>
