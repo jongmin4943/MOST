@@ -16,6 +16,7 @@ $(function() {
 	$.get("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=db246ec70452ef24e848a2ae14c1c5c7&targetDt=20210228", 
 			function(data, status) {  	
 				if(status == "success") {
+					console.log(data);
 					var content = data.boxOfficeResult.weeklyBoxOfficeList;
 					for(var i = 0; i < 10; i++){
 						names[i] = content[i]['movieNm'];

@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Project02 Melone Top 10</title>
 </head>
 <body>
 <a href="https://www.melon.com/search/song/index.htm?q=original+soundtrack&section=&searchGnbYn=Y&kkoSpl=N&kkoDpType=&ipath=srch_form#params%5Bq%5D=original%2Bsoundtrack&params%5Bsort%5D=hit&params%5Bsection%5D=all&params%5BsectionId%5D=&params%5BgenreDir%5D=GN1501&params%5Bsq%5D=&params%5BsubLinkOrText%5D=L&po=pageObj&startIndex=1">멜론</a>
@@ -28,6 +28,7 @@ Elements song = songs.select("td");
 List<String> titles = new ArrayList<String>();
 List<String> artists = new ArrayList<String>();
 List<String> albums = new ArrayList<String>();
+
 int count = 0;
 String refinedTitle = "";
 
@@ -44,6 +45,11 @@ for(Element e: song){
 				albums.add(e.select(".fc_mgray").text().trim());
 			}
 		}
+		
+		/*if(e.select(".wrap.right_none ") != null){
+			artists.add(e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2));
+		}*/
+		
 	}
 	if(titles.size() > 10){
 		break;
@@ -164,11 +170,11 @@ JSONArray jarr = new JSONArray(innerLikes);
 List<String> likes = new ArrayList<String>();
 
 for(int i = 0; i<11; i++){
-	if(i != 8){
+	
 		String cnt = jarr.get(i).toString();
 		JSONObject b = new JSONObject(cnt);
 		likes.add(b.get("SUMMCNT").toString());
-	}
+
 }
 
 System.out.print(titles);
