@@ -22,8 +22,15 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		JSONObject ans = getInfos("Minari");
+		JSONObject ans = getInfos("Coco");
 		System.out.println(ans);
+	}
+	
+	public static boolean yOrNo(String movieNm) {
+		if(getInfos(movieNm) != null) {
+			return true;
+		}
+		return false;
 	}
 	
 	public static JSONObject getInfos(String movieNm) {
@@ -32,31 +39,30 @@ public class NaverAPIreader {
 		
 		try {
 			encName = URLEncoder.encode(movieNm,"UTF-8");
-			System.out.println(encName);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
-		String url = "https://openapi.naver.com/v1/search/movie.json?query="+encName+"&display=5";
-		System.out.println(url);
+		String url = "https://openapi.naver.com/v1/search/movie.json?query="+encName+"&display=20";
 		Map<String, String> headers = new HashMap<String, String>();
 		headers.put("X-Naver-Client-Id", CLIENT_ID);
 		headers.put("X-Naver-Client-Secret", CLIENT_SECRET);
 		JSONObject res = get(url, headers);
 		
 		String pans = res.get("items").toString();
-		
+		//System.out.println("pans "+pans);
 		
 		
 		JSONObject jsonAns = null;
 		JSONArray jarr = new JSONArray(pans);
 		for(Object job : jarr) {
 			JSONObject jsonObj = new JSONObject(job.toString());
-			
+			//System.out.println("movieName made : <b>"+movieNm+"</b>");
+			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
 			if(("<b>"+movieNm+"</b>").equals(jsonObj.get("title"))) {
 				jsonAns = jsonObj;
 				break;
-			} else if (("<b>"+movieNm+"</b>").equals(jsonObj.get("subtitle"))) {
+			} else if (("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
 			}
