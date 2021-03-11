@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="UserDto" type="org.most.user.model.UserDto"/> <!--긴 파일 명을 짧게 줄인다  -->
+		<typeAlias alias="OstDto" type="org.most.ost.model.OstDto"/> <!--긴 파일 명을 짧게 줄인다  -->
 	</typeAliases>
   <environments default="development">
     <environment id="development">

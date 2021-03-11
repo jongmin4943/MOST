@@ -19,13 +19,9 @@ public class InsertCmd implements UserCommand {
 			mav.setViewName("/WEB-INF/views/user/join.jsp");
 		} else {
 			String userID = req.getParameter("userID");
-			String userPassword = req.getParameter("userPassword");
-			String userName = req.getParameter("userName");
-			String userEmail = req.getParameter("userEmail");
 			UserDao uDao = new UserDao();
-			UserDto newUser = new UserDto(userID,userPassword,userName,userEmail,"");
+			UserDto newUser = new UserDto(userID);
 			UserDto check = uDao.selectOne(newUser);
-			System.out.println(check);
 			if(check == null) {
 				uDao.insert(newUser);
 				mav.setViewName("login.action");

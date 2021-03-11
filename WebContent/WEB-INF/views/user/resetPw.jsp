@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <script type="text/javascript">
 function checkValue(){
@@ -26,11 +29,7 @@ function goLoginForm() {
 }
 </script>
 <body>
-<%
-String navbarPath = "/subpage/navbar.jsp";
-String userID = request.getParameter("userID");
-%>
-<jsp:include page="<%=navbarPath %>"></jsp:include>
+<jsp:include page="${initParam.navbar}"></jsp:include>
 	<br>
 	<br>
 	<br>
@@ -40,7 +39,7 @@ String userID = request.getParameter("userID");
 			<div class="col-lg-4">
 				<div class="jumbotron" style="padding-top: 10px;">
 					<form action="resetPw.action" method="POST" name="userInfo" onsubmit="return checkValue()">
-					<input type="hidden" name="userID"> 
+					<input type="hidden" name="userID" value="${sessionScope.temp }"> 
 						<h3 style="text-align: center;">비밀번호 변경</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="new Password" name="userPassword" maxlength="20">

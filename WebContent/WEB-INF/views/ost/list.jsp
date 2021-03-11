@@ -16,11 +16,7 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
-	<%
-	String navbarPath = "/subpage/navbar.jsp";
-	String searchbarPath = "/subpage/searchbar.jsp";
-	%>
-	<jsp:include page="<%=navbarPath%>"></jsp:include>
+	<jsp:include page="${initParam.navbar}"></jsp:include>
 	<div class="container-fulid pt-2">
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -58,7 +54,7 @@
 			<div class="col-xl-6">
 				<div>
 					<!-- 검색창 -->
-					<jsp:include page="<%=searchbarPath %>"></jsp:include>
+					<jsp:include page="${initParam.searchbar}"></jsp:include>
 					<div>
 						<h2>Ost List</h2>
 					</div>

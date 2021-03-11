@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 
 <div style="float: right; margin-top: 10px;">
-	<form action="#" method="get">
+	<form action="${pageContext.request.contextPath}/ost/list.action" method="POST">
 		<select name="option" id="option">
 			<option value="ost" selected>OST</option>
 			<option value="movie">영화</option>

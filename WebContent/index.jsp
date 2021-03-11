@@ -22,11 +22,8 @@ body{
 }
 </style>
 <body>
-<%
-String navbarPath = "/subpage/navbar.jsp";
-String searchbarPath ="/subpage/searchbar.jsp";
-%>
-<jsp:include page="<%=navbarPath %>"></jsp:include>
+<jsp:include page="${initParam.navbar}"></jsp:include>
+
 	<div class="container-fluid">
 		<div class="row">
 		<!--회원정보가 표시될곳  -->
@@ -42,7 +39,7 @@ String searchbarPath ="/subpage/searchbar.jsp";
 					</div>
 					<div>
 						<img src="img/Ex1.jpg" class="img-thumbnail" width="300">
-						표 올곳
+						공지사항 maybe?
 					</div>
 					<div>
 						<a href="${pageContext.request.contextPath}/ost/list.action">OstList</a>
@@ -52,7 +49,7 @@ String searchbarPath ="/subpage/searchbar.jsp";
 		<!--회원정보 끝 메인시작  -->
 			<div class="col-md-10">
 			<!-- 검색창 -->
-				<jsp:include page="<%=searchbarPath %>"></jsp:include>
+				<jsp:include page="${initParam.searchbar}"></jsp:include>
 				<div>
 					<h1>역대 최고 인기 OST</h1>
 					<img src="img/Ex1.jpg" class="img-thumbnail" width="500">

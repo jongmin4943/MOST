@@ -10,6 +10,9 @@ public class UserDto {
 	public UserDto() {
 		this("","","","","");
 	}
+	public UserDto(String userID) {
+		this(userID,"","","","");
+	}
 	public UserDto(String userID, String userPassword, String useName, String useEmail, String joinedDate) {
 		this.userID = userID;
 		this.userPassword = userPassword;

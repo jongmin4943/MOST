@@ -12,7 +12,14 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
+	<context-param>
+		<param-name>navbar</param-name>
+		<param-value>/subpage/navbar.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>searchbar</param-name>
+		<param-value>/subpage/searchbar.jsp</param-value>
+	</context-param>
 	<resource-ref>
 		<res-ref-name>jdbc/MOST</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
@@ -20,14 +27,14 @@
 	</resource-ref>
 	
 	<!-- 브라우저 주소창의 URL과 Servlet클래스를 맵핑한다  -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>hello</servlet-name>
 		<servlet-class>org.comstudy21.HelloServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hello.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	
 </web-app>

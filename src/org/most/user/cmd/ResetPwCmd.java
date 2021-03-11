@@ -22,6 +22,7 @@ public class ResetPwCmd implements UserCommand {
 			String userPassword = req.getParameter("userPassword");
 			UserDao uDao = new UserDao();
 			uDao.update(new UserDto(userID,userPassword,"","",""));
+			req.getSession().removeAttribute("temp");
 			mav.setViewName(req.getContextPath());
 			mav.setRedirect(true);
 		}

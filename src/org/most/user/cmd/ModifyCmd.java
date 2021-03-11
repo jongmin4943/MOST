@@ -24,12 +24,13 @@ public class ModifyCmd implements UserCommand {
 			UserDao uDao = new UserDao();
 			UserDto uDto = uDao.selectOne(new UserDto(userID,"","","",""));
 			if(uDto != null && uDto.getUseName().equals(userName) && uDto.getUseEmail().equals(userEmail)) {
-				mav.setViewName("resetPw.action?userID="+userID);
+				req.getSession().setAttribute("temp", userID);
+				mav.setViewName("resetPw.action");
 				mav.setRedirect(true);
 			} else {
 				mav.setViewName("login.action");
 				mav.setRedirect(true);
-				System.out.println("정보가 일치하지 않습니다.");
+				//System.out.println("정보가 일치하지 않습니다.");
 			}
 		}
 		

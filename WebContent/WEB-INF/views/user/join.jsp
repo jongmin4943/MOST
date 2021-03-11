@@ -75,11 +75,7 @@ body{
 }
 </style>
 <body>
-<%
-request.getContextPath();
-String navbarPath = "/subpage/navbar.jsp";
-%>
-<jsp:include page="<%=navbarPath %>"></jsp:include>
+<jsp:include page="${initParam.navbar}"></jsp:include>
 	<br>
 	<br>
 	<br>
