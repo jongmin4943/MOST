@@ -7,11 +7,9 @@
     pageEncoding="UTF-8"%>    
 <%
 String title = request.getParameter("name");
-String refinedTitle = title.substring(0, title.indexOf("(", 1));
-refinedTitle = refinedTitle.trim();
-System.out.println(refinedTitle);
 
-JSONObject jObj = NaverAPIreader.getInfos(refinedTitle);
+
+JSONObject jObj = NaverAPIreader.getInfos(title);
 
 String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length()); 
 System.out.println("imgUrl: "+imgUrl);

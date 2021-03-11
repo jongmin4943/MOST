@@ -22,35 +22,52 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		JSONObject ans = getInfos("Coco");
-		System.out.println(ans);
+		/*
+		 * String[] movs = {"Soul (Original Motion Picture Soundtrack)",
+		 * "Soul (Original Motion Picture Soundtrack)"}; String[] asd =
+		 * {"블레이드 & 소울 OST '서락'", "소울메이트 Forever OST"};
+		 * 
+		 * for(String st: asd) { boolean ans = movieCheck(st); }
+		 */
+		
+		System.out.println(getInfos("speechless"));
 	}
 	
-	public static boolean yOrNo(String movieNm) {
+	public static boolean movieCheck(String movieNm) {
 		if(getInfos(movieNm) != null) {
 			return true;
 		}
-		return false;
+		
+		return false;	
+	}
+	
+	public static String refineName(String movieNm) {
+		String refinedTitle = "";
+		if(movieNm.contains("(")) {
+			refinedTitle = movieNm.substring(0, movieNm.indexOf("(", 1));
+			refinedTitle = refinedTitle.trim();			
+		} 
+		return refinedTitle;
 	}
 	
 	public static JSONObject getInfos(String movieNm) {
-		
 		String encName = "";
-		
+		String actName = refineName(movieNm);
+		System.out.println(actName);
 		try {
-			encName = URLEncoder.encode(movieNm,"UTF-8");
+			encName = URLEncoder.encode(actName,"UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
 		String url = "https://openapi.naver.com/v1/search/movie.json?query="+encName+"&display=20";
 		Map<String, String> headers = new HashMap<String, String>();
 		headers.put("X-Naver-Client-Id", CLIENT_ID);
 		headers.put("X-Naver-Client-Secret", CLIENT_SECRET);
 		JSONObject res = get(url, headers);
-		
+		if(res == null) {
+			return null;
+		}
 		String pans = res.get("items").toString();
-		//System.out.println("pans "+pans);
 		
 		
 		JSONObject jsonAns = null;
@@ -59,10 +76,10 @@ public class NaverAPIreader {
 			JSONObject jsonObj = new JSONObject(job.toString());
 			//System.out.println("movieName made : <b>"+movieNm+"</b>");
 			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
-			if(("<b>"+movieNm+"</b>").equals(jsonObj.get("title"))) {
+			if(("<b>"+actName+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
-			} else if (("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
+			} else if (("<b>"+actName+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
 			}
@@ -99,8 +116,9 @@ public class NaverAPIreader {
 		String si = "";
 		
 		while((si = streamReader.readLine()) != null) {
-		       built.append(si);
+			built.append(si);
 		}
+		
 		JSONObject res = new JSONObject(built.toString());
 		return res;
 	}
