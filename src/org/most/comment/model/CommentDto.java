@@ -3,18 +3,26 @@ package org.most.comment.model;
 public class CommentDto {
 	private String no;
 	private String writer;
-	private String ostNumber;
+	private String ostNum;
 	private String content;
 	private String date;
 	
+	public String getOstNum() {
+		return ostNum;
+	}
+	public void setOstNum(String ostNum) {
+		this.ostNum = ostNum;
+	}
 	public CommentDto() {
 		this("","","","","");
 	}
+	public CommentDto(String no) {
+		this(no,"","","","");
+	}
 	public CommentDto(String no, String writer, String ostNumber, String content, String date) {
-		super();
 		this.no = no;
 		this.writer = writer;
-		this.ostNumber = ostNumber;
+		this.ostNum = ostNumber;
 		this.content = content;
 		this.date = date;
 	}
@@ -30,12 +38,6 @@ public class CommentDto {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getOstNumber() {
-		return ostNumber;
-	}
-	public void setOstNumber(String ostNumber) {
-		this.ostNumber = ostNumber;
-	}
 	public String getContent() {
 		return content;
 	}
@@ -50,7 +52,7 @@ public class CommentDto {
 	}
 	@Override
 	public String toString() {
-		return "CommentDto [no=" + no + ", writer=" + writer + ", ostNumber=" + ostNumber + ", content=" + content
+		return "CommentDto [no=" + no + ", writer=" + writer + ", ostNumber=" + ostNum + ", content=" + content
 				+ ", date=" + date + "]";
 	}
 }

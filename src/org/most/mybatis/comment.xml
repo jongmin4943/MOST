@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommentMapper">
+	<select id="selectComment" resultType="CommentDto">
+    select * from comment where no=#{no}
+	</select>
+	<select id="selectAll" resultType="CommentDto">
+		SELECT * FROM comment where ostNum=#{ostNum}
+	</select>
+	<insert id="insertComment">
+		insert into comment (writer, ostNum, content)
+		values (#{writer},#{ostNum},#{content})
+	</insert>
+
+	<update id="updateComment">
+		update comment set
+		content = #{content},
+		where no = #{no}
+	</update>
+	<delete id="deleteComment">
+		delete from comment where no = #{no}
+	</delete>
+</mapper>

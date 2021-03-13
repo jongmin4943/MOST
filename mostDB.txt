@@ -17,3 +17,11 @@ create table likedOst(
 userID varchar(20) not null,
 ostNum int not null
 );
+
+create table comment(
+no int primary key auto_increment,
+writer varchar(20) not null,
+ostNum int not null,
+content varchar(1000),
+date Timestamp default now()
+);

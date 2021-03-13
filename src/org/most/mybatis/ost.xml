@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OstMapper">
-	<select id="selectOst" resultType="OstDto"> <!--resultType은 원래org.comstudy21.model.SaramDto지만 config에서 alias설정해서 짧다  -->
+	<select id="selectOst" resultType="OstDto">
     select * from ostList where no=#{no}
 	</select>
 	<select id="selectAll" resultType="OstDto">

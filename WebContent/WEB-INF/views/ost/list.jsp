@@ -14,26 +14,221 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/table.css">
 <style type="text/css">
+.commentArea {
+	border: 1px solid #bcbcbc;
+	overflow:auto;
+	border-left: 3px solid #369;
+	
+}
+#commentHeader{
+	overflow:auto;
+	border-bottom:1px solid #bcbcbc;
+	font-weight: bold;
+}
+.commentDetail {
+	overflow:auto;
+	boarder-bottom:1px solid #bcbcbc;
+	margin: 4px 0px;
+}
 .cID {
-	max-width: 150px;
-	width:100%;
-	margin : 10px;
+	width: 15%;
+	float: left;
+	margin-left: 6px;
+}
+.cContent {
+	width: 53%;
 	float: left;
 }
-.cContent{
-	max-width: 550px;
-	width: 100%;
-	margin : 10px;	
-	float: left;
+.cDate {
+	width: 15%;
+	float: right;
 }
-.cDate{
-	max-width: 100px;
-	width: 100%;
-	margin : 10px;
+.cOption {
+	width: 15%;
 	float: left;
 }
 </style>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script>
+var no = 1//${param.no}
+var guestID = "${sessionScope.userID}";
+var flag = false;
+$(function() {
+	function getComment() {
+		$.get("comment.action?ostNum="+no,function(data,status) {
+			var commentList = JSON.parse(data.trim()).sent;
+			var start = "<div class = 'commentDetail'>";
+			for(var i = 0; i<commentList.length; i++){
+				item = commentList[i];
+				if(i>0) {
+					start +="<div class = 'commentDetail'>";
+				}
+				if(guestID != item.guestID) {
+					option = "<p style='width: 70px;'></p>";
+				} else {
+					option = "<a class='commentModi' data-comment-no='"+item.commentNo+"' href=''>수정</a><a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
+				}
+				start += '<span class="cID">'+item.guestID+'</span>';
+				start += '<span class="cContent modifying" data-comment-no="'+item.commentNo+'">'+item.content+'</span>';
+				start += "<span class='cOption' style='text-align:right'>"+option+"</span>";
+				start += '<span class="cDate">'+item.date.substring(0,11)+'</span>';
+				start += "</div>";
+			}//end for
+			$("#comment").html(start);
+			
+			$('.commentDel').click(function(event) { 	//삭제 링크 클릭
+			    event.preventDefault(); 
+			    var commentNo = $(this).attr("data-comment-no");
+			    deleteComment(commentNo);	//해당 코멘트 삭제
+			    return false;
+			});//end Del
+			
+			$('.commentModi').click(function(event) { 	//수정 링크 클릭
+				if(!flag) {
+					flag = true;
+				    event.preventDefault();
+				    var commentNo = $(this).attr("data-comment-no");
+				    var where = $('span[data-comment-no^='+commentNo+']'); // content와 option 둘다 해당되지만 content가 먼저 나오는걸 이용, 선택한다.
+					var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='100%'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
+					where.html(modi);
+					$('#modiBtn').click(function() {
+						event.preventDefault();
+						if($("#modiarea").val() == "") {
+						alert("수정할 댓글을 입력해주세요.");
+							return false;
+						}
+						var modiTxt = $("#modiarea").val();
+					    modifyComment(commentNo,modiTxt);	//해당 코멘트 수정
+					});
+				} else {
+					alert("수정은 한번에 하나만 가능합니다.");
+				}
+			    return false;
+			}); //end Modi
+		}) 
+	}//end get Function
+	getComment();
+	
+	$('.cBtn').click(function() {
+		if(guestID == 'null') {
+			var c = confirm('로그인 하시겠습니까?.');
+			if(c) {
+				location.href = 'login.action';
+				return false;
+			} else {
+				return false;
+			}
+		} else {
+			event.preventDefault();
+			if($("#textarea").val() == "") {
+				alert("댓글을 입력해주세요.");
+				return false;
+			}
+		} //end if
+		
+		var textarea = $("#textarea").val();
+		$.ajax({ //댓글 작성 ajax
+			type: "POST",
+			url: "comment.action?ostNum="+no,
+			data: {content : textarea,
+					ostNum : no		
+			},  
+			success: function(data) {
+				var commentList = JSON.parse(data.trim()).sent;
+				var start = "<div class = 'commentDetail'>";
+				for(var i = 0; i<commentList.length; i++){
+					item = commentList[i];
+					if(i>0) {
+						start +="<div class = 'commentDetail'>";
+					}
+					if(guestID != item.guestID) {
+						option = "<p style='width: 70px;'></p>";
+					} else {
+						option = "<a class='commentModi' data-comment-no='"+item.commentNo+"' href=''>수정</a><a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
+					}
+					start += '<span class="cID">'+item.guestID+'</span>';
+					start += '<span class="cContent modifying" data-comment-no="'+item.commentNo+'">'+item.content+'</span>';
+					start += "<span class='cOption' style='text-align:right'>"+option+"</span>";
+					start += '<span class="cDate">'+item.date.substring(0,11)+'</span>';
+					start += "</div>";
+				}//end for
+				$("#comment").html(start);
+				$("#textarea").val("");
+				
+				$('.commentDel').click(function(event) { 	//삭제 링크 클릭
+				    event.preventDefault(); 
+				    var commentNo = $(this).attr("data-comment-no");
+				    deleteComment(commentNo);	//해당 코멘트 삭제
+				    return false;
+				});//end Del
+				
+				$('.commentModi').click(function(event) { 	//수정 링크 클릭
+					if(!flag) {
+						flag = true;
+					    event.preventDefault();
+					    var commentNo = $(this).attr("data-comment-no");
+					    var where = $('span[data-comment-no^='+commentNo+']');
+						var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='width:100%'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
+						where.html(modi);
+						$('#modiBtn').click(function() {
+							event.preventDefault();
+							if($("#modiarea").val() == "") {
+							alert("수정할 댓글을 입력해주세요.");
+								return false;
+							}
+							var modiTxt = $("#modiarea").val();
+						    modifyComment(commentNo,modiTxt);	//해당 코멘트 수정
+						});
+					} else {
+						alert("수정은 한번에 하나만 가능합니다.");
+					}
+				    return false;
+				}); //end Modi
+			}
+		})
+	})
+	function deleteComment(commentNo) {	//댓글 삭제 함수
+		var check = confirm("삭제 하시겠습니까?");
+		if(check == false) {
+			return false;
+		} else {
+			$.ajax({
+				type: "POST",
+				url: "??",//삭제 페이지로 이동
+				data: {
+					commentNo : commentNo,
+					ostNum : no
+					},  
+				success: function(data) {
+					var suc = data.trim();
+					getComment();	//삭제 후 댓글 리스트 호출
+				},
+				error: function(jqxhr, textStatus, errorThrown) {
+					alert("ERROR, STATUS : "+textStatus +", Error thrown : "+errorThrown);
+				}
+			});
+		}
+	}
+	function modifyComment(commentNo,modiTxt) {	//댓글 수정 함수
+		$.ajax({
+			type: "POST",
+			url: "??",//수정 페이지로 이동
+			data: {
+				commentNo : commentNo,
+				modiText : modiTxt
+				},  
+			success: function(data) {
+				var suc = data.trim();
+				flag = false;
+				getComment();	//수정 후 댓글 리스트 호출
+			},
+			error: function(jqxhr, textStatus, errorThrown) {
+				alert("ERROR, STATUS : "+textStatus +", Error thrown : "+errorThrown);
+			}
+		});
+	}
+})
+</script>
 </head>
 <body>
 	<jsp:include page="${initParam.navbar}"></jsp:include>
@@ -46,7 +241,7 @@
 				<div>
 					<h2>MovieInfo</h2>
 				</div>
-				<img src="${pageContext.request.contextPath}/img/Ex1.jpg" class="img-thumbnail" width="450">
+				<img src="${pageContext.request.contextPath}/img/Ex1.jpg" class="img-thumbnail" width="100%">
 				<table>
 					<tr>
 						<th style="width: 120px;"></th>
@@ -123,11 +318,7 @@
 					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다')">다음</span>
 				</div>
 				<!-- ost list 끝 댓글 시작 -->
-				<hr/>
 				<div class = "commentArea">
-					<div class = "commentTitle">
-						<div>댓글</div>
-					</div>
 					<div>
 						<div id = "commentHeader">
 							<div class="cID">
@@ -141,12 +332,15 @@
 							</div>
 						</div>
 					</div>
-					<div>
-						<div class = "commentDetail">
-							<span class="cID">윤종민</span>
-							<span class="cContent">이 노래 진짜 좋아연</span>
-							<span class="cDate">2021-03-13</span>
-						</div>
+					<div id = "comment">
+					<!--코멘트 반복  -->
+					</div>
+					<!--댓글 작성 -->
+					<div id = "commentWrite" style="margin-left:5px;">
+						<form action="" method="POST">
+							<textarea id="textarea" style="width:85%; resize: none; float: left;"></textarea>
+							<input class="btn btn-primary cBtn" type="button" value="댓글등록" style="margin:7px 0 0 4px">
+						</form>
 					</div>
 				</div>
 			</div>
