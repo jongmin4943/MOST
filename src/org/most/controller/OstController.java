@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.most.ost.cmd.CommentCmd;
+import org.most.ost.cmd.CommentDeleCmd;
+import org.most.ost.cmd.CommentModiCmd;
 import org.most.ost.cmd.ListCmd;
 import org.most.ost.cmd.OstCommand;
 
@@ -17,6 +19,8 @@ public class OstController extends Controller {
 	static {
 		cmdMapper.put("/list.action", new ListCmd());
 		cmdMapper.put("/comment.action", new CommentCmd());
+		cmdMapper.put("/commentModi.action", new CommentModiCmd());
+		cmdMapper.put("/commentDele.action", new CommentDeleCmd());
 	}
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = (String)request.getAttribute("path");

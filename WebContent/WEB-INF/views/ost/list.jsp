@@ -89,7 +89,7 @@ $(function() {
 				    event.preventDefault();
 				    var commentNo = $(this).attr("data-comment-no");
 				    var where = $('span[data-comment-no^='+commentNo+']'); // content와 option 둘다 해당되지만 content가 먼저 나오는걸 이용, 선택한다.
-					var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='100%'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
+					var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='width:100%' maxlength='1000'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
 					where.html(modi);
 					$('#modiBtn').click(function() {
 						event.preventDefault();
@@ -168,7 +168,7 @@ $(function() {
 					    event.preventDefault();
 					    var commentNo = $(this).attr("data-comment-no");
 					    var where = $('span[data-comment-no^='+commentNo+']');
-						var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='width:100%'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
+						var modi = "<textarea class = 'form-control' name='modiarea' id='modiarea' rows='2' cols='50' style='width:100%' maxlength='1000'>"+where.text()+"</textarea><input type='button' id='modiBtn' value='댓글 수정' />";
 						where.html(modi);
 						$('#modiBtn').click(function() {
 							event.preventDefault();
@@ -194,7 +194,7 @@ $(function() {
 		} else {
 			$.ajax({
 				type: "POST",
-				url: "??",//삭제 페이지로 이동
+				url: "commentDele.action",
 				data: {
 					commentNo : commentNo,
 					ostNum : no
@@ -212,10 +212,11 @@ $(function() {
 	function modifyComment(commentNo,modiTxt) {	//댓글 수정 함수
 		$.ajax({
 			type: "POST",
-			url: "??",//수정 페이지로 이동
+			url: "commentModi.action",
 			data: {
 				commentNo : commentNo,
-				modiText : modiTxt
+				modiText : modiTxt,
+				ostNum : no
 				},  
 			success: function(data) {
 				var suc = data.trim();
@@ -318,6 +319,10 @@ $(function() {
 					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다')">다음</span>
 				</div>
 				<!-- ost list 끝 댓글 시작 -->
+				<div style="text-align: center;">
+					${param.name}~OST 의 댓글
+				</div>
+				<!-- ost 클릭시 해당 ost의 이름값과 번호가 필요하다. -->
 				<div class = "commentArea">
 					<div>
 						<div id = "commentHeader">
@@ -335,10 +340,10 @@ $(function() {
 					<div id = "comment">
 					<!--코멘트 반복  -->
 					</div>
-					<!--댓글 작성 -->
+					<!--댓글 작성 해당 ost가 db안에 들어있으면 나오게 바궈야한다.-->
 					<div id = "commentWrite" style="margin-left:5px;">
 						<form action="" method="POST">
-							<textarea id="textarea" style="width:85%; resize: none; float: left;"></textarea>
+							<textarea id="textarea" style="width:85%; resize: none; float: left;" maxlength="1000"></textarea>
 							<input class="btn btn-primary cBtn" type="button" value="댓글등록" style="margin:7px 0 0 4px">
 						</form>
 					</div>

@@ -16,7 +16,7 @@
 
 	<update id="updateComment">
 		update comment set
-		content = #{content},
+		content = #{content}
 		where no = #{no}
 	</update>
 	<delete id="deleteComment">
