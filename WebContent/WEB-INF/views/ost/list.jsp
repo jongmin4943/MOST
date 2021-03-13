@@ -13,6 +13,26 @@
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/table.css">
+<style type="text/css">
+.cID {
+	max-width: 150px;
+	width:100%;
+	margin : 10px;
+	float: left;
+}
+.cContent{
+	max-width: 550px;
+	width: 100%;
+	margin : 10px;	
+	float: left;
+}
+.cDate{
+	max-width: 100px;
+	width: 100%;
+	margin : 10px;
+	float: left;
+}
+</style>
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
@@ -96,37 +116,38 @@
 							<td>Helen Bennett</td>
 							<td>555</td>
 						</tr>
-						<tr>
-							<td>Königlich Essen</td>
-							<td>Philip Cramer</td>
-							<td>Philip Cramer</td>
-							<td>444</td>
-						</tr>
-						<tr>
-							<td>Laughing Bacchus</td>
-							<td>Yoshi Tannamuri</td>
-							<td>Yoshi Tannamuri</td>
-							<td>333</td>
-						</tr>
-						<tr>
-							<td>Magazzini Alimentari</td>
-							<td>Magazzini Alimentari</td>
-							<td>Giovanni Rovelli</td>
-							<td>222</td>
-						</tr>
-						<tr>
-							<td>North/South</td>
-							<td>Simon Crowther</td>
-							<td>Simon Crowther</td>
-							<td>111</td>
-						</tr>
-						<tr>
-							<td>Paris spécialités</td>
-							<td>Marie Bertrand</td>
-							<td>Marie Bertrand</td>
-							<td>0</td>
-						</tr>
 					</table>
+				</div>
+				<div align="center">
+					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다')">이전</span>
+					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다')">다음</span>
+				</div>
+				<!-- ost list 끝 댓글 시작 -->
+				<hr/>
+				<div class = "commentArea">
+					<div class = "commentTitle">
+						<div>댓글</div>
+					</div>
+					<div>
+						<div id = "commentHeader">
+							<div class="cID">
+								<span>작성자</span>
+							</div>
+							<div class="cContent">
+								<span>내용</span>
+							</div>
+							<div class="cDate">
+								<span>작성날짜</span>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class = "commentDetail">
+							<span class="cID">윤종민</span>
+							<span class="cContent">이 노래 진짜 좋아연</span>
+							<span class="cDate">2021-03-13</span>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
