@@ -110,10 +110,10 @@ $(function() {
 	getComment();
 	
 	$('.cBtn').click(function() {
-		if(guestID == 'null') {
+		if(guestID == 'null' || guestID == "") {
 			var c = confirm('로그인 하시겠습니까?.');
 			if(c) {
-				location.href = 'login.action';
+				location.href = '${pageContext.request.contextPath}/user/login.action';
 				return false;
 			} else {
 				return false;
