@@ -63,8 +63,10 @@ $(function() {
 				if(i>0) {
 					start +="<div class = 'commentDetail'>";
 				}
-				if(guestID != item.guestID) {
+				if(guestID != item.guestID && guestID != "admin") {
 					option = "<p style='width: 70px;'></p>";
+				} else if(guestID == "admin") {
+					option = "<a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
 				} else {
 					option = "<a class='commentModi' data-comment-no='"+item.commentNo+"' href=''>수정</a><a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
 				}
@@ -141,8 +143,10 @@ $(function() {
 					if(i>0) {
 						start +="<div class = 'commentDetail'>";
 					}
-					if(guestID != item.guestID) {
+					if(guestID != item.guestID && guestID != "admin") {
 						option = "<p style='width: 70px;'></p>";
+					} else if(guestID == "admin") {
+						option = "<a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
 					} else {
 						option = "<a class='commentModi' data-comment-no='"+item.commentNo+"' href=''>수정</a><a class='commentDel' data-comment-no='"+item.commentNo+"' href=''>삭제</a>";
 					}
