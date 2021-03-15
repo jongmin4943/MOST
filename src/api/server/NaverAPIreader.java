@@ -22,7 +22,7 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		System.out.println(searchMovie("킹콩 (King Kong)", "영화음악 ~70년대 편 베스트"));
+		System.out.println(searchMovie("Into The Unknown (from ' Frozen 2' 영화 '겨울왕국 2')", "영화음악 ~70년대 편 베스트"));
 	}
 	
 	public static boolean movieCheck(String albumNm, String titleNm) {
@@ -35,7 +35,6 @@ public class NaverAPIreader {
 	// Refining title name to extract movie's name (if there is one.)
 	// Refining Album name to extract movie's name (if there is one.)
 	public static JSONObject searchMovie(String titleNm, String albumNm) {
-		//System.out.println("album: "+ albumNm+ " title: "+titleNm);
 		JSONObject res = null;
 		String titleAfter = "";
 		String albumAfter = "";
@@ -53,16 +52,13 @@ public class NaverAPIreader {
 		if(albumNm.contains("영화")) {
 			if(albumNm.substring(albumNm.indexOf("영화")+4).contains("'")) {
 				albumAfter = albumNm.substring(albumNm.indexOf("영화")+4);
-				albumAfter = albumAfter.substring(0, albumAfter.indexOf("'"));
+				albumAfter = albumAfter.substring(0, albumAfter.indexOf("'")+1);
 				albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
 				res = getInfo(albumAfter);
 				if(res != null) {
 					return res;
 				}				
 			}
-		}
-		if(res == null) {
-			System.out.println("null up to 1st check");
 		}
 		
 		if(titleNm.toLowerCase().contains("from")) {
@@ -84,9 +80,6 @@ public class NaverAPIreader {
 			}
 		}
 		
-		if(res == null) {
-			System.out.println("null up to 2nd check");
-		}
 		if(albumNm.contains("(")) {
 			albumAfter = albumNm.substring(0, albumNm.indexOf("(", 1));
 			albumAfter = albumAfter.trim();
@@ -133,8 +126,6 @@ public class NaverAPIreader {
 		
 		for(Object job : jarr) {
 			JSONObject jsonObj = new JSONObject(job.toString());
-			//System.out.println("movieName made : <b>"+movieNm+"</b>");
-			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
 			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
@@ -143,20 +134,6 @@ public class NaverAPIreader {
 				break;
 			}
 		}
-		/*
-		 * for(int i = 0;i<jarr.length();i++) {
-			JSONObject jsonObj = new JSONObject(jarr.get(jarr.length()-1-i).toString());
-			//System.out.println("movieName made : <b>"+movieNm+"</b>");
-			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
-			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
-				jsonAns = jsonObj;
-				break;
-			} else if (("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
-				jsonAns = jsonObj;
-				break;
-			}
-		}
-		 * */
 		
 		return jsonAns;
 	}

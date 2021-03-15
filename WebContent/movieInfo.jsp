@@ -10,16 +10,18 @@
 	String album = request.getParameter("album");
 
 
-        JSONObject jObj = NaverAPIreader.searchMovie(title, album);
+    JSONObject jObj = NaverAPIreader.searchMovie(title, album);
 
-        String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length()); 
-        System.out.println("imgUrl: "+imgUrl);
+    String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length()); 
+    System.out.println("imgUrl: "+imgUrl);
 
-        Document imgLoc = Jsoup.connect(imgUrl).get();
+    Document imgLoc = Jsoup.connect(imgUrl).get();
 
-        Element imgTag = imgLoc.body().getElementById("targetImage");
-
-        System.out.print(imgTag);
+    Element imgTag = imgLoc.body().getElementById("targetImage");
+    String imgTagStr = imgTag.toString();
+    String imgSrc = imgTagStr.substring(imgTagStr.indexOf("src=")+4);
+    imgSrc = imgSrc.substring(1, imgSrc.indexOf(" ")-1);
+    System.out.print(imgSrc);
     %>
 <!DOCTYPE html>
 <html>

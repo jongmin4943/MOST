@@ -91,7 +91,7 @@ if(request.getParameter("sabumit") != null) {
 		int numPrinted = 0;
 		if(titles.size()>0){
 			for(int i = 0; i<cnt; i++){
-				System.out.println("album: "+ albums.get(i)+ " title: "+titles.get(i));
+				//System.out.println("album: "+ albums.get(i)+ "title: "+titles.get(i));
 				if(NaverAPIreader.movieCheck(albums.get(i), titles.get(i))){
 					numPrinted++;
 %>
