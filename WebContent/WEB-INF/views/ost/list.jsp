@@ -58,7 +58,7 @@
 <script>
 var contextPath = "${pageContext.request.contextPath}";
 var flag = false;
-var no = 1
+var no = 1;
 var guestID = "${sessionScope.userID}";
 $(function() {
 	$(document).ready(function() {
