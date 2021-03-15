@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,12 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <script type="text/javascript">
+var loginCheck = "${sessionScope.userID}";
+if(!(loginCheck == "")) {
+	alert('이미 로그인 상태입니다.');
+	history.back();
+}
+
 	function checkValue(){
 		var emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 		var input = document.userInfo;

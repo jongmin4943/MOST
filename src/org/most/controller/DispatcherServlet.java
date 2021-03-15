@@ -37,6 +37,8 @@ public class DispatcherServlet extends HttpServlet {
 			ctrl = new UserController();
 		} else if("/ost".equals(frontPath)) {
 			ctrl = new OstController();
+		} else if("/admin".equals(frontPath)) {
+			ctrl = new AdminController();
 		}
 		
 		if(ctrl != null)

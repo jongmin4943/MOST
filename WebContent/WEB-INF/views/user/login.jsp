@@ -1,6 +1,6 @@
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,24 +11,18 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
-<%
-String userID = null;
-PrintWriter pr = response.getWriter();
-if(request.getAttribute("loginFail") != null) {
-	request.removeAttribute("loginFail");
-	pr.print("<script>");
-	pr.print("alert('아이디나 비밀번호가 틀렸습니다.');");
-	pr.print("history.back();");
-	pr.print("</script>");
-}
-if(session.getAttribute("userID") != null) {
-	pr.print("<script>");
-	pr.print("alert('이미 로그인 상태 입니다.');");
-	pr.print("history.back();");
-	pr.print("</script>");
-}
-%>
 <script type="text/javascript">
+var loginCheck = "${sessionScope.userID}";
+if(!(loginCheck == "")) {
+	alert('이미 로그인 상태입니다.');
+	history.back();
+}
+loginCheck = "${requestScope.loginFail}";
+if(!(loginCheck == "")) {
+	alert('아이디나 비밀번호가 틀렸습니다.');
+	history.back();
+}
+
 function checkValue(){
 	var input = document.userInfo;
     if(!input.userID.value){

@@ -23,7 +23,7 @@ public class ModifyCmd implements UserCommand {
 			String userEmail = req.getParameter("userEmail");
 			UserDao uDao = new UserDao();
 			UserDto uDto = uDao.selectOne(new UserDto(userID,"","","",""));
-			if(uDto != null && uDto.getUseName().equals(userName) && uDto.getUseEmail().equals(userEmail)) {
+			if(uDto != null && uDto.getUserName().equals(userName) && uDto.getUserEmail().equals(userEmail)) {
 				req.getSession().setAttribute("temp", userID);
 				mav.setViewName("resetPw.action");
 				mav.setRedirect(true);

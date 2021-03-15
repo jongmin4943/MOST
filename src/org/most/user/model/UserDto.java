@@ -13,10 +13,10 @@ public class UserDto {
 	public UserDto(String userID) {
 		this(userID,"","","","");
 	}
-	public UserDto(String userID, String userPassword, String useName, String useEmail, String joinedDate) {
+	public UserDto(String userID, String userPassword, String userName, String useEmail, String joinedDate) {
 		this.userID = userID;
 		this.userPassword = userPassword;
-		this.userName = useName;
+		this.userName = userName;
 		this.userEmail = useEmail;
 		this.joinedDate = joinedDate;
 	}
@@ -32,17 +32,17 @@ public class UserDto {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	public String getUseName() {
+	public String getUserName() {
 		return userName;
 	}
-	public void setUseName(String useName) {
-		this.userName = useName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getUseEmail() {
+	public String getUserEmail() {
 		return userEmail;
 	}
-	public void setUseEmail(String useEmail) {
-		this.userEmail = useEmail;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	
 	public String getJoinedDate() {

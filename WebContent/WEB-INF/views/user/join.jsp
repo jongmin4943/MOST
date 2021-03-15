@@ -1,6 +1,6 @@
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +11,19 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 </head>
-<%
-String userID = null;
-String exist = null;
-PrintWriter pr = response.getWriter();
-if(session.getAttribute("userID") != null) {
-	pr.print("<script>");
-	pr.print("alert('잘못된 접근입니다.');");
-	pr.print("history.back();");
-	pr.print("</script>");
-}
-if(request.getAttribute("exist") != null) {
-	request.removeAttribute("exist");
-	pr.print("<script>");
-	pr.print("alert('이미 존재하는 아이디 입니다.');");
-	pr.print("history.back();");
-	pr.print("</script>");
-}
-%>
 <script type="text/javascript">
+var loginCheck = "${sessionScope.userID}";
+if(!(loginCheck == "")) {
+	alert('이미 로그인 상태입니다.');
+	history.back();
+}
+loginCheck = "${requestScope.exist}";
+if(!(loginCheck == "")) {
+	alert('이미 존재하는 아이디 입니다.');
+	history.back();
+}
+
+
 function checkValue(){
 	var input = document.userInfo;
 	var emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
