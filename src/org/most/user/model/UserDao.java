@@ -22,9 +22,6 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
 	
 	public List<Object> selectAll() {
 		List<Object> list = new ArrayList<>();

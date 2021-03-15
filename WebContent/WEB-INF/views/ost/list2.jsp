@@ -318,7 +318,7 @@ $(function() {
 								<td class="title">${outer[0]}</td>
 								<td>${outer[1]}</td>
 								<td class="album">${outer[2]}</td>
-								<td><a href="#" >1</a></td>
+								<td><a href="#" onclick="addLike()">1</a></td>
 							</tr>
 						</c:forEach>
 					</table>

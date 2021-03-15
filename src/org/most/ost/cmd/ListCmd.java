@@ -15,6 +15,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.most.controller.ModelAndView;
+import org.most.ost.model.OstDao;
 
 import api.server.NaverAPIreader;
 
@@ -80,6 +81,7 @@ public class ListCmd implements OstCommand {
 				
 				int cnt = Math.min(titles.size(), Math.min(artists.size(), albums.size()));
 				List<String[]> searched = new ArrayList<String[]>();
+				
 				for(int i = 0; i < cnt; i++) {
 					if(NaverAPIreader.movieCheck(albums.get(i), titles.get(i))){
 						searched.add(new String[] {titles.get(i),artists.get(i),albums.get(i)});
