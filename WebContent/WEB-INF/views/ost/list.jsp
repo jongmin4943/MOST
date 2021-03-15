@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +54,34 @@
 var no = 1//${param.no}
 var guestID = "${sessionScope.userID}";
 var flag = false;
+
 $(function() {
+	$(document).ready(function() {
+	    $(".ost").click(function() {
+	    	var idx = $(this).attr("data-movie-no");
+	    	var commentOfOst = $(this).children().eq(0).text().substring(0, $(this).children().eq(0).text().indexOf("("));
+	    	$.get("listMovie.action?album="+$(this).children().eq(2).text()+"&title="+$(this).children().eq(0).text(),function(data,status) {
+				var movie = JSON.parse(data.trim());
+				var movDir = movie.director.replace(/\|/g, ", ");
+				var movActors = movie.actor.replace(/\|/g, ", ");
+				movDir.trim();
+				movActors.trim();
+				movDir = movDir.substring(0,movDir.length-2);
+				movActors = movActors.substring(0, movActors.length-2);
+				var start = "<tr><th style='width: 120px;'></th><th>Detail</th></tr><tr><th scope='row'>제목</th><td>"+movie.title+"</td></tr>";
+				start += "<tr><th scope='row'>감독</th><td>" +movDir + "</td></tr>";
+				start += "<tr><th scope='row'>주연배우</th><td>"+movActors+ "</td></tr>";
+				start += "<tr><th scope='row'>평점</th><td>"+movie.userRating+ "</td></tr>";
+				start = start.replace(/<b>/gi, "");
+				start = start.replace(/<\/b>/gi, "");
+				$("#movie").html(start);
+				$("#movieImg").html(movie.imgSrc[0]);
+				$("#ostComment").html(commentOfOst+"의 댓글");
+	    	});
+	    });
+	});    
+
+	
 	function getComment() {
 		$.get("comment.action?ostNum="+no,function(data,status) {
 			var commentList = JSON.parse(data.trim()).sent;
@@ -242,8 +270,11 @@ $(function() {
 				<div>
 					<h2>MovieInfo</h2>
 				</div>
-				<img src="${pageContext.request.contextPath}/img/Ex1.jpg" class="img-thumbnail" width="100%">
-				<table>
+				<div id="movieImg" style="text-align: center;">
+					<img src="${pageContext.request.contextPath}/img/Ex1.jpg" class="img-thumbnail" width="100%">
+				</div>
+				
+				<table id="movie">
 					<tr>
 						<th style="width: 120px;"></th>
 						<th>Detail</th>
@@ -275,52 +306,29 @@ $(function() {
 						<h2>Ost List</h2>
 					</div>
 					<div></div>
-					<table>
+					<table id="ostList">
 						<tr>
 							<th>Ost Title</th>
 							<th>Artist</th>
 							<th>Movie Title</th>
 							<th style="width: 55px;">Likes</th>
 						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Maria Anders</td>
-							<td>999</td>
-						</tr>
-						<tr>
-							<td>Berglunds snabbköp</td>
-							<td>Christina Berglund</td>
-							<td>Christina Berglund</td>
-							<td>888</td>
-						</tr>
-						<tr>
-							<td>Centro comercial</td>
-							<td>Francisco Chang</td>
-							<td>Francisco Chang</td>
-							<td>777</td>
-						</tr>
-						<tr>
-							<td>Ernst Handel</td>
-							<td>Roland Mendel</td>
-							<td>Roland Mendel</td>
-							<td>666</td>
-						</tr>
-						<tr>
-							<td>Island Trading</td>
-							<td>Helen Bennett</td>
-							<td>Helen Bennett</td>
-							<td>555</td>
-						</tr>
+						<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
+							<tr class="ost" data-movie-no="${vs.index}">
+								<td class="title">${outer[0]}</td>
+								<td>${outer[1]}</td>
+								<td class="album">${outer[2]}</td>
+								<td>1</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 				<div align="center">
 					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다')">이전</span>
 					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다')">다음</span>
 				</div>
-				<!-- ost list 끝 댓글 시작 -->
-				<div style="text-align: center;">
-					${param.name}~OST 의 댓글
+				<div id="ostComment" style="text-align: center;">
+					~OST 의 댓글
 				</div>
 				<!-- ost 클릭시 해당 ost의 이름값과 번호가 필요하다. -->
 				<div class = "commentArea">

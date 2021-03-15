@@ -11,6 +11,7 @@ import org.most.ost.cmd.CommentCmd;
 import org.most.ost.cmd.CommentDeleCmd;
 import org.most.ost.cmd.CommentModiCmd;
 import org.most.ost.cmd.ListCmd;
+import org.most.ost.cmd.ListMovieCmd;
 import org.most.ost.cmd.OstCommand;
 
 public class OstController extends Controller {
@@ -18,6 +19,7 @@ public class OstController extends Controller {
 	static Hashtable<String, OstCommand> cmdMapper = new Hashtable<String, OstCommand>();
 	static {
 		cmdMapper.put("/list.action", new ListCmd());
+		cmdMapper.put("/listMovie.action", new ListMovieCmd());
 		cmdMapper.put("/comment.action", new CommentCmd());
 		cmdMapper.put("/commentModi.action", new CommentModiCmd());
 		cmdMapper.put("/commentDele.action", new CommentDeleCmd());
