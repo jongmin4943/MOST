@@ -12,7 +12,6 @@ public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public DispatcherServlet() {
-        super();
     }
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +29,7 @@ public class DispatcherServlet extends HttpServlet {
 		String path2 = path.substring(endIdx2);
 		req.setAttribute("path", path2);
 		String frontPath = path.substring(0, endIdx);
-		System.out.println("frontPath => " + frontPath); // "/saram/list.action"
+		//System.out.println("frontPath => " + frontPath); // "/saram/list.action"
 		// saram으로 갈지 board로 갈지 분기 시킨다.
 		
 		Controller ctrl = null;

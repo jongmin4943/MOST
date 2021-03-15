@@ -36,6 +36,8 @@ public class ModelAndView {
 	public void forward(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isRedirect) {
 			resp.sendRedirect(viewName);
+		} else if(viewName == null) {
+			return;
 		} else {
 			RequestDispatcher view = req.getRequestDispatcher(viewName);
 			view.forward(req, resp);
