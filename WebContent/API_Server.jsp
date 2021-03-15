@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 String movieNm = request.getParameter("name");
-JSONObject jObj = NaverAPIreader.getInfos(movieNm);
+JSONObject jObj = NaverAPIreader.getInfo(movieNm);
 
 out.print(jObj);
 %>
