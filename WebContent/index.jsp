@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,14 @@ body{
 					<h1 style="text-align:center;">회원정보</h1>
 				</div>
 				<div>
-					<h3 style="text-align:center;">~님 어서오세요</h3>
+					<c:choose>
+						<c:when test="${empty sessionScope.userID}">
+							<h3 style="text-align:center;">로그인해주세요</h3>							
+						</c:when>
+						<c:when test="${not empty sessionScope.userID}">
+							<h3 style="text-align:center;">${sessionScope.userID}님 어서오세요</h3>							
+						</c:when>
+					</c:choose>
 					<div class="userInfo">
 						<p>OST 내공</p>
 						<p>movie 내공</p>
