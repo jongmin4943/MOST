@@ -44,7 +44,7 @@ public class OstDao {
 	} // 해당 유저가 like를 누른 ost 리스트를 뽑아온다.
 	
 	public void insert(OstDto dto) {
-		mybatis.insert("OstMapper.insertUser",dto);
+		mybatis.insert("OstMapper.insertOst",dto);
 	}
 	
 //	public void update(UserDto dto) {

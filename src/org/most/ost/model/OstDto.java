@@ -5,6 +5,7 @@ public class OstDto {
 	private String ostName;
 	private String movieTitle;
 	private String artist;
+	
 	public OstDto() {}
 	public OstDto(String no, String ostName, String movieTitle, String artist) {
 		this.no = no;
