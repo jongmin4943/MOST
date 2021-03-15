@@ -22,40 +22,98 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		/*
-		 * String[] movs = {"Soul (Original Motion Picture Soundtrack)",
-		 * "Soul (Original Motion Picture Soundtrack)"}; String[] asd =
-		 * {"블레이드 & 소울 OST '서락'", "소울메이트 Forever OST"};
-		 * 
-		 * for(String st: asd) { boolean ans = movieCheck(st); }
-		 */
-		
-		System.out.println(getInfos("speechless"));
+		System.out.println(searchMovie("킹콩 (King Kong)", "영화음악 ~70년대 편 베스트"));
 	}
 	
-	public static boolean movieCheck(String movieNm) {
-		if(getInfos(movieNm) != null) {
+	public static boolean movieCheck(String albumNm, String titleNm) {
+		if(searchMovie(titleNm, albumNm) != null) {
 			return true;
 		}
-		
 		return false;	
 	}
 	
-	public static String refineName(String movieNm) {
-		String refinedTitle = "";
-		if(movieNm.contains("(")) {
-			refinedTitle = movieNm.substring(0, movieNm.indexOf("(", 1));
-			refinedTitle = refinedTitle.trim();			
+	// Refining title name to extract movie's name (if there is one.)
+	// Refining Album name to extract movie's name (if there is one.)
+	public static JSONObject searchMovie(String titleNm, String albumNm) {
+		//System.out.println("album: "+ albumNm+ " title: "+titleNm);
+		JSONObject res = null;
+		String titleAfter = "";
+		String albumAfter = "";
+		if(titleNm.contains("영화")) {
+			if(titleNm.substring(titleNm.indexOf("영화")+4).contains("'")) {
+				titleAfter = titleNm.substring(titleNm.indexOf("영화")+4);
+				titleAfter = titleAfter.substring(0, titleAfter.indexOf("'"));
+				titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+				res = getInfo(titleAfter);
+				if(res != null) {
+					return res;
+				}				
+			}
+		}
+		if(albumNm.contains("영화")) {
+			if(albumNm.substring(albumNm.indexOf("영화")+4).contains("'")) {
+				albumAfter = albumNm.substring(albumNm.indexOf("영화")+4);
+				albumAfter = albumAfter.substring(0, albumAfter.indexOf("'"));
+				albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+				res = getInfo(albumAfter);
+				if(res != null) {
+					return res;
+				}				
+			}
+		}
+		if(res == null) {
+			System.out.println("null up to 1st check");
+		}
+		
+		if(titleNm.toLowerCase().contains("from")) {
+			titleAfter = titleNm.substring(titleNm.toLowerCase().indexOf("from")+6);
+			titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+			titleAfter.trim();
+			res = getInfo(titleAfter);
+			if(res != null) {
+				return res;
+			}
+		}
+		if(albumNm.toLowerCase().contains("from")) {
+			albumAfter = albumNm.substring(albumNm.toLowerCase().indexOf("from")+6);
+			albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+			albumAfter.trim();
+			res = getInfo(albumAfter);
+			if(res != null) {
+				return res;
+			}
+		}
+		
+		if(res == null) {
+			System.out.println("null up to 2nd check");
+		}
+		if(albumNm.contains("(")) {
+			albumAfter = albumNm.substring(0, albumNm.indexOf("(", 1));
+			albumAfter = albumAfter.trim();
+			res = getInfo(albumAfter);
+			if(res != null) {
+				return res;
+			}
 		} 
-		return refinedTitle;
+		if(titleNm.contains("(")) {
+			titleAfter = titleNm.substring(0, titleNm.indexOf("(", 1));
+			titleAfter = titleAfter.trim();
+			res = getInfo(titleAfter);
+			if(res != null) {
+				return res;
+			}
+		} 
+		
+		return res;
 	}
+
 	
-	public static JSONObject getInfos(String movieNm) {
+	public static JSONObject getInfo(String movieNm) {
+		movieNm = movieNm.trim();
 		String encName = "";
-		String actName = refineName(movieNm);
-		System.out.println(actName);
+		
 		try {
-			encName = URLEncoder.encode(actName,"UTF-8");
+			encName = URLEncoder.encode(movieNm,"UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -72,18 +130,34 @@ public class NaverAPIreader {
 		
 		JSONObject jsonAns = null;
 		JSONArray jarr = new JSONArray(pans);
+		
 		for(Object job : jarr) {
 			JSONObject jsonObj = new JSONObject(job.toString());
 			//System.out.println("movieName made : <b>"+movieNm+"</b>");
 			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
-			if(("<b>"+actName+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
+			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
-			} else if (("<b>"+actName+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
+			} else if (("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
 			}
 		}
+		/*
+		 * for(int i = 0;i<jarr.length();i++) {
+			JSONObject jsonObj = new JSONObject(jarr.get(jarr.length()-1-i).toString());
+			//System.out.println("movieName made : <b>"+movieNm+"</b>");
+			//System.out.println("actual subtitle: " + jsonObj.get("subtitle"));
+			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
+				jsonAns = jsonObj;
+				break;
+			} else if (("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("subtitle").toString().toLowerCase())) {
+				jsonAns = jsonObj;
+				break;
+			}
+		}
+		 * */
+		
 		return jsonAns;
 	}
 

@@ -6,21 +6,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
 <%
-String title = request.getParameter("name");
+    String title = request.getParameter("title");
+	String album = request.getParameter("album");
 
 
-JSONObject jObj = NaverAPIreader.getInfos(title);
+        JSONObject jObj = NaverAPIreader.searchMovie(title, album);
 
-String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length()); 
-System.out.println("imgUrl: "+imgUrl);
+        String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length()); 
+        System.out.println("imgUrl: "+imgUrl);
 
-Document imgLoc = Jsoup.connect(imgUrl).get();
+        Document imgLoc = Jsoup.connect(imgUrl).get();
 
-Element imgTag = imgLoc.body().getElementById("targetImage");
+        Element imgTag = imgLoc.body().getElementById("targetImage");
 
-System.out.print(imgTag);
-
-%>
+        System.out.print(imgTag);
+    %>
 <!DOCTYPE html>
 <html>
 <head>

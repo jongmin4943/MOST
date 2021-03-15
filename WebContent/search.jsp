@@ -85,16 +85,17 @@ if(request.getParameter("sabumit") != null) {
 			}
 			count++;
 		}
-		System.out.println(titles);
-		System.out.println(artists);
-		System.out.println(albums);
+		
+		int cnt = Math.min(titles.size(), Math.min(artists.size(), albums.size()));
+
 		int numPrinted = 0;
 		if(titles.size()>0){
-			for(int i = 0; i<titles.size();i++){
-				if(NaverAPIreader.movieCheck(albums.get(i))){
+			for(int i = 0; i<cnt; i++){
+				System.out.println("album: "+ albums.get(i)+ " title: "+titles.get(i));
+				if(NaverAPIreader.movieCheck(albums.get(i), titles.get(i))){
 					numPrinted++;
 %>
-<h4><%=titles.get(i) %>  |  <%=artists.get(i) %>  |  <a href="movieInfo.jsp?name=<%=URLEncoder.encode(albums.get(i),"UTF-8") %>"><%=albums.get(i) %></a></h4>
+<h4><%=titles.get(i) %>  |  <%=artists.get(i) %>  |  <a href="movieInfo.jsp?album=<%=URLEncoder.encode(albums.get(i),"UTF-8") %>&title=<%=URLEncoder.encode(titles.get(i),"UTF-8") %>"><%=albums.get(i) %></a></h4>
 <%
 			}
 		}
