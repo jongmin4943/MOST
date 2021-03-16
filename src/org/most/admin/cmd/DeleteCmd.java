@@ -16,11 +16,14 @@ public class DeleteCmd implements AdminCommand {
 	@Override
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView();
-		if(req.getMethod().equals("GET")) {
-			String userID = req.getParameter("userID");
+		if(req.getMethod().equals("POST")) {
+			String[] userIDList = req.getParameterValues("selectedUser");
 			UserDao uDao = new UserDao();
-			uDao.delete(new UserDto(userID));
-			mav.setViewName("/WEB-INF/views/admin/list.jsp");
+			for(String userID:userIDList) {
+				uDao.delete(new UserDto(userID));
+			}
+			mav.setViewName("list.action");
+			mav.setRedirect(true);
 		}
 		return mav;
 	}

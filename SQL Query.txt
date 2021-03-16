@@ -9,3 +9,4 @@ select count(userID) from likedOst where ostNum = ?
 
 종민이라는 유저가 댓글단 ost 갯수
 종민이라는 유저가 댓글단 ost list....//.//
+

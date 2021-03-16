@@ -49,4 +49,12 @@ public class UserDao {
 	public void delete(UserDto dto) {
 		mybatis.delete("UserMapper.deleteUser", dto);
 	}
+
+	public List<Object> selectCurrPage(int p) {
+		return mybatis.selectList("UserMapper.selectCurrPage", p);
+	}
+
+	public int selectCount() {
+		return mybatis.selectOne("UserMapper.selectCount");
+	}
 }

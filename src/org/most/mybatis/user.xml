@@ -10,8 +10,16 @@
 		SELECT * FROM user
 	</select>
 	
+	<select id="selectCurrPage" resultType="UserDto">
+		select * from user order by joinedDate limit ${(p-1)*10}, 10
+	</select>
+	
 	<select id="selectDate" resultType="String">
 		Select now()
+	</select>
+	
+	<select id="selectCount" resultType="int">
+		select count(userID) from user
 	</select>
 	
 	<insert id="insertUser">

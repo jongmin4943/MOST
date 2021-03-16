@@ -16,9 +16,19 @@ public class ListCmd implements AdminCommand {
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView();
 		if(req.getMethod().equals("GET")) {
+			String p = req.getParameter("p")==null?"1":req.getParameter("p");
 			UserDao uDao = new UserDao();
-			List<Object> list = uDao.selectAll();
+			int page = 1;
+			try {
+				page = Integer.parseInt(p);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			List<Object> list = uDao.selectCurrPage(page);
+			int cnt = uDao.selectCount() -1;//-1은 admin 제외
+			cnt = (int)Math.ceil(cnt/(double)10);
 			req.setAttribute("list", list);
+			req.setAttribute("cnt", cnt);
 			mav.setViewName("/WEB-INF/views/admin/list.jsp");
 		}
 		return mav;

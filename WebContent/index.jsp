@@ -56,7 +56,7 @@ body{
 						공지사항 maybe?
 					</div>
 					<div>
-						<a href="${pageContext.request.contextPath}/ost/list.action">OstList</a>
+						<a href="${pageContext.request.contextPath}/notice/list.action">공지사항 게시판 가기</a>
 					</div>
 				</div>
 			</div>
