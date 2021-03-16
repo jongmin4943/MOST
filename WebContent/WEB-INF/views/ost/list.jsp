@@ -62,6 +62,13 @@ var flag2 = false;
 var no = 1;
 var guestID = "${sessionScope.userID}";
 $(function() {
+	/*
+	ost la la land (La La Land (feat. YG) [ARKADI Remix]) 검색시 오류 존재. (영화 정보를 못 빼오는듯);
+	==> Probably due to the existance of [] in the URL which is not allowed. might have to encode them before sending them in get method
+	
+	If there are no songs searched, return a phrases sa 'There are no songs like that'
+	
+	*/
 	$(document).ready(function() {
 	    $(".ost").click(function() {
 	    	if(!flag2) {
