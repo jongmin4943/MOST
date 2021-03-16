@@ -3,10 +3,11 @@ package org.most.likedOST.model;
 public class LikedOstDto {
 	private String userID;
 	private String ostNum;
+	private String likedDate;
 	public LikedOstDto() {
-		this("","");
+		this("","","");
 	}
-	public LikedOstDto(String userID, String ostNum) {
+	public LikedOstDto(String userID, String ostNum, String likedDate) {
 		this.userID = userID;
 		this.ostNum = ostNum;
 	}
@@ -22,9 +23,15 @@ public class LikedOstDto {
 	public void setOstNum(String ostNum) {
 		this.ostNum = ostNum;
 	}
+	public String getLikedDate() {
+		return likedDate;
+	}
+	public void setLikedDate(String likedDate) {
+		this.likedDate = likedDate;
+	}
 	@Override
 	public String toString() {
-		return "LikedOstDto [userID=" + userID + ", ostNum=" + ostNum + "]";
+		return "LikedOstDto [userID=" + userID + ", ostNum=" + ostNum + ", likedDate=" + likedDate + "]";
 	}
 	
 }

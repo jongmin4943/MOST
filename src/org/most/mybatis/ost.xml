@@ -12,7 +12,7 @@
 	<select id="selectUserOst" resultType="OstDto">
 	 	select ost.ostName, ost.artist from ostList as ost Join likedOst as liked On liked.ostNum = ost.no where liked.userID = #{userID}
 	</select>
-	<select id="selectlikes" resultType="String">
+	<select id="selectLikes" resultType="int">
 		select count(userID) from likedOst where ostNum = #{no}
 	</select>
 	<insert id="insertOst">
@@ -20,10 +20,17 @@
 		values (#{ostName},#{movieTitle},#{artist}, #{imgSrc})
 	</insert>
 	<insert id="insertLikedOst">
-		insert into likedOst values(#{userID}, #{ostNum})
+		insert into likedOst values(#{userID}, #{ostNum}, #{likedDate})
 	</insert>
 	<select id="selectLastOstNo" resultType="String">
 		select no from ostList order by no desc limit 0,1
+	</select>
+	<select id="selectTitAlbArt" resultType="OstDto">
+		select no, ostName, movieTitle, artist from ostList
+	</select>
+	
+	<select id="selectNo" resultType="String">
+		select no from ostList where ostName=#{ostName} and movieTitle=#{movieTitle} and artist=#{artist}
 	</select>
 
 	<!-- <update id="updateOst">
@@ -33,6 +40,16 @@
 	</update> -->
 
 	<delete id="deleteOst">
-		delete from ostList where no = #{ostNo}
+		delete from ostList where no = #{no}
 	</delete>
+	
+	<delete id="deleteLikedOst">
+		delete from likedOst where userID= #{userID} and ostNum = #{ostNum}
+	</delete>
+	
+	<select id="selectLikedOst" resultType="likedOstDto">
+		SELECT * FROM likedOst where userID = #{userID} and ostNum = #{ostNum}
+	</select>
+	
+
 </mapper>

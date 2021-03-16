@@ -72,8 +72,10 @@ $(function() {
 		    	var likeBtn = $(this).children().eq(3);
 		    	var encodedAlbum = encodeURIComponent($(this).children().eq(2).text());
 		    	var encodedTitle = encodeURIComponent($(this).children().eq(0).text());
+		    	var artist = encodeURIComponent($(this).children().eq(1).text());
+		    	var encodedUserID = encodeURIComponent(guestID);
 		    	var commentOfOst = $(this).children().eq(0).text().substring(0, $(this).children().eq(0).text().indexOf("("));
-		    	$.get("listMovie.action?album="+encodedAlbum+"&title="+encodedTitle, function(data,status) {
+		    	$.get("listMovie.action?album="+encodedAlbum+"&title="+encodedTitle+"&artist="+artist+"&userID="+encodedUserID, function(data,status) {
 					var movie = JSON.parse(data.trim());
 					var movDir = movie.director.replace(/\|/g, ", ");
 					var movActors = movie.actor.replace(/\|/g, ", ");
@@ -91,13 +93,12 @@ $(function() {
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					$("#ostComment").html(commentOfOst+"의 댓글");
-					likeBtn.html("<a>❤ </a>0");
+					likeBtn.html(movie.likeIcon);
 		    	});
 		    	flag2 = false;
 	    	}
 	    	
-	    	var artist = encodeURIComponent($(this).children().eq(1).text());
-	    	var encodedUserID = encodeURIComponent(guestID);
+	    	
 		    $(this).children().eq(3).click(function(){
 		    	if(guestID == 'null' || guestID == "") {
 					var c = confirm('로그인 하시겠습니까?.');
@@ -107,12 +108,17 @@ $(function() {
 					}
 		    	} else {
 			    	$.get("listLike.action?title="+encodedTitle+"&artist="+artist+"&album="+encodedAlbum+"&imgSrc="+imgUrl+"&userID="+encodedUserID, function(data,status) {
-			    		alert("Successfully added to " +guestID+ "'s liked list!");
+			    		var likey = JSON.parse(data);
+			    		console.log(likey.likeIcon[0]);
+			    		$(likeBtn).html(likey.likeIcon);
 			    	});
 			    	return false;
 		    	}
 		    });
 	    });
+		    	/*
+		    	인서트 세션과 딜리트 세션을 
+		    	*/
 	});
 })
 	function addLike(pushed){

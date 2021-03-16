@@ -30,12 +30,12 @@ public class OstDao {
 		return list;
 	}
 	
-	public OstDto selectOne(OstDto dto) {
-		return mybatis.selectOne("OstMapper.selectUser",dto.getNo());
+	public String selectNo(OstDto dto) {
+		return mybatis.selectOne("OstMapper.selectNo",dto);
 	}
 	
-	public String selectLikes(OstDto dto) {
-		return mybatis.selectOne("OstMapper.selectLikes",dto.getNo());
+	public int selectLikes(String no) {
+		return mybatis.selectOne("OstMapper.selectLikes",no);
 	} // 해당 ost의 like 갯수가 넘어온다.
 	
 	public List<Object> selectUserOst(String userID) {
@@ -56,11 +56,25 @@ public class OstDao {
 //		mybatis.update("OstMapper.updateUser", dto);
 //	}
 	
-	public void delete(OstDto dto) {
-		mybatis.delete("OstMapper.deleteUser", dto);
+	public void delete(String no) {
+		mybatis.delete("OstMapper.deleteOst", no);
 	}
 	
 	public void insertLikedOst(LikedOstDto dto) {
+		dto.setLikedDate(selectDate());
 		mybatis.insert("OstMapper.insertLikedOst", dto);
+	}
+	public String selectDate() {
+		return mybatis.selectOne("UserMapper.selectDate");
+	}
+	public List<Object> selectTitAlbArt() {
+		List<Object> res = mybatis.selectList("OstMapper.selectTitAlbArt");
+		return res;
+	}
+	public void deletLikedOst(LikedOstDto dto) {
+		mybatis.delete("OstMapper.deleteLikedOst", dto);
+	}
+	public LikedOstDto selectLikedOst(LikedOstDto dto) {
+		return mybatis.selectOne("OstMapper.selectLikedOst", dto);
 	}
 }
