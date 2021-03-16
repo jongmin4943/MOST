@@ -21,7 +21,7 @@
 	border-left: 3px solid #369;
 	
 }
-#commentHeader{
+#commentHeader {
 	overflow:auto;
 	border-bottom:1px solid #bcbcbc;
 	font-weight: bold;
@@ -75,8 +75,10 @@ $(function() {
 	    		flag2 = true;
 		    	var idx = $(this).attr("data-movie-no");
 		    	var likeBtn = $(this).children().eq(3);
+		    	var encodedAlbum = encodeURIComponent($(this).children().eq(2).text());
+		    	var encodedTitle = encodeURIComponent($(this).children().eq(0).text());
 		    	var commentOfOst = $(this).children().eq(0).text().substring(0, $(this).children().eq(0).text().indexOf("("));
-		    	$.get("listMovie.action?album="+$(this).children().eq(2).text()+"&title="+$(this).children().eq(0).text(),function(data,status) {
+		    	$.get("listMovie.action?album="+encodedAlbum+"&title="+encodedTitle, function(data,status) {
 					var movie = JSON.parse(data.trim());
 					var movDir = movie.director.replace(/\|/g, ", ");
 					var movActors = movie.actor.replace(/\|/g, ", ");
