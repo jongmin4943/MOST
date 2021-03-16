@@ -61,6 +61,7 @@ var flag = false;
 var flag2 = false;
 var no = 1;
 var guestID = "${sessionScope.userID}";
+
 $(function() {
 	/*
 	

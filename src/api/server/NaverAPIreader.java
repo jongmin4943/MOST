@@ -22,7 +22,7 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		System.out.println(searchMovie("Into The Unknown (from ' Frozen 2' 영화 '겨울왕국 2')", "영화음악 ~70년대 편 베스트"));
+		System.out.println(searchMovie("Into The Unknown (MR)", "아이노래 외국어 반주곡 (Into The Unknown)"));
 	}
 	
 	public static boolean movieCheck(String albumNm, String titleNm) {
