@@ -63,8 +63,6 @@ var no = 1;
 var guestID = "${sessionScope.userID}";
 $(function() {
 	/*
-	ost la la land (La La Land (feat. YG) [ARKADI Remix]) 검색시 오류 존재. (영화 정보를 못 빼오는듯);
-	==> Probably due to the existance of [] in the URL which is not allowed. might have to encode them before sending them in get method
 	
 	If there are no songs searched, return a phrases sa 'There are no songs like that'
 	
@@ -100,14 +98,10 @@ $(function() {
 		    	flag2 = false;
 	    	}
 	    	
-	    	
 	    	var title = $(this).children().eq(0).text();
 	    	var artist = $(this).children().eq(1).text();
 	    	var album = $(this).children().eq(2).text();
 		    $(this).children().eq(3).click(function(){
-		    	console.log(title);
-		    	console.log(artist);
-		    	console.log(album);
 		    	$.get("listLike.action?title="+title+"&artist="+artist+"&album="+album,function(data,status) {
 		    		
 		    	});
@@ -178,6 +172,13 @@ $(function() {
 							<th style="width: 34%;">Movie Title</th>
 							<th style="width: 10%;">Likes</th>
 						</tr>
+						<c:if test="${empty requestScope.list}">
+							<tr>
+								<td colspan=4 style="text-align: center">
+									<h2>No songs searched!</h2>
+								</td>
+							</tr>
+						</c:if>
 						<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
 							<tr class="ost" data-movie-no="${vs.index}">
 								<td class="title${vs.index}">${outer[0]}</td>

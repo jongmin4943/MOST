@@ -87,8 +87,12 @@ public class ListCmd implements OstCommand {
 						searched.add(new String[] {titles.get(i),artists.get(i),albums.get(i)});
 					}
 				}
-				req.setAttribute("list", searched);
-				req.setAttribute("cnt", searched.size());
+				if(searched.size() == 0) {
+					
+				} else {
+					req.setAttribute("list", searched);
+					req.setAttribute("cnt", searched.size());					
+				}
 			}
 			mav.setViewName("/WEB-INF/views/ost/list.jsp");
 		}
