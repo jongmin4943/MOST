@@ -25,7 +25,8 @@ public class ListCmd implements AdminCommand {
 				e.printStackTrace();
 			}
 			List<Object> list = uDao.selectCurrPage(page);
-			int cnt = uDao.selectCount() -1;//-1은 admin 제외
+			int cnt = uDao.selectCount();//-1은 admin 제외
+			req.setAttribute("total", cnt);
 			cnt = (int)Math.ceil(cnt/(double)10);
 			req.setAttribute("list", list);
 			req.setAttribute("cnt", cnt);

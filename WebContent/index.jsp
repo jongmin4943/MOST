@@ -17,7 +17,7 @@ body{
 }
 .currentOST{
 	float:left;
-	width: 31%;
+	width: 30%;
 	margin: 15px;
 	padding: 15px;
 }
@@ -26,6 +26,9 @@ body{
 }
 .movieImg{
 	text-align: center;
+}
+.weeklyOST{
+	margin-top : 25px;
 }
 </style>
 <body>
@@ -71,8 +74,8 @@ body{
 					<img src="img/Ex3.jpg" class="img-thumbnail" width="33%">
 				</div>
 				<div>
-					<h1>현재 상영작의 OST</h1>
-					<div> <!-- 윗줄 -->
+					<div class="weeklyOST"> <!-- 윗줄 -->
+					<h1>이번주 HOT OST</h1>
 						<div class="currentOST">
 							<div class="movieImg"> <!-- 사진 div -->
 								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">

@@ -81,11 +81,12 @@ $(function(){
 					</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="4"></td>
+				<td>총 회원수 : ${requestScope.total} 명</td>
+				<td colspan="3"></td>
 				<td colspan="2" style="text-align:right;">
-					<input class="btn btn-primary" id="selectAll" type="button" value="전체 선택"/>
-					<input class="btn btn-primary" id="unSelectAll" type="button" value="전체 선택 취소"/>
-					<input class="btn btn-primary" type="submit" value="선택 탈퇴시키기"/>
+					<input class="btn btn-info" id="selectAll" type="button" value="전체 선택"/>
+					<input class="btn btn-info" id="unSelectAll" type="button" value="전체 선택 취소"/>
+					<input class="btn btn-danger" type="submit" value="선택 탈퇴시키기"/>
 				</td>
 			</tr>
 		</table>

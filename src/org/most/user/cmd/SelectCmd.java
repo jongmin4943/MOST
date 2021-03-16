@@ -16,8 +16,11 @@ public class SelectCmd implements UserCommand {
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView();
 		if(req.getMethod().equals("GET")) {
+			String header = req.getHeader("referer");
+			req.getSession().setAttribute("header", header);
 			mav.setViewName("/WEB-INF/views/user/login.jsp");
 		} else {
+			String header = (String)req.getSession().getAttribute("header");
 			String userID = req.getParameter("userID");
 			String userPassword = req.getParameter("userPassword");
 			UserDao uDao = new UserDao();
@@ -28,7 +31,7 @@ public class SelectCmd implements UserCommand {
 				mav.setViewName("/WEB-INF/views/user/login.jsp");
 			} else if(uDto.getUserPassword().equals(userPassword)) {
 //				System.out.println("로그인성공");
-				mav.setViewName(req.getContextPath());
+				mav.setViewName(header);
 				mav.setRedirect(true);
 				req.getSession(true).setAttribute("userID", userID);
 			} else {
