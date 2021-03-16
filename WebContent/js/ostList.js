@@ -108,7 +108,8 @@ $(function() {
 		    	} else {
 			    	$.get("listLike.action?title="+encodedTitle+"&artist="+artist+"&album="+encodedAlbum+"&imgSrc="+imgUrl+"&userID="+encodedUserID, function(data,status) {
 			    		var likey = JSON.parse(data);
-			    		console.log(likey.likeIcon[0]);
+			    		no = likey.no[0];
+			    		console.log(no);
 			    		$(likeBtn).html(likey.likeIcon);
 			    	});
 			    	return false;

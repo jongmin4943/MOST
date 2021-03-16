@@ -41,20 +41,25 @@ public class ListLikeCmd implements OstCommand {
         		if(likesLeft-1 == 0) {
         			dao.delete(no);
         			jObj.append("likeIcon", "<a href=''>🤍 0</a>");
+            		jObj.append("no", "-1");
         		} else {
         			jObj.append("likeIcon", "<a href=''>🤍 "+(likesLeft-1)+"</a>");
+            		jObj.append("no", no);
         		}
         	} else {
         		dao.insertLikedOst(new LikedOstDto(userID,no,""));
         		jObj.append("likeIcon", "<a href=''>❤ "+(likesLeft+1)+"</a>");
+        		jObj.append("no", no);
         	}
 		} else {
 			String imgSrc = req.getParameter("imgSrc");
 			OstDto oDto = new OstDto("0", title, album, artist, imgSrc);
 			no = dao.insert(oDto);
-			dao.insertLikedOst(new LikedOstDto(userID,no,""));	//need to add this shit	
+			dao.insertLikedOst(new LikedOstDto(userID,no,""));	//need to add this shit
 			jObj.append("likeIcon", "<a href=''>❤ 1</a>");
+			jObj.append("no", no);
 		}//end if
+		
 		out.print(jObj);
 		return null;
 	}
