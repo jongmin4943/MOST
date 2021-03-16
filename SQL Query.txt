@@ -10,3 +10,9 @@ select count(userID) from likedOst where ostNum = ?
 종민이라는 유저가 댓글단 ost 갯수
 종민이라는 유저가 댓글단 ost list....//.//
 
+
+역대 ost 탑 3 좋아요 순 기준
+select ostList.*, count(ostNum) as cnt from likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,3;
+
+이번주 hot ost
+select ostList.*, count(ostNum) as cnt from (select * from likedOst order by likedDate desc) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,6;
