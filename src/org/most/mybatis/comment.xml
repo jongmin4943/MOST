@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CommentMapper">
 	<select id="selectComment" resultType="CommentDto">
-    select * from comment where no=#{no}
+    	select * from comment where no=#{no}
 	</select>
 	<select id="selectAll" resultType="CommentDto">
 		SELECT * FROM comment where ostNum=#{ostNum}
@@ -13,6 +13,8 @@
 		insert into comment (writer, ostNum, content)
 		values (#{writer},#{ostNum},#{content})
 	</insert>
+	
+	
 
 	<update id="updateComment">
 		update comment set

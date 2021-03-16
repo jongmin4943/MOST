@@ -87,12 +87,8 @@ public class ListCmd implements OstCommand {
 				
 				
 				
-				
-				
-				
 				req.setAttribute("list", searched);
 				req.setAttribute("cnt", searched.size());					
-				
 			}
 			mav.setViewName("/WEB-INF/views/ost/list.jsp");
 		} else {

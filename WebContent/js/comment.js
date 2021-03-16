@@ -54,7 +54,9 @@ $(function() {
 			}); //end Modi
 		}) 
 	}//end get Function
-	getComment();
+	if(no != "-1"){
+		getComment();
+	}
 	
 	$('.cBtn').click(function() {
 		if(guestID == 'null' || guestID == "") {
@@ -65,6 +67,9 @@ $(function() {
 			} else {
 				return false;
 			}
+		} else if(no == "-1") { //나중에 db의 likedOst 아이디와 현재 세션의 아디와 비교해서 alert 바꾼다.
+			alert("첫 좋아요의 주인의 되어 보세요");
+			return false;
 		} else {
 			event.preventDefault();
 			if($("#textarea").val() == "") {
@@ -72,7 +77,7 @@ $(function() {
 				return false;
 			}
 		} //end if
-		
+
 		var textarea = $("#textarea").val();
 		$.ajax({ //댓글 작성 ajax
 			type: "POST",

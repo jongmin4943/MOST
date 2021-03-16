@@ -55,7 +55,6 @@ public class ListLikeCmd implements OstCommand {
 			dao.insertLikedOst(new LikedOstDto(userID,no,""));	//need to add this shit	
 			jObj.append("likeIcon", "<a href=''>❤ 1</a>");
 		}//end if
-
 		out.print(jObj);
 		return null;
 	}

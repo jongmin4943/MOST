@@ -59,8 +59,8 @@ public class ListMovieCmd implements OstCommand {
         } else {
         	jObj.append("likeIcon", "<a href=''>🤍 0</a>");
         }
-        
         jObj.append("imgSrc", imgSrc);
+        jObj.append("no", no==null?"-1":no);
         out.print(jObj);
 		
 		return null;

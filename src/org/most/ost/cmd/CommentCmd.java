@@ -19,19 +19,28 @@ public class CommentCmd implements OstCommand {
 	@Override
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		String ostNum = req.getParameter("ostNum") == null?"1":req.getParameter("ostNum");
+		String ostNum = req.getParameter("ostNum") == null?"-1":req.getParameter("ostNum");
 		CommentDao dao = new CommentDao();
 		if(req.getMethod().equals("GET")) {
 			List<Object> list = dao.selectAll(new CommentDto("","",ostNum,"",""));
 			JSONArray jsArr = new JSONArray();
-			for(int i = 0; i < list.size() ; i++) {
+			if(ostNum.equals("-1")) {
 				JSONObject jsObj = new JSONObject();
-				CommentDto dto = (CommentDto)list.get(i);
-				jsObj.put("guestID",dto.getWriter());
-				jsObj.put("content",dto.getContent());
-				jsObj.put("date",dto.getDate());
-				jsObj.put("commentNo",dto.getNo());
+				jsObj.put("guestID","");
+				jsObj.put("content","");
+				jsObj.put("date","");
+				jsObj.put("commentNo","");
 				jsArr.put(jsObj);
+			} else {
+				for(int i = 0; i < list.size() ; i++) {
+					JSONObject jsObj = new JSONObject();
+					CommentDto dto = (CommentDto)list.get(i);
+					jsObj.put("guestID",dto.getWriter());
+					jsObj.put("content",dto.getContent());
+					jsObj.put("date",dto.getDate());
+					jsObj.put("commentNo",dto.getNo());
+					jsArr.put(jsObj);
+				}
 			}
 			JSONObject sendObj = new JSONObject();
 			sendObj.put("sent",jsArr);
