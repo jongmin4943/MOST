@@ -16,27 +16,30 @@
 </script>
 <body>
 <jsp:include page="${initParam.navbar}"></jsp:include>
-<table>
-	<tr>
-		<td>아이디</td>
-		<td>비밀번호</td>
-		<td>이름</td>
-		<td>이메일</td>
-		<td>메뉴</td>
-	</tr>
-	<c:forEach items="${list}" var="user">
-		<c:if test="${user.userID ne 'admin'}">
-			<tr>
-				<td>${user.userID}</td>
-				<td>${user.userPassword}</td>
-				<td>${user.userName}</td>
-				<td>${user.userEmail}</td>
-				<td><a href="delete.action?userID=${user.userID}" onclick="return confirm('정말 탈퇴 시키시겠습니까?')">탈퇴시키기</a></td>
-			</tr>
-		</c:if>
-	</c:forEach>
-
+<form action="">
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td>비밀번호</td>
+			<td>이름</td>
+			<td>이메일</td>
+			<td>메뉴</td>
+		</tr>
+		<c:forEach items="${list}" var="user">
+			<c:if test="${user.userID ne 'admin'}">
+				<tr>
+					<td>${user.userID}</td>
+					<td>${user.userPassword}</td>
+					<td>${user.userName}</td>
+					<td>${user.userEmail}</td>
+					<td><input type="checkbox" name="selectedUser" /></td>
+					<%-- <td><a href="delete.action?userID=${user.userID}" onclick="return confirm('정말 탈퇴 시키시겠습니까?')">탈퇴시키기</a></td> --%>
+				</tr>
+			</c:if>
+		</c:forEach>
+	
 </table>
+</form>
 	
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
