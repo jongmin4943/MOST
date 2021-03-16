@@ -17,9 +17,15 @@ body{
 }
 .currentOST{
 	float:left;
+	width: 31%;
+	margin: 15px;
+	padding: 15px;
 }
 .userInfo{
 	background-color:#f0f8ff;
+}
+.movieImg{
+	text-align: center;
 }
 </style>
 <body>
@@ -60,47 +66,75 @@ body{
 				<jsp:include page="${initParam.searchbar}"></jsp:include>
 				<div>
 					<h1>역대 최고 인기 OST</h1>
-					<img src="img/Ex1.jpg" class="img-thumbnail" width="500">
-					<img src="img/Ex2.jpg" class="img-thumbnail" width="500"> 
-					<img src="img/Ex3.jpg" class="img-thumbnail" width="500">
+					<img src="img/Ex1.jpg" class="img-thumbnail" width="33%">
+					<img src="img/Ex2.jpg" class="img-thumbnail" width="33%"> 
+					<img src="img/Ex3.jpg" class="img-thumbnail" width="33%">
 				</div>
 				<div>
 					<h1>현재 상영작의 OST</h1>
-					<div class="currentOST">
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
+					<div> <!-- 윗줄 -->
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
 					</div>
-					<div class="currentOST">
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
-					</div>
-					<div class="currentOST">
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
-					</div>
-					<div class="currentOST"> 
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
-					</div>
-					<div class="currentOST"> 
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
-					</div>
-					<div>
-						<img src="img/Ex3.jpg" class="img-thumbnail" width="250">
-						<h3>1번 ost</h3>
-						<h3>2번 ost</h3>
-						<h3>3번 ost</h3>
+					<div><!-- 아랫줄 -->
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
+						<div class="currentOST">
+							<div class="movieImg"> <!-- 사진 div -->
+								<img src="img/Ex3.jpg" class="img-thumbnail" width="100%">
+							</div>
+							<div> <!-- ost목록 div  -->
+								<h3>11번 ost</h3>
+								<h3>2번 ost</h3>
+								<h3>3번 ost</h3>
+							</div>
+						</div>
 					</div>
 				</div> 
 			</div>
