@@ -15,7 +15,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.most.controller.ModelAndView;
-import org.most.ost.model.OstDao;
 
 import api.server.NaverAPIreader;
 
@@ -25,8 +24,6 @@ public class ListCmd implements OstCommand {
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView();
 		if(req.getMethod().equals("GET")) {
-			mav.setViewName("/WEB-INF/views/ost/list.jsp");
-		} else {
 			String keyword = req.getParameter("search");
 			String option = req.getParameter("option");
 			// keyword 검색어
@@ -87,10 +84,18 @@ public class ListCmd implements OstCommand {
 					}
 				}
 				
+				
+				
+				
+				
+				
+				
 				req.setAttribute("list", searched);
 				req.setAttribute("cnt", searched.size());					
-
+				
 			}
+			mav.setViewName("/WEB-INF/views/ost/list.jsp");
+		} else {
 			mav.setViewName("/WEB-INF/views/ost/list.jsp");
 		}
 		return mav;

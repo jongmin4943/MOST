@@ -12,6 +12,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.most.controller.ModelAndView;
+import org.most.likedOST.model.LikedOstDto;
+import org.most.ost.model.OstDao;
+import org.most.ost.model.OstDto;
 
 import api.server.NaverAPIreader;
 
@@ -38,6 +41,25 @@ public class ListMovieCmd implements OstCommand {
         } else {
         	imgSrc = "<h2 style='border: 5px'>No Images of This Movie</h2>";
         }
+        
+        String userID = req.getParameter("userID");
+		String artist = req.getParameter("artist");
+		
+        OstDao dao = new OstDao();
+        String no = dao.selectNo(new OstDto("", title, album, artist, ""));
+        
+        if(no != null) {
+        	LikedOstDto ldto = dao.selectLikedOst(new LikedOstDto(userID, no, ""));
+        	int noLikes = dao.selectLikes(no);
+        	if(ldto != null) {
+        		jObj.append("likeIcon", "<a href=''>❤ "+noLikes+"</a>");
+        	} else {
+        		jObj.append("likeIcon", "<a href=''>🤍 "+noLikes+"</a>");
+        	}
+        } else {
+        	jObj.append("likeIcon", "<a href=''>🤍 0</a>");
+        }
+        
         jObj.append("imgSrc", imgSrc);
         out.print(jObj);
 		

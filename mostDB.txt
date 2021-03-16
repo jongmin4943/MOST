@@ -17,7 +17,8 @@ imgSrc varchar(1000)
 
 create table likedOst(
 userID varchar(20) not null,
-ostNum int not null
+ostNum int not null,
+likedDate Timestamp default now()
 );
 
 create table comment(

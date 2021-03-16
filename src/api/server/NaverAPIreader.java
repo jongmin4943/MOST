@@ -16,7 +16,6 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 public class NaverAPIreader {
 	private final static String CLIENT_ID = "PIie9DCNwGKUlCOeHVQ1";
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
