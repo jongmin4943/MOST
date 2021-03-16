@@ -91,14 +91,14 @@ $(function() {
 			    	if(no == "-1"){
 				    	$("#comment").html("");
 					}
-					console.log("ostList의 no = "+ no);
+					//console.log("ostList의 no = "+ no);
 			    	if(no != "-1"){
 			    		getComment();
 			    	}
 		    	});
 		    	flag2 = false;
 	    	}
-		    $(this).children().eq(3).click(function(){
+		    $(this).children().eq(3).off().click(function(){
 		    	if(guestID == 'null' || guestID == "") {
 					var c = confirm('로그인 하시겠습니까?.');
 					if(c) {
@@ -109,7 +109,7 @@ $(function() {
 			    	$.get("listLike.action?title="+encodedTitle+"&artist="+artist+"&album="+encodedAlbum+"&imgSrc="+imgUrl+"&userID="+encodedUserID, function(data,status) {
 			    		var likey = JSON.parse(data);
 			    		no = likey.no[0];
-			    		console.log(no);
+			    		//console.log("children clicked "+no);
 			    		$(likeBtn).html(likey.likeIcon);
 			    	});
 			    	return false;
