@@ -29,7 +29,6 @@ public class ListCmd implements OstCommand {
 		} else {
 			String keyword = req.getParameter("search");
 			String option = req.getParameter("option");
-			System.out.println("Searching for: "+keyword+" "+option);
 			// keyword 검색어
 			// option 카테고리
 			// 이거 두개를 가지고 list.jsp로 간다
@@ -87,8 +86,10 @@ public class ListCmd implements OstCommand {
 						searched.add(new String[] {titles.get(i),artists.get(i),albums.get(i)});
 					}
 				}
+				
 				req.setAttribute("list", searched);
-				req.setAttribute("cnt", searched.size());
+				req.setAttribute("cnt", searched.size());					
+
 			}
 			mav.setViewName("/WEB-INF/views/ost/list.jsp");
 		}

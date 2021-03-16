@@ -8,7 +8,7 @@
 			<option value="OST" selected>OST</option>
 			<option value="영화">영화</option>
 		</select> 
-		<input type="search" id="search" name="search" placeholder="검색" maxlength="20" /> 
+		<input type="search" id="search" name="search" placeholder="검색" maxlength="50" /> 
 		<input class="btn btn-primary btn-sm" type="submit" value="검색" />
 	</form>
 </div>

@@ -21,7 +21,7 @@
 	border-left: 3px solid #369;
 	
 }
-#commentHeader{
+#commentHeader {
 	overflow:auto;
 	border-bottom:1px solid #bcbcbc;
 	font-weight: bold;
@@ -61,15 +61,19 @@ var flag = false;
 var flag2 = false;
 var no = 1;
 var guestID = "${sessionScope.userID}";
+
 $(function() {
 	$(document).ready(function() {
 	    $(".ost").click(function() {
+	    	var imgUrl = null;
 	    	if(!flag2) {
 	    		flag2 = true;
 		    	var idx = $(this).attr("data-movie-no");
 		    	var likeBtn = $(this).children().eq(3);
+		    	var encodedAlbum = encodeURIComponent($(this).children().eq(2).text());
+		    	var encodedTitle = encodeURIComponent($(this).children().eq(0).text());
 		    	var commentOfOst = $(this).children().eq(0).text().substring(0, $(this).children().eq(0).text().indexOf("("));
-		    	$.get("listMovie.action?album="+$(this).children().eq(2).text()+"&title="+$(this).children().eq(0).text(),function(data,status) {
+		    	$.get("listMovie.action?album="+encodedAlbum+"&title="+encodedTitle, function(data,status) {
 					var movie = JSON.parse(data.trim());
 					var movDir = movie.director.replace(/\|/g, ", ");
 					var movActors = movie.actor.replace(/\|/g, ", ");
@@ -83,6 +87,7 @@ $(function() {
 					start += "<tr><th scope='row'>평점</th><td>"+movie.userRating+ "</td></tr>";
 					start = start.replace(/<b>/gi, "");
 					start = start.replace(/<\/b>/gi, "");
+					imgUrl = encodeURIComponent(movie.imgSrc[0]);
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					$("#ostComment").html(commentOfOst+"의 댓글");
@@ -91,18 +96,21 @@ $(function() {
 		    	flag2 = false;
 	    	}
 	    	
-	    	
-	    	var title = $(this).children().eq(0).text();
-	    	var artist = $(this).children().eq(1).text();
-	    	var album = $(this).children().eq(2).text();
+	    	var artist = encodeURIComponent($(this).children().eq(1).text());
+	    	var encodedUserID = encodeURIComponent(guestID);
 		    $(this).children().eq(3).click(function(){
-		    	console.log(title);
-		    	console.log(artist);
-		    	console.log(album);
-		    	$.get("listLike.action?title="+title+"&artist="+artist+"&album="+album,function(data,status) {
-		    		
-		    	});
-		    	return false;
+		    	if(guestID == 'null' || guestID == "") {
+					var c = confirm('로그인 하시겠습니까?.');
+					if(c) {
+						location.href = contextPath+'/user/login.action';
+						return false;
+					}
+		    	} else {
+			    	$.get("listLike.action?title="+encodedTitle+"&artist="+artist+"&album="+encodedAlbum+"&imgSrc="+imgUrl+"&userID="+encodedUserID, function(data,status) {
+			    		alert("Successfully added to " +guestID+ "'s liked list!");
+			    	});
+			    	return false;
+		    	}
 		    });
 	    });
 	});
@@ -169,6 +177,13 @@ $(function() {
 							<th style="width: 34%;">Movie Title</th>
 							<th style="width: 10%;">Likes</th>
 						</tr>
+						<c:if test="${empty requestScope.list}">
+							<tr>
+								<td colspan=4 style="text-align: center">
+									<h2>No songs searched!</h2>
+								</td>
+							</tr>
+						</c:if>
 						<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
 							<tr class="ost" data-movie-no="${vs.index}">
 								<td class="title${vs.index}">${outer[0]}</td>

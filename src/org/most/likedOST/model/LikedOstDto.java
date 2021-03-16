@@ -7,7 +7,6 @@ public class LikedOstDto {
 		this("","");
 	}
 	public LikedOstDto(String userID, String ostNum) {
-		super();
 		this.userID = userID;
 		this.ostNum = ostNum;
 	}
