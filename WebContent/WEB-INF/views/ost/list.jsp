@@ -63,13 +63,9 @@ var no = 1;
 var guestID = "${sessionScope.userID}";
 
 $(function() {
-	/*
-	
-	If there are no songs searched, return a phrases sa 'There are no songs like that'
-	
-	*/
 	$(document).ready(function() {
 	    $(".ost").click(function() {
+	    	var imgUrl = null;
 	    	if(!flag2) {
 	    		flag2 = true;
 		    	var idx = $(this).attr("data-movie-no");
@@ -91,6 +87,7 @@ $(function() {
 					start += "<tr><th scope='row'>평점</th><td>"+movie.userRating+ "</td></tr>";
 					start = start.replace(/<b>/gi, "");
 					start = start.replace(/<\/b>/gi, "");
+					imgUrl = encodeURIComponent(movie.imgSrc[0]);
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					$("#ostComment").html(commentOfOst+"의 댓글");
@@ -99,14 +96,21 @@ $(function() {
 		    	flag2 = false;
 	    	}
 	    	
-	    	var title = $(this).children().eq(0).text();
-	    	var artist = $(this).children().eq(1).text();
-	    	var album = $(this).children().eq(2).text();
+	    	var artist = encodeURIComponent($(this).children().eq(1).text());
+	    	var encodedUserID = encodeURIComponent(guestID);
 		    $(this).children().eq(3).click(function(){
-		    	$.get("listLike.action?title="+title+"&artist="+artist+"&album="+album,function(data,status) {
-		    		
-		    	});
-		    	return false;
+		    	if(guestID == 'null' || guestID == "") {
+					var c = confirm('로그인 하시겠습니까?.');
+					if(c) {
+						location.href = contextPath+'/user/login.action';
+						return false;
+					}
+		    	} else {
+			    	$.get("listLike.action?title="+encodedTitle+"&artist="+artist+"&album="+encodedAlbum+"&imgSrc="+imgUrl+"&userID="+encodedUserID, function(data,status) {
+			    		alert("Successfully added to " +guestID+ "'s liked list!");
+			    	});
+			    	return false;
+		    	}
 		    });
 	    });
 	});

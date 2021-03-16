@@ -10,15 +10,21 @@
 		SELECT * FROM ostList
 	</select>
 	<select id="selectUserOst" resultType="OstDto">
-	 select ost.ostName, ost.artist from ostList as ost Join likedOst as liked On liked.ostNum = ost.no where liked.userID = #{userID}
+	 	select ost.ostName, ost.artist from ostList as ost Join likedOst as liked On liked.ostNum = ost.no where liked.userID = #{userID}
 	</select>
 	<select id="selectlikes" resultType="String">
-	select count(userID) from likedOst where ostNum = #{no}
+		select count(userID) from likedOst where ostNum = #{no}
 	</select>
 	<insert id="insertOst">
-		insert into ostList (ostName, movieTitle,artist)
-		values (#{ostName},#{movieTitle},#{artist})
+		insert into ostList (ostName, movieTitle,artist, imgSrc)
+		values (#{ostName},#{movieTitle},#{artist}, #{imgSrc})
 	</insert>
+	<insert id="insertLikedOst">
+		insert into likedOst values(#{userID}, #{ostNum})
+	</insert>
+	<select id="selectLastOstNo" resultType="String">
+		select no from ostList order by no desc limit 0,1
+	</select>
 
 	<!-- <update id="updateOst">
 		update ostList set

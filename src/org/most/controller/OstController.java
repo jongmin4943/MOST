@@ -28,7 +28,6 @@ public class OstController extends Controller {
 	}
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = (String)request.getAttribute("path");
-		System.out.println(path);
 		OstCommand cmd = cmdMapper.get(path);
 		ModelAndView mav = cmd.action(request, response);
 		if(mav != null) {

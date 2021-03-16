@@ -29,7 +29,6 @@ public class ListCmd implements OstCommand {
 		} else {
 			String keyword = req.getParameter("search");
 			String option = req.getParameter("option");
-			System.out.println("Searching for: "+keyword+" "+option);
 			// keyword 검색어
 			// option 카테고리
 			// 이거 두개를 가지고 list.jsp로 간다

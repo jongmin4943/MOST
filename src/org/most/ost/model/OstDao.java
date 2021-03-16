@@ -9,6 +9,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.most.likedOST.model.LikedOstDto;
 
 public class OstDao {
 	private SqlSession mybatis;
@@ -43,8 +44,12 @@ public class OstDao {
 		return list;
 	} // 해당 유저가 like를 누른 ost 리스트를 뽑아온다.
 	
-	public void insert(OstDto dto) {
+	public String insert(OstDto dto) {
+		//select no ostList order by no desc limit 0,1
+		//+m
 		mybatis.insert("OstMapper.insertOst",dto);
+		String no = mybatis.selectOne("OstMapper.selectLastOstNo");
+		return no;
 	}
 	
 //	public void update(UserDto dto) {
@@ -53,5 +58,9 @@ public class OstDao {
 	
 	public void delete(OstDto dto) {
 		mybatis.delete("OstMapper.deleteUser", dto);
+	}
+	
+	public void insertLikedOst(LikedOstDto dto) {
+		mybatis.insert("OstMapper.insertLikedOst", dto);
 	}
 }

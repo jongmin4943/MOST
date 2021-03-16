@@ -5,13 +5,15 @@ public class OstDto {
 	private String ostName;
 	private String movieTitle;
 	private String artist;
+	private String imgSrc;
 	
 	public OstDto() {}
-	public OstDto(String no, String ostName, String movieTitle, String artist) {
+	public OstDto(String no, String ostName, String movieTitle, String artist, String imgSrc) {
 		this.no = no;
 		this.ostName = ostName;
 		this.movieTitle = movieTitle;
 		this.artist = artist;
+		this.imgSrc = imgSrc;
 	}
 	public String getNo() {
 		return no;
@@ -37,9 +39,16 @@ public class OstDto {
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
+
 	@Override
 	public String toString() {
-		return "OstDto [no=" + no + ", ostName=" + ostName + ", movieTitle=" + movieTitle + ", artist=" + artist + "]";
+		return "OstDto [no=" + no + ", ostName=" + ostName + ", movieTitle=" + movieTitle + ", artist=" + artist
+				+ ", imgSrc=" + imgSrc + "]";
 	}
-	
 }
