@@ -29,4 +29,7 @@ public class LikedOstDao {
 	public void deleteAll(String userID) {
 		mybatis.delete("LikedOstMapper.deleteAll",userID);
 	}
+	public String selectUserOst(String userID) {
+		return mybatis.selectOne("LikedOstMapper.selectUserOst", userID);
+	}
 }

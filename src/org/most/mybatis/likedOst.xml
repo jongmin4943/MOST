@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LikedOstMapper">
+	<select id="selectUserOst" resultType="String">
+		select count(userID) from likedOst where userID = #{userID}
+	</select>
 	<insert id="insertLikedOst">
 		insert into ostList (userID, ostName)
 		values (#{userID}, #{ostName})

@@ -149,7 +149,6 @@ var guestID = "${sessionScope.userID}";
 				<div id="ostComment" style="text-align: center;">
 					~OST 의 댓글
 				</div>
-				<!-- ost 클릭시 해당 ost의 이름값과 번호가 필요하다. -->
 				<div class = "commentArea">
 					<div>
 						<div id = "commentHeader">
@@ -167,7 +166,6 @@ var guestID = "${sessionScope.userID}";
 					<div id = "comment">
 					<!--코멘트 반복  -->
 					</div>
-					<!--댓글 작성 해당 ost가 db안에 들어있으면 나오게 바궈야한다.-->
 					<div id = "commentWrite" style="margin-left:5px; margin-top:10px;">
 						<form action="" method="POST">
 							<textarea id="textarea" style="width:85%; resize: none; float: left;" maxlength="1000"></textarea>

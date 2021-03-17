@@ -41,6 +41,8 @@ public class DispatcherServlet extends HttpServlet {
 			ctrl = new AdminController();
 		} else if("/home".equals(frontPath)){
 			ctrl = new HomeController();
+		} else if("/notice".equals(frontPath)) {
+			ctrl = new NoticeController();
 		}
 		
 		if(ctrl != null)

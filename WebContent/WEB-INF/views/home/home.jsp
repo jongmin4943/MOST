@@ -25,7 +25,10 @@ body{
 	overflow: hidden;
 }
 .userInfo{
+	border-radius:8px;
 	background-color:#f0f8ff;
+	text-align: center;
+	vertical-align: middle;
 }
 .movieImg{
 	text-align: center;
@@ -46,6 +49,10 @@ body{
 	text-align: left;
 	margin-left: 100px; 
 }
+.sidebar {
+	width: 100%;
+	background:#c0e4e4;
+}
 </style>
 
 <body>
@@ -53,29 +60,44 @@ body{
 	<div class="container-fluid">
 		<div class="row">
 		<!--회원정보가 표시될곳  -->
-			<div class="col-md-2">
+			<div class="col-md-2 sidebar">
 				<div>
 					<h1 style="text-align:center;">회원정보</h1>
 				</div>
 				<div>
 					<c:choose>
 						<c:when test="${empty sessionScope.userID}">
-							<h3 style="text-align:center;">로그인해주세요</h3>							
+							<h3 style="text-align:center;"><a class="btn btn-success" href="${pageContext.request.contextPath}/user/login.action">로그인</a></h3>							
 						</c:when>
 						<c:when test="${not empty sessionScope.userID}">
-							<h3 style="text-align:center;">${sessionScope.userID}님 어서오세요</h3>							
+							<h3 style="text-align:center;">${sessionScope.userID}님</h3>
+							<h5 style="text-align:center;">어서오세요</h5>							
+							<div class="userInfo">
+								<p>나의 ost 내공 : ${requestScope.cnt} 점</p>
+							</div>
 						</c:when>
 					</c:choose>
-					<div class="userInfo">
-						<p>OST 내공</p>
-						<p>movie 내공</p>
-					</div>
 					<div>
 						<img src="../img/Ex1.jpg" class="img-thumbnail" width="300">
-						공지사항 maybe?
+						<hr>
+						<h3>Recent Notice</h3>
+						<table style="width: 100%">
+							<tr>
+								<th>1.</th>
+								<td><a href="#">세번째 공지글</a></td>
+							</tr>
+							<tr>
+								<th>2.</th>
+								<td><a href="#">두번째 공지글</a></td>
+							</tr>
+							<tr>
+								<th>3.</th>
+								<td><a href="#">첫번째 공지글</a></td>
+							</tr>
+						</table>
 					</div>
-					<div>
-						<a href="${pageContext.request.contextPath}/notice/list.action">공지사항 게시판 가기</a>
+					<div style="text-align: right;">
+						<a href="${pageContext.request.contextPath}/notice/list.action">공지사항 게시판</a>
 					</div>
 				</div>
 			</div>

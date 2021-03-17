@@ -33,12 +33,6 @@
 		select no from ostList where ostName=#{ostName} and movieTitle=#{movieTitle} and artist=#{artist}
 	</select>
 
-	<!-- <update id="updateOst">
-		update ostList set
-		 = #{},
-		where no = #{ostNo}
-	</update> -->
-
 	<delete id="deleteOst">
 		delete from ostList where no = #{no}
 	</delete>
