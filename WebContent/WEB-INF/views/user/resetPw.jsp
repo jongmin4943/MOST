@@ -28,6 +28,16 @@ function goLoginForm() {
 	location.href="login.action";
 }
 </script>
+<style>
+body{
+	background-color:#e0f3f9;
+}
+.jumbotron{
+	text-shadow: black 0.2em 0.2em 0.2em;
+	color:white;
+	background-color:#8dcaff;
+}
+</style>
 <body>
 <jsp:include page="${initParam.navbar}"></jsp:include>
 	<br>
@@ -42,7 +52,7 @@ function goLoginForm() {
 					<input type="hidden" name="userID" value="${sessionScope.temp }"> 
 						<h3 style="text-align: center;">비밀번호 변경</h3>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="new Password" name="userPassword" maxlength="20">
+							<input type="password" class="form-control" placeholder="new Password" name="userPassword" maxlength="20">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" placeholder="confirm Password" name="userPasswordCheck" maxlength="20">

@@ -47,6 +47,10 @@
 		delete from likedOst where userID= #{userID} and ostNum = #{ostNum}
 	</delete>
 	
+	<delete id="deleteLikedOstNull">
+		delete from ostList where no in (select o.no from ostList o left outer join likedOst l on o.no=l.ostNum where userID is null)
+	</delete>
+	
 	<select id="selectLikedOst" resultType="likedOstDto">
 		SELECT * FROM likedOst where userID = #{userID} and ostNum = #{ostNum}
 	</select>

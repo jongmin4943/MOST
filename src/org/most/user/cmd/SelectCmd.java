@@ -17,6 +17,11 @@ public class SelectCmd implements UserCommand {
 		ModelAndView mav = new ModelAndView();
 		if(req.getMethod().equals("GET")) {
 			String header = req.getHeader("referer");
+			if(header.equals("http://localhost:8888/MOST/user/join.action")) {
+				header = (String)req.getSession().getAttribute("header");
+			} else if(header.equals("http://localhost:8888/MOST/user/resetPw.action")) {
+				header = "http://localhost:8888/MOST/";
+			}
 			req.getSession().setAttribute("header", header);
 			mav.setViewName("/WEB-INF/views/user/login.jsp");
 		} else {

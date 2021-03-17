@@ -14,6 +14,14 @@
 		select * from user order by joinedDate limit ${(p-1)*10}, 10
 	</select>
 	
+	<select id="selectSearchedCurrPage" resultType="UserDto">
+		select * from user where userID like '%${keyword}%' order by joinedDate limit ${(p-1)*10}, 10 	
+	</select>
+	
+	<select id="selectSearchedCount" resultType="int">
+		select count(userID) from user where userID like '%${keyword}%'
+	</select>
+	
 	<select id="selectDate" resultType="String">
 		Select now()
 	</select>
@@ -29,7 +37,7 @@
 
 	<update id="updateUser">
 		update user set
-		userPassword = #{userPassword},
+		userPassword = #{userPassword}
 		where userID = #{userID}
 	</update>
 

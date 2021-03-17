@@ -67,8 +67,8 @@ $(function() {
 			} else {
 				return false;
 			}
-		} else if(no == "-1") { //나중에 db의 likedOst 아이디와 현재 세션의 아디와 비교해서 alert 바꾼다.
-			alert("첫 좋아요의 주인의 되어 보세요");
+		} else if(no == "-1" || flag4 == false) { //나중에 db의 likedOst 아이디와 현재 세션의 아디와 비교해서 alert 바꾼다.
+			alert("좋아요를 눌러야 댓글 작성이 가능합니다.");
 			return false;
 		} else {
 			event.preventDefault();

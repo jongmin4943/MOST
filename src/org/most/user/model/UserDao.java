@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.most.temp.StrIntClass;
 
 public class UserDao {
 	private SqlSession mybatis; //mybatis
@@ -53,8 +55,16 @@ public class UserDao {
 	public List<Object> selectCurrPage(int p) {
 		return mybatis.selectList("UserMapper.selectCurrPage", p);
 	}
+	
+	public List<Object> selectSearchedCurrPage(StrIntClass sic) {
+		// public UserInfo getUserInfo(@Param("userId") String userId, @Param("state") int state);
+		return mybatis.selectList("UserMapper.selectSearchedCurrPage", sic);
+	}
 
 	public int selectCount() {
 		return mybatis.selectOne("UserMapper.selectCount");
+	}
+	public int selectSearchedCount(String keyword) {
+		return mybatis.selectOne("UserMapper.selectSearchedCount",keyword);
 	}
 }

@@ -26,4 +26,7 @@ public class LikedOstDao {
 	public void delete(LikedOstDto dto) {
 		mybatis.insert("LikedOstMapper.deleteLikedOst",dto);
 	}
+	public void deleteAll(String userID) {
+		mybatis.delete("LikedOstMapper.deleteAll",userID);
+	}
 }

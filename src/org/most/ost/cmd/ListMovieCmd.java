@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.most.comment.model.CommentDao;
+import org.most.comment.model.CommentDto;
 import org.most.controller.ModelAndView;
 import org.most.likedOST.model.LikedOstDto;
 import org.most.ost.model.OstDao;
@@ -48,16 +50,22 @@ public class ListMovieCmd implements OstCommand {
         OstDao dao = new OstDao();
         String no = dao.selectNo(new OstDto("", title, album, artist, ""));
         
+        CommentDao commentDao = new CommentDao();
         if(no != null) {
         	LikedOstDto ldto = dao.selectLikedOst(new LikedOstDto(userID, no, ""));
         	int noLikes = dao.selectLikes(no);
         	if(ldto != null) {
-        		jObj.append("likeIcon", "<a href=''>❤ "+noLikes+"</a>");
+        		jObj.append("likeIcon", "<a href=''>❤ "+noLikes+"</a>");//꽉찬 하트
+        		jObj.append("currUserStatus", "like");//꽉찬 하트
         	} else {
-        		jObj.append("likeIcon", "<a href=''>🤍 "+noLikes+"</a>");
+        		jObj.append("likeIcon", "<a href=''>🤍 "+noLikes+"</a>");//빈 하트
+        		jObj.append("currUserStatus", "disLike");//빈 하트
+        		commentDao.deleteAllFromOst(new CommentDto("",userID,no,"",""));
         	}
         } else {
-        	jObj.append("likeIcon", "<a href=''>🤍 0</a>");
+        	jObj.append("likeIcon", "<a href=''>🤍 0</a>");//빈하트
+        	jObj.append("currUserStatus", "disLike");//빈 하트
+        	commentDao.deleteAllFromOst(new CommentDto("",userID,no,"",""));
         }
         jObj.append("imgSrc", imgSrc);
         jObj.append("no", no==null?"-1":no);

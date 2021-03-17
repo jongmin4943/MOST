@@ -17,10 +17,15 @@ if(!(loginCheck == "")) {
 	alert('이미 로그인 상태입니다.');
 	history.back();
 }
-loginCheck = "${requestScope.loginFail}";
+var loginCheck = "${requestScope.loginFail}";
 if(!(loginCheck == "")) {
 	alert('아이디나 비밀번호가 틀렸습니다.');
 	history.back();
+}
+var pwChanged = "${requestScope.pwChanged}";
+if(!(pwChanged == "")) {
+	alert('비밀번호가 변경되었습니다. 다시 로그인 해주세요.');
+	location.href="${pageContext.request.contextPath}/user/login.action";
 }
 
 function checkValue(){

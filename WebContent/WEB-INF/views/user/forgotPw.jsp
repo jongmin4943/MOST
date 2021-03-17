@@ -12,8 +12,13 @@
 </head>
 <script type="text/javascript">
 var loginCheck = "${sessionScope.userID}";
+var info = "${requestScope.info}";
 if(!(loginCheck == "")) {
 	alert('이미 로그인 상태입니다.');
+	history.back();
+}
+if(!(info == "")) {
+	alert('해당 정보가 존재하지 않습니다.');
 	history.back();
 }
 

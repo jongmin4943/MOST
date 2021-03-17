@@ -57,9 +57,10 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script>
 var contextPath = "${pageContext.request.contextPath}";
-var flag = false;
-var flag2 = false;
-var flag3 = false;
+var flag = false; // 댓글 중복 클릭 제거
+var flag2 = false;// 영화 불러오기 중복 제거
+var flag3 = false;// 좋아요 클릭 중복 제거
+var flag4 = false;// 댓글 아이디와 db 체크용
 var no = "-1";
 var guestID = "${sessionScope.userID}";
 </script>
@@ -120,22 +121,25 @@ var guestID = "${sessionScope.userID}";
 							<th style="width: 34%;">Movie Title</th>
 							<th style="width: 10%;">Likes</th>
 						</tr>
-						<c:if test="${empty requestScope.list}">
-							<tr>
-								<td colspan=4 style="text-align: center">
-									<h2>No songs searched!</h2>
-								</td>
-							</tr>
-						</c:if>
-						<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
-							<tr class="ost" data-movie-no="${vs.index}">
-								<td class="title${vs.index}">${outer[0]}</td>
-								<td class="artist${vs.index}">${outer[1]}</td>
-								<td class="album${vs.index}">${outer[2]}</td>
-								<td class="likeBtn">0</td>
-								
-							</tr>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${empty requestScope.list}">
+								<tr>
+									<td colspan=4 style="text-align: center">
+										<h2>No songs searched!</h2>
+									</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
+									<tr class="ost" data-movie-no="${vs.index}">
+										<td class="title${vs.index}">${outer[0]}</td>
+										<td class="artist${vs.index}">${outer[1]}</td>
+										<td class="album${vs.index}">${outer[2]}</td>
+										<td class="likeBtn">0</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</table>
 				</div>
 				<div align="center">
@@ -164,7 +168,7 @@ var guestID = "${sessionScope.userID}";
 					<!--코멘트 반복  -->
 					</div>
 					<!--댓글 작성 해당 ost가 db안에 들어있으면 나오게 바궈야한다.-->
-					<div id = "commentWrite" style="margin-left:5px;">
+					<div id = "commentWrite" style="margin-left:5px; margin-top:10px;">
 						<form action="" method="POST">
 							<textarea id="textarea" style="width:85%; resize: none; float: left;" maxlength="1000"></textarea>
 							<input class="btn btn-primary cBtn" type="button" value="댓글등록" style="margin:7px 0 0 4px">

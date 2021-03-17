@@ -87,9 +87,10 @@ $(function(){
 					</tr>
 			</c:forEach>
 			<tr>
-				<td>총 회원수 : ${requestScope.total} 명</td>
+				<td>총 검색된 회원수 : ${requestScope.total} 명</td>
 				<td colspan="3"></td>
 				<td colspan="2" style="text-align:right;">
+					<a class="btn btn-secondary" href="list.action">전체 목록으로</a>
 					<input class="btn btn-info" id="selectAll" type="button" value="전체 선택"/>
 					<input class="btn btn-info" id="unSelectAll" type="button" value="전체 선택 취소"/>
 					<input class="btn btn-danger" type="submit" value="선택 탈퇴시키기"/>
@@ -103,7 +104,7 @@ $(function(){
 		<c:set var="lastNum" value="${requestScope.cnt}"/>
 		<div style="text-align: center">
 			<c:if test="${startNum gt 1}">
-				<a href="?p=${page-(page-1)%5-1}">이전</a>
+				<a href="?p=${page-(page-1)%5-1}&keyword=${param.keyword}">이전</a>
 			</c:if>
 			
 		 	<c:forEach begin="0" end="4" var="i">
@@ -112,13 +113,13 @@ $(function(){
 			 			<b style="color: blue;">[${startNum+i}]</b>
 		 			</c:if>
 		 			<c:if test="${page ne startNum+i }">
-			 			<a href="?p=${startNum+i}">[${startNum+i}]</a>
+			 			<a href="?p=${startNum+i}&keyword=${param.keyword}">[${startNum+i}]</a>
 		 			</c:if>
 		 		</c:if>
 		 	</c:forEach>
 		 	
 		 	<c:if test="${lastNum ge startNum+5}">
-				<a href="?p=${startNum+5}">다음</a>
+				<a href="?p=${startNum+5}&keyword=${param.keyword}">다음</a>
 		 	</c:if>
 		</div>
 	</div>

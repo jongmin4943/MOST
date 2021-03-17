@@ -77,4 +77,8 @@ public class OstDao {
 	public LikedOstDto selectLikedOst(LikedOstDto dto) {
 		return mybatis.selectOne("OstMapper.selectLikedOst", dto);
 	}
+
+	public void deleteLikedOstNull() {
+		mybatis.delete("OstMapper.deleteLikedOstNull");
+	}
 }

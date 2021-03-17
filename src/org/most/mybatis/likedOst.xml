@@ -10,4 +10,8 @@
 	<delete id="deleteLikedOst">
 		delete from likedOst where ostNum = #{ostNum}
 	</delete>
+	<delete id="deleteAll">
+		delete from likedOst where userID = #{userID}
+	</delete>
+	
 </mapper>

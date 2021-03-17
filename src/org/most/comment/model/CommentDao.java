@@ -47,4 +47,10 @@ public class CommentDao {
 	public void delete(CommentDto dto) {
 		mybatis.delete("CommentMapper.deleteComment", dto);
 	}
+	public void deleteAllFromOst(CommentDto commentDto) {
+		mybatis.delete("CommentMapper.deleteAllFromOst", commentDto);
+	}
+	public void deleteAll(String writer) {
+		mybatis.delete("CommentMapper.deleteAll", writer);
+	}
 }

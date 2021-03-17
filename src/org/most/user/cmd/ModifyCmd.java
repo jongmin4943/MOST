@@ -28,8 +28,8 @@ public class ModifyCmd implements UserCommand {
 				mav.setViewName("resetPw.action");
 				mav.setRedirect(true);
 			} else {
-				mav.setViewName("login.action");
-				mav.setRedirect(true);
+				req.setAttribute("info", "empty");
+				mav.setViewName("/WEB-INF/views/user/forgotPw.jsp");
 				//System.out.println("정보가 일치하지 않습니다.");
 			}
 		}

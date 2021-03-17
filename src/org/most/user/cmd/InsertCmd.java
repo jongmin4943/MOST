@@ -16,6 +16,11 @@ public class InsertCmd implements UserCommand {
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView();
 		if("GET".equals(req.getMethod())) {
+			String header = req.getHeader("referer");
+			if(header.equals("http://localhost:8888/MOST/user/login.action")) {
+				header = "http://localhost:8888/MOST/";
+			}
+			req.getSession().setAttribute("header", header);
 			mav.setViewName("/WEB-INF/views/user/join.jsp");
 		} else {
 			String userID = req.getParameter("userID");

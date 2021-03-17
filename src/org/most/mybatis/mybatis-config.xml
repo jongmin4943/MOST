@@ -7,6 +7,7 @@
 		<typeAlias alias="UserDto" type="org.most.user.model.UserDto"/> <!--긴 파일 명을 짧게 줄인다  -->
 		<typeAlias alias="OstDto" type="org.most.ost.model.OstDto"/>
 		<typeAlias alias="CommentDto" type="org.most.comment.model.CommentDto"/>
+		<typeAlias alias="likedOstDto" type="org.most.likedOST.model.LikedOstDto"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
@@ -23,5 +24,6 @@
     <mapper resource="org/most/mybatis/user.xml"/>
     <mapper resource="org/most/mybatis/ost.xml"/>
     <mapper resource="org/most/mybatis/comment.xml"/>
+    <mapper resource="org/most/mybatis/likedOst.xml"/>
   </mappers>
 </configuration>

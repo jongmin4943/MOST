@@ -86,10 +86,16 @@ $(function() {
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					no = movie.no[0];
+					currUserStatus = movie.currUserStatus[0];
+					if(currUserStatus == "like") {
+			    		flag4 = true;
+			    	} else {
+			    		flag4 = false;
+			    	}
 					$("#ostComment").html(commentOfOst+"의 댓글");
-					likeBtn.html(movie.likeIcon);
+					likeBtn.html(movie.likeIcon); // 꽉찬 하트면 댓글 작성 가능
 			    	if(no == "-1"){
-				    	$("#comment").html("");
+				    	$("#comment").html('<div class=\"commentDetail\"></div>');
 					}
 					//console.log("ostList의 no = "+ no);
 			    	if(no != "-1"){
@@ -110,7 +116,19 @@ $(function() {
 			    		var likey = JSON.parse(data);
 			    		no = likey.no[0];
 			    		//console.log("children clicked "+no);
-			    		$(likeBtn).html(likey.likeIcon);
+			    		currUserStatus = likey.currUserStatus[0];
+			    		if(currUserStatus == "like") {
+			    			flag4 = true;
+			    		} else {
+			    			flag4 = false;
+			    		}
+			    		$(likeBtn).html(likey.likeIcon); // 꽉찬 하트면 댓글 작성 가능
+			    		if(no == "-1"){
+				    		$("#comment").html('<div class=\"commentDetail\"></div>');
+						}
+				    	if(no != "-1"){
+				    		getComment();
+				    	}
 			    	});
 			    	return false;
 		    	}
