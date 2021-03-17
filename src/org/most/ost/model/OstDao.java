@@ -81,4 +81,11 @@ public class OstDao {
 	public void deleteLikedOstNull() {
 		mybatis.delete("OstMapper.deleteLikedOstNull");
 	}
+	
+	public List<Object> selectTopThree() {
+		return mybatis.selectList("OstMapper.topThree");
+	}
+	public List<Object> selectThisWeeksHot() {
+		return mybatis.selectList("OstMapper.thisWeeksHot6");
+	}
 }

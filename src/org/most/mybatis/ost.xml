@@ -55,5 +55,12 @@
 		SELECT * FROM likedOst where userID = #{userID} and ostNum = #{ostNum}
 	</select>
 	
+	<select id="topThree" resultType="OstDto">
+		select ostList.*, count(ostNum) as cnt from likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,3;
+	</select>
+	
+	<select id="thisWeeksHot6" resultType="OstDto">
+		select ostList.*, count(ostNum) as cnt from (select * from likedOst order by likedDate desc) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,6;
+	</select>
 
 </mapper>

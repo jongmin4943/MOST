@@ -60,12 +60,16 @@ public class ListLikeCmd implements OstCommand {
         	}
 		} else {
 			String imgSrc = req.getParameter("imgSrc");
-			OstDto oDto = new OstDto("0", title, album, artist, imgSrc);
+			String newImgSrc = imgSrc.substring(0, imgSrc.lastIndexOf("5"));
+			newImgSrc += "100%\" height=\"100%\">";
+			
+			OstDto oDto = new OstDto("0", title, album, artist, newImgSrc);
 			no = dao.insert(oDto);
 			dao.insertLikedOst(new LikedOstDto(userID,no,""));	//need to add this shit
 			jObj.append("likeIcon", "<a href=''>❤ 1</a>"); //꽉 찬 하트
 			jObj.append("no", no);
 			jObj.append("currUserStatus", "like");//꽉찬 하트
+			
 		}//end if
 		
 		out.print(jObj);
