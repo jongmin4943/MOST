@@ -13,6 +13,7 @@
 </head>
 <script type="text/javascript">
 var loginCheck = "${sessionScope.userID}";
+var duplicateCheck = false;
 if(!(loginCheck == "")) {
 	alert('이미 로그인 상태입니다.');
 	history.back();
@@ -23,12 +24,15 @@ if(!(loginCheck == "")) {
 	history.back();
 }
 
-
 function checkValue(){
 	var input = document.userInfo;
 	var emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     if(!input.userID.value){
         alert("아이디를 입력하세요.");
+        return false;
+    }
+    if(!duplicateCheck){
+        alert("아이디 중복체크가 완료 되지않았습니다.");
         return false;
     }
     if(!input.userPassword.value){
@@ -57,6 +61,41 @@ function checkValue(){
 function goLogInForm() {
 	location.href="login.action";
 }
+
+$(function(){
+	$("#userID").keyup(function(){
+		$.ajax({
+			type: "POST",
+			url: "duplicateCheck.action",
+			data: { 
+				userID: $(this).val()
+			},
+			success: function(data){
+				var possible = JSON.parse(data).possible;
+				if(possible == "short") {
+					$("#showResult").css('color','red');
+					$("#showResult").html("아이디는 최소 4자입니다.");
+					$("#userID").focus();
+					duplicateCheck = false;
+				} else if (possible == "special") {
+					$("#showResult").css('color','red');
+					$("#showResult").html("아이디는 영어만 가능합니다.");
+					$("#userID").focus();
+					duplicateCheck = false;
+				} else if (possible == "duplicate") {
+					$("#showResult").css('color','red');
+					$("#showResult").html("이미 존재하는 아이디");
+					$("#userID").focus();
+					duplicateCheck = false;
+				} else {
+					$("#showResult").css('color','blue');
+					$("#showResult").html("사용 가능한 아이디");
+					duplicateCheck = true;
+				}
+			}
+		})
+	});
+});
 </script>
 <style>
 body{
@@ -82,7 +121,7 @@ body{
 					<h3 style="text-align: center;">회원가입</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="ID" name="userID" maxlength="20" id="userID">
-						<div id="showResult"></div><!--아이디 중복체크 결과 넣기-->
+						<div id="showResult" style="text-align:right; text-shadow: none; color:gray">영어 4자 이상</div><!--아이디 중복체크 결과 넣기-->
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="Password" name="userPassword" maxlength="20">

@@ -72,7 +72,7 @@ $(function(){
 					<tr>
 						<td>${notice.no}</td>
 						<td><a href="detail.action?no=${notice.no}">${notice.title}</a></td>
-						<td>${notice.date.substring(0,19)}</td>
+						<td>${notice.date.substring(0,11)}</td>
 						<td>${notice.hit}</td>
 					<c:if test="${sessionScope.userID eq 'admin'}">
 						<td><input type="checkbox" name="selectedBoard" value="${notice.no}" /></td>
