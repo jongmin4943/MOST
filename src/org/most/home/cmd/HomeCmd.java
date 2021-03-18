@@ -64,6 +64,7 @@ public class HomeCmd implements HomeCommand {
 		req.setAttribute("hot6Names", hot6Names);
 		req.setAttribute("hot6Artists", hot6Artists);
 		req.setAttribute("hot6Likes", hot6Likes);
+		req.setAttribute("hot6EncodedNames", hot6EncodedNames);
 		req.setAttribute("cnt", cnt);
 		mav.setViewName("/WEB-INF/views/home/home.jsp");
 		return mav;

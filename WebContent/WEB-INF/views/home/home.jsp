@@ -133,7 +133,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[0]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[0]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[0]}" target="_blank">${hot6Imgs[0]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -145,7 +145,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[1]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[1]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[1]}" target="_blank">${hot6Imgs[1]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -157,7 +157,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[2]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[2]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[2]}" target="_blank">${hot6Imgs[2]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -171,7 +171,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[3]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[3]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[3]}" target="_blank">${hot6Imgs[3]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -183,7 +183,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[4]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[4]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[4]}" target="_blank">${hot6Imgs[4]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -195,7 +195,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[5]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[5]}
+								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[5]}" target="_blank">${hot6Imgs[5]}</a>
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
