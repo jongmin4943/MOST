@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.most.notice.cmd.DeleteCmd;
+import org.most.notice.cmd.DetailCmd;
 import org.most.notice.cmd.ListCmd;
 import org.most.notice.cmd.ModifyCmd;
 import org.most.notice.cmd.NoticeCommand;
@@ -22,6 +23,7 @@ public class NoticeController extends Controller {
 		cmdMapper.put("/list.action", new ListCmd());
 		cmdMapper.put("/write.action", new WriteCmd());
 		cmdMapper.put("/modify.action", new ModifyCmd());
+		cmdMapper.put("/detail.action", new DetailCmd());
 		cmdMapper.put("/delete.action", new DeleteCmd());
 	}
 	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

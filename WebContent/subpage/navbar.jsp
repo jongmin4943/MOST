@@ -25,6 +25,7 @@ doubleCheck = () => {
 				<c:when test="${sessionScope.userID eq 'admin'}">
 				<ul class="nav navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list.action">회원관리</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/notice/list.action">공지관리</a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/logout.action">로그아웃</a></li>
 				</ul>
 				</c:when>

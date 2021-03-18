@@ -8,6 +8,9 @@ public class NoticeDto {
 	String hit;
 	public NoticeDto() {
 	}
+	public NoticeDto(String title, String content) {
+		this("",title,content,"","");
+	}
 	public NoticeDto(String no, String title, String content, String date, String hit) {
 		this.no = no;
 		this.title = title;

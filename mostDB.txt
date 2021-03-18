@@ -34,5 +34,5 @@ no int primary key auto_increment,
 title varchar(50) not null,
 content varchar(2048) not null,
 date Timestamp default now(),
-hit int
+hit int default 0
 );

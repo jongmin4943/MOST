@@ -8,6 +8,7 @@
 		<typeAlias alias="OstDto" type="org.most.ost.model.OstDto"/>
 		<typeAlias alias="CommentDto" type="org.most.comment.model.CommentDto"/>
 		<typeAlias alias="likedOstDto" type="org.most.likedOST.model.LikedOstDto"/>
+		<typeAlias alias="noticeDto" type="org.most.notice.model.NoticeDto"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
@@ -25,5 +26,6 @@
     <mapper resource="org/most/mybatis/ost.xml"/>
     <mapper resource="org/most/mybatis/comment.xml"/>
     <mapper resource="org/most/mybatis/likedOst.xml"/>
+    <mapper resource="org/most/mybatis/notice.xml"/>
   </mappers>
 </configuration>
