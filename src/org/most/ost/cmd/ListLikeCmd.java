@@ -61,7 +61,7 @@ public class ListLikeCmd implements OstCommand {
 		} else {
 			String imgSrc = req.getParameter("imgSrc");
 			String newImgSrc = imgSrc.substring(0, imgSrc.lastIndexOf("5"));
-			newImgSrc += "100%\" height=\"100%\">";
+			newImgSrc += "100%\">";
 			
 			OstDto oDto = new OstDto("0", title, album, artist, newImgSrc);
 			no = dao.insert(oDto);
