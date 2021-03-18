@@ -34,15 +34,21 @@ body{
 	text-align: center;
 }
 .weeklyOST{
-	margin-top : 25px;
+	margin-top : 300px;
 }
 .top3{
-	display: inline-block;
+	float:left;
+	max-width: 30%;
+	max-height: 700px;
+	min-height: 400px;
+	overflow: hidden;
+	margin: 20px;
 }
-.top3_list {
-	max-width: 300px;
-	margin: 0 50px;
-	max-height: 400px;
+.top3_list{
+	min-height: 700px;
+}
+img{
+	max-width: 100%;
 }
 .top3Det {
 	max-width: 300px;
@@ -78,26 +84,25 @@ body{
 						</c:when>
 					</c:choose>
 					<div>
-						<img src="../img/Ex1.jpg" class="img-thumbnail" width="300">
-						<hr>
-						<h3>Recent Notice</h3>
-						<table style="width: 100%">
-							<tr>
-								<th>1.</th>
-								<td><a href="#">세번째 공지글</a></td>
-							</tr>
-							<tr>
-								<th>2.</th>
-								<td><a href="#">두번째 공지글</a></td>
-							</tr>
-							<tr>
-								<th>3.</th>
-								<td><a href="#">첫번째 공지글</a></td>
-							</tr>
-						</table>
-					</div>
-					<div style="text-align: right;">
-						<a href="${pageContext.request.contextPath}/notice/list.action">공지사항 게시판</a>
+						<div>
+							<img src="../img/Ex1.jpg" class="img-thumbnail" width="300">
+							<hr>
+						</div>
+						<div>
+							<h3>Recent Notice</h3>
+							<table style="width: 100%">
+							<c:forEach items="${requestScope.Notices}" var="notice" varStatus="vs">
+								<tr>
+									<th style="width: 5%">${vs.count}.</th>
+									<td style="width: 65%"><a href="${pageContext.request.contextPath}/notice/detail.action?no=${notice.no}">${notice.title}</a></td>
+									<td style="width: 30%">${notice.date.substring(0,11)}</td>
+								</tr>
+							</c:forEach>
+							</table>
+						</div>
+						<div style="text-align:right;">
+							<a href="${pageContext.request.contextPath}/notice/list.action">전체 목록으로</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -105,35 +110,34 @@ body{
 			<div class="col-md-10">
 			<!-- 검색창 -->
 				<jsp:include page="${initParam.searchbar}"></jsp:include>				
-				<h1>역대 최고 인기 OST</h1>
+				<h1>역대 <span style="color:RED;">최고</span> 인기 OST</h1>
 				<div id="top3Wrap" style="text-align:center">
 					<div class="top3">
 						<h1 style="text-align: center;">🥇 ${top3Likes[0]} likes</h1><b>1위! ${top3Names[0]}</b>	
-						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[0]}" target="_blank"> ${top3Imgs[0]}</a>
+						<div class="top3_list">
+							${top3Imgs[0]}
 						</div>	
 					</div>
 					<div class="top3">
 						<h1 style="text-align: center;">🥈 ${top3Likes[1]} likes</h1><b>2위! ${top3Names[1]}</b>
-						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[1]}" target="_blank"> ${top3Imgs[1]}</a>				
+						<div class="top3_list">
+							${top3Imgs[1]}			
 						</div>
 					</div>
 					<div class="top3">
 						<h1 style="text-align: center;">🥉 ${top3Likes[2]} likes</h1><b>3위! ${top3Names[2]}</b>
-						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[2]}" target="_blank"> ${top3Imgs[2]}</a>
+						<div class="top3_list">
+							${top3Imgs[2]}
 						</div>
 					</div>
 				</div>
-				<br />
 				<div>
 					<div class="weeklyOST"> <!-- 윗줄 -->
-					<h1>이번주 HOT OST</h1>
+					<h1>이번주 <span style="color:RED;">HOT</span> OST</h1>
 						<div class="currentOST">
 							<h2>${hot6Likes[0]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[0]}" target="_blank">${hot6Imgs[0]}</a>
+								${hot6Imgs[0]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -145,7 +149,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[1]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[1]}" target="_blank">${hot6Imgs[1]}</a>
+								${hot6Imgs[1]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -157,7 +161,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[2]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[2]}" target="_blank">${hot6Imgs[2]}</a>
+								${hot6Imgs[2]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -171,7 +175,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[3]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[3]}" target="_blank">${hot6Imgs[3]}</a>
+								${hot6Imgs[3]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -183,7 +187,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[4]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[4]}" target="_blank">${hot6Imgs[4]}</a>
+								${hot6Imgs[4]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 
@@ -195,7 +199,7 @@ body{
 						<div class="currentOST">
 							<h2>${hot6Likes[5]} likes</h2>
 							<div class="movieImg"> <!-- 사진 div -->
-								<a href="https://www.youtube.com/results?search_query=${hot6EncodedNames[5]}" target="_blank">${hot6Imgs[5]}</a>
+								${hot6Imgs[5]}
 							</div>
 							<div> <!-- ost목록 div  -->
 								<h4>Ost title:</h4> 

@@ -53,7 +53,7 @@ body{
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td style="border-left:1px solid #ccc;" colspan="5">${notice.content}</td>
+							<td style="border-left:1px solid #ccc;" colspan="5"><span style='white-space:pre-wrap; word_wrap:break-word; word-break: break-all;'>${notice.content}</span></td>
 						</tr>
 					</table>
 					<div style="text-align: right; margin: 20px 5px;">

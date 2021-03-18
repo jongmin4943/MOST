@@ -18,8 +18,6 @@ public class DuplicateCheckCmd implements UserCommand {
 	@Override
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userID = req.getParameter("userID");
-		System.out.println("userID : " + userID);
-		System.out.println("length : " + userID.length());
 		UserDao dao = new UserDao();
 		UserDto dto = dao.selectOne(new UserDto(userID));
 		PrintWriter out = resp.getWriter();

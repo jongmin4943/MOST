@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.most.controller.ModelAndView;
 import org.most.likedOST.model.LikedOstDao;
+import org.most.notice.model.NoticeDao;
+import org.most.notice.model.NoticeDto;
 import org.most.ost.model.OstDao;
 import org.most.ost.model.OstDto;
 
@@ -60,12 +62,14 @@ public class HomeCmd implements HomeCommand {
 		}
 		String userID = (String)req.getSession().getAttribute("userID");
 		String cnt = new LikedOstDao().selectUserOst(userID);
+		List<NoticeDto> latestNotices = new NoticeDao().selectFive();
 		req.setAttribute("hot6Imgs", hot6Imgs);
 		req.setAttribute("hot6Names", hot6Names);
 		req.setAttribute("hot6Artists", hot6Artists);
 		req.setAttribute("hot6Likes", hot6Likes);
 		req.setAttribute("hot6EncodedNames", hot6EncodedNames);
 		req.setAttribute("cnt", cnt);
+		req.setAttribute("Notices", latestNotices);
 		mav.setViewName("/WEB-INF/views/home/home.jsp");
 		return mav;
 

@@ -11,7 +11,7 @@ select count(userID) from likedOst where ostNum = ?
 select ostList.*, count(ostNum) as cnt from likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,3;
 
 이번주 hot ost
-select ostList.*, count(ostNum) as cnt from (select * from likedOst order by likedDate desc) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc limit 0,6;
+select ostList.*, count(ostNum) as cnt from (select * from likedOst order by likedDate desc) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc, likeddate desc limit 0,6;
 
 ostList에서 likedOst 를 검사해서 ostNum 갯수가 0인 no를 삭제
 delete from ostList where no in (select o.no from ostList o left outer join likedOst l on o.no=l.ostNum where userID is null);

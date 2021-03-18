@@ -54,4 +54,8 @@ public class NoticeDao {
 	public int selectLastestNotice() {
 		return mybatis.selectOne("NoticeMapper.selectLastestNotice");
 	}
+
+	public List<NoticeDto> selectFive() {
+		return mybatis.selectList("NoticeMapper.selectFive");
+	}
 }

@@ -19,6 +19,9 @@
 	<select id="selectLastestNotice" resultType="int">
 		select no from Notice order by no desc limit 0,1
 	</select>
+	<select id="selectFive" resultType="NoticeDto">
+		select no,title,date from Notice order by no desc limit 0,5
+	</select>
 	
 	<update id="updateNoticeHit">
 		update Notice set
