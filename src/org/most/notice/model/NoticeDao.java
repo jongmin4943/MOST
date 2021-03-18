@@ -58,4 +58,11 @@ public class NoticeDao {
 	public List<NoticeDto> selectFive() {
 		return mybatis.selectList("NoticeMapper.selectFive");
 	}
+
+	public NoticeDto selectpre(String no) {
+		return mybatis.selectOne("NoticeMapper.selectPre",no);
+	}
+	public NoticeDto selectNext(String no) {
+		return mybatis.selectOne("NoticeMapper.selectNext",no);
+	}
 }

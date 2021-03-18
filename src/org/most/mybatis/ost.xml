@@ -54,7 +54,7 @@
 	</select>
 	
 	<select id="thisWeeksHot6" resultType="OstDto">
-		select ostList.*, count(ostNum) as cnt from (select * from likedOst order by likedDate desc) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc, likeddate desc limit 0,6;
+		select ostList.*, count(ostNum) as cnt from (select * from likedOst where likeddate between DATE_ADD(NOW(),INTERVAL -1 DAY ) AND NOW()) as likedOst join ostList on ostList.no=likedOst.ostNum group by ostList.no,ostList.ostName,ostList.movieTitle,ostList.artist,ostList.imgSrc order by cnt desc, likeddate desc limit 0,6;
 	</select>
 
 </mapper>

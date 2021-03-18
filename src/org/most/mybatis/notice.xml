@@ -22,6 +22,16 @@
 	<select id="selectFive" resultType="NoticeDto">
 		select no,title,date from Notice order by no desc limit 0,5
 	</select>
+	<select id="selectPre" resultType="NoticeDto">
+		<![CDATA[
+		select * from notice where no = ((select no from notice where no < #{no} order by no desc limit 1))
+		]]>
+	</select>
+	<select id="selectNext" resultType="NoticeDto">
+		<![CDATA[
+		select * from notice where no = ((select no from notice where no > #{no} order by no asc limit 1))
+		]]>
+	</select>
 	
 	<update id="updateNoticeHit">
 		update Notice set

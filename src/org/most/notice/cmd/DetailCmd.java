@@ -1,6 +1,7 @@
 package org.most.notice.cmd;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,12 @@ public class DetailCmd implements NoticeCommand {
 		String no = req.getParameter("no");
 		NoticeDao dao = new NoticeDao();
 		NoticeDto notice = dao.selectOne(no);
+		NoticeDto nextNotice = dao.selectNext(no);
+		NoticeDto preNotice = dao.selectpre(no);
 		dao.updateNoticeHit(no);
 		req.setAttribute("notice", notice);
+		req.setAttribute("pre", preNotice);
+		req.setAttribute("next", nextNotice);
 		mav.setViewName("/WEB-INF/views/notice/detail.jsp");
 		return mav;
 	}

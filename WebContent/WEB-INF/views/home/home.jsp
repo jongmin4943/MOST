@@ -18,10 +18,10 @@ body{
 }
 .currentOST{
 	float:left;
-	width: 30%;
-	margin: 15px;
+	width: 31%;
+	margin: 10px;
 	padding: 15px;
-	max-height: 700px;
+	max-height: 1000px;
 	overflow: hidden;
 }
 .userInfo{
@@ -30,34 +30,40 @@ body{
 	text-align: center;
 	vertical-align: middle;
 }
-.movieImg{
-	text-align: center;
-}
 .weeklyOST{
-	margin-top : 300px;
+	max-height: 900px;
+	float:left;
+	overflow: hidden;
+	text-align: center;
 }
 .top3{
 	float:left;
 	max-width: 30%;
 	max-height: 700px;
-	min-height: 400px;
+	min-height: 500px;
 	overflow: hidden;
-	margin: 20px;
+	margin: 0 20px 20px 20px;
 }
 .top3_list{
-	min-height: 700px;
+	min-height: 550px;
 }
-img{
-	max-width: 100%;
+.top3 img{
+	max-width: 88%;
 }
-.top3Det {
-	max-width: 300px;
-	text-align: left;
-	margin-left: 100px; 
+.weeklyOST img{
+	max-width: 70%;
 }
 .sidebar {
 	width: 100%;
 	background:#c0e4e4;
+}
+.sa {
+	font-weight: bold;
+}
+.likeNum {
+	font-size: 30px;
+	font-weight: 600;
+	color: blue;
 }
 </style>
 
@@ -94,8 +100,8 @@ img{
 							<c:forEach items="${requestScope.Notices}" var="notice" varStatus="vs">
 								<tr>
 									<th style="width: 5%">${vs.count}.</th>
-									<td style="width: 65%"><a href="${pageContext.request.contextPath}/notice/detail.action?no=${notice.no}">${notice.title}</a></td>
-									<td style="width: 30%">${notice.date.substring(0,11)}</td>
+									<td style="width: 56%"><a href="${pageContext.request.contextPath}/notice/detail.action?no=${notice.no}">${notice.title}</a></td>
+									<td style="width: 40%; text-align: right">${notice.date.substring(0,11)}</td>
 								</tr>
 							</c:forEach>
 							</table>
@@ -106,108 +112,74 @@ img{
 					</div>
 				</div>
 			</div>
+			
+			
 		<!--회원정보 끝 메인시작  -->
 			<div class="col-md-10">
 			<!-- 검색창 -->
-				<jsp:include page="${initParam.searchbar}"></jsp:include>				
+				<jsp:include page="${initParam.searchbar}"></jsp:include>	
+				
+							
 				<h1>역대 <span style="color:RED;">최고</span> 인기 OST</h1>
 				<div id="top3Wrap" style="text-align:center">
-					<div class="top3">
-						<h1 style="text-align: center;">🥇 ${top3Likes[0]} likes</h1><b>1위! ${top3Names[0]}</b>	
-						<div class="top3_list">
-							${top3Imgs[0]}
-						</div>	
-					</div>
-					<div class="top3">
-						<h1 style="text-align: center;">🥈 ${top3Likes[1]} likes</h1><b>2위! ${top3Names[1]}</b>
-						<div class="top3_list">
-							${top3Imgs[1]}			
+					<c:forEach var="i" begin="0" end="2">
+						<div class="top3">
+							<c:if test="${i eq 0}">
+								<span style="font-size:50px; font-weight: 700">🥇</span>
+								<span style="font-size:40px; font-weight: 600; color: gold">${top3Likes[i]}</span><span style="font-size:20px; font-weight: 500">likes</span><br>
+								<span style="font-weight: bold; font-size: 17px;">${i+1}위!</span><span style="font-weight: bold; font-size: 20px;"> ${top3Names[i]}</span>
+							</c:if>
+							<c:if test="${i eq 1}">
+								<span style="font-size:50px; font-weight: 700">🥈</span>
+								<span style="font-size:40px; font-weight: 600; color: #cccccc">${top3Likes[i]}</span><span style="font-size:20px; font-weight: 500">likes</span><br>
+								<span style="font-weight: bold; font-size: 17px;">${i+1}위!</span><span style="font-weight: bold; font-size: 20px;"> ${top3Names[i]}</span>
+							</c:if>
+							<c:if test="${i eq 2}">
+								<span style="font-size:50px; font-weight: 700">🥉</span>
+								<span style="font-size:40px; font-weight: 600; color: #f7894a">${top3Likes[i]}</span><span style="font-size:20px; font-weight: 500">likes</span><br>
+								<span style="font-weight: bold; font-size: 17px;">${i+1}위!</span><span style="font-weight: bold; font-size: 20px;"> ${top3Names[i]}</span>
+							</c:if>	
+							<div class="top3_list">
+								${top3Imgs[i]}
+							</div>	
 						</div>
-					</div>
-					<div class="top3">
-						<h1 style="text-align: center;">🥉 ${top3Likes[2]} likes</h1><b>3위! ${top3Names[2]}</b>
-						<div class="top3_list">
-							${top3Imgs[2]}
-						</div>
-					</div>
+					</c:forEach>
 				</div>
+				
+				
 				<div>
+					<h1>오늘의 <span style="color:RED;">HOT</span> OST</h1>
 					<div class="weeklyOST"> <!-- 윗줄 -->
-					<h1>이번주 <span style="color:RED;">HOT</span> OST</h1>
-						<div class="currentOST">
-							<h2>${hot6Likes[0]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[0]}
+						<c:forEach var="i" begin="0" end="2">
+							<div class="currentOST">
+								<span class="sa">${i+1}위.</span> <span class="likeNum">${hot6Likes[i]}</span><span class="sa"> likes</span>
+								<div class="movieImg"> <!-- 사진 div -->
+									${hot6Imgs[i]}
+								</div>
+								<div> <!-- ost목록 div  -->
+									<h4>:::::::Ost title:::::::</h4> 
+									<h6>${hot6Names[i]}</h6>
+									<h4>:::::::Artist(s):::::::</h4>
+									<h6>${hot6Artists[i]}</h6>
+								</div>
 							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[0]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[0]}</h6>
-							</div>
-						</div>
-						<div class="currentOST">
-							<h2>${hot6Likes[1]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[1]}
-							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[1]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[1]}</h6>
-							</div>
-						</div>
-						<div class="currentOST">
-							<h2>${hot6Likes[2]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[2]}
-							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[2]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[2]}</h6>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
-					<div><!-- 아랫줄 -->
-						<div class="currentOST">
-							<h2>${hot6Likes[3]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[3]}
+					<div class="weeklyOST"> <!-- 아랫줄 -->
+						<c:forEach var="i" begin="3" end="5">
+							<div class="currentOST">
+								<span class="sa">${i+1}위.</span> <span class="likeNum">${hot6Likes[i]}</span><span class="sa"> likes</span>
+								<div class="movieImg"> <!-- 사진 div -->
+									${hot6Imgs[i]}
+								</div>
+								<div> <!-- ost목록 div  -->
+									<h4>:::::::Ost title:::::::</h4> 
+									<h6>${hot6Names[i]}</h6>
+									<h4>:::::::Artist(s):::::::</h4>
+									<h6>${hot6Artists[i]}</h6>
+								</div>
 							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[3]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[3]}</h6>
-							</div>
-						</div>
-						<div class="currentOST">
-							<h2>${hot6Likes[4]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[4]}
-							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[4]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[4]}</h6>
-							</div>
-						</div>
-						<div class="currentOST">
-							<h2>${hot6Likes[5]} likes</h2>
-							<div class="movieImg"> <!-- 사진 div -->
-								${hot6Imgs[5]}
-							</div>
-							<div> <!-- ost목록 div  -->
-								<h4>Ost title:</h4> 
-								<h6>${hot6Names[5]}</h6>
-								<h4>Artist(s):</h4>
-								<h6>${hot6Artists[5]}</h6>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div> 
 			</div>
