@@ -56,16 +56,22 @@ public class ListCmd implements OstCommand {
 				int count = 0;
 				
 				for(Element e: song){
-					if(!e.select(".fc_gray").text().trim().equals("California Dreamin' (Single Version)") && !e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2).equals("The Mamas & Papas") && !e.select(".fc_mgray").text().trim().equals("Zhong Qing Sen Lin ( Dian Ying Yuan Sheng Da Die ) (Original Motion Picture Soundtrack)")) {
-						if(e.select(".fc_gray").text().trim() != null && !e.select(".fc_gray").text().trim().equals("")){
-							titles.add(e.select(".fc_gray").text().trim());
-						}
-						if(e.select("#artistName").text().trim() != null && !e.select("#artistName").text().trim().equals("")){
-							artists.add(e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2));
-						}
-						if(e.select(".fc_mgray").text().trim() != null && !e.select(".fc_mgray").text().trim().equals("")){
-							if(count%2 == 0){
-								albums.add(e.select(".fc_mgray").text().trim());
+					if(!e.select(".fc_gray").text().trim().equals("California Dreamin' (Single Version)") && !e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2).equals("The Mamas & Papas") && !e.select(".fc_mgray").text().trim().equals("Zhong Qing Sen Lin ( Dian Ying Yuan Sheng Da Die ) (Original Motion Picture Soundtrack)")) {						
+						if(!e.select(".fc_gray").text().trim().equals("SONATA (Feat.Nody Cika)") && !e.select(".fc_gray").text().trim().equals("Audition (The Fools Who Dream)")) {
+							if(e.select(".fc_gray").text().trim().equals("SONATA (Feat.Nody Cika)")) {
+								System.out.println("What tht fuck");
+							}
+
+							if(e.select(".fc_gray").text().trim() != null && !e.select(".fc_gray").text().trim().equals("")){
+								titles.add(e.select(".fc_gray").text().trim());
+							}
+							if(e.select("#artistName").text().trim() != null && !e.select("#artistName").text().trim().equals("")){
+								artists.add(e.select("#artistName").text().trim().substring(0, e.select("#artistName").text().trim().length()/2));
+							}
+							if(e.select(".fc_mgray").text().trim() != null && !e.select(".fc_mgray").text().trim().equals("")){
+								if(count%2 == 0){
+									albums.add(e.select(".fc_mgray").text().trim());
+								}
 							}
 						}
 					}
