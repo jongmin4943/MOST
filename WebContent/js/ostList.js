@@ -63,6 +63,7 @@ $(function() {
 	    		flag2 = true;
 	    		$(".ost td").each(function(index, item){
 	    			$(item).children().children().unwrap();
+	    			$(item).attr("style","vertical-align: middle")
 	    		});
 		    	var idx = $(this).attr("data-movie-no");
 		    	var likeBtn = $(this).children().eq(3);
@@ -88,8 +89,12 @@ $(function() {
 					start = start.replace(/<\/b>/gi, "");
 					imgUrl = encodeURIComponent(movie.imgSrc[0]);
 					(curTd.eq(0)).html("<b><span>"+curTd.eq(0).text()+"</span></b>");
+					(curTd.eq(0)).attr('style', 'vertical-align: middle; background-color: red');
 					(curTd.eq(1)).html("<b><span>"+curTd.eq(1).text()+"</span></b>");
+					(curTd.eq(1)).attr('style', 'vertical-align: middle; background-color: red');
 					(curTd.eq(2)).html("<b><span>"+curTd.eq(2).text()+"</span></b>");
+					(curTd.eq(2)).attr('style', 'vertical-align: middle; background-color: red');
+					(curTd.eq(3)).attr('style', 'vertical-align: middle; background-color: red');
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					no = movie.no[0];

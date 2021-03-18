@@ -9,10 +9,10 @@ joinedDate Timestamp default now()
 
 create table ostList(
 no int primary key auto_increment,
-ostName varchar(100) not null,
-movieTitle varchar(100) not null,
-artist varchar(100) not null,
-imgSrc varchar(1000)
+ostName varchar(1000) not null,
+movieTitle varchar(1000) not null,
+artist varchar(1000) not null,
+imgSrc varchar(2000)
 );
 
 create table likedOst(
