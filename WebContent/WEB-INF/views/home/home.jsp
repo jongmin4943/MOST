@@ -108,21 +108,21 @@ body{
 				<h1>역대 최고 인기 OST</h1>
 				<div id="top3Wrap" style="text-align:center">
 					<div class="top3">
-						<h1 style="text-align: center;">🥇 ${top3Likes[0]} likes</h1>1위!! ${top3Names[0]}	
+						<h1 style="text-align: center;">🥇 ${top3Likes[0]} likes</h1><b>1위! ${top3Names[0]}</b>	
 						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[0]}" > ${top3Imgs[0]}</a>
+							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[0]}" target="_blank"> ${top3Imgs[0]}</a>
 						</div>	
 					</div>
 					<div class="top3">
-						<h1 style="text-align: center;">🥈 ${top3Likes[1]} likes</h1>2위!! ${top3Names[1]}
+						<h1 style="text-align: center;">🥈 ${top3Likes[1]} likes</h1><b>2위! ${top3Names[1]}</b>
 						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[1]}" > ${top3Imgs[1]}</a>				
+							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[1]}" target="_blank"> ${top3Imgs[1]}</a>				
 						</div>
 					</div>
 					<div class="top3">
-						<h1 style="text-align: center;">🥉 ${top3Likes[2]} likes</h1>3위!! ${top3Names[2]}
+						<h1 style="text-align: center;">🥉 ${top3Likes[2]} likes</h1><b>3위! ${top3Names[2]}</b>
 						<div class="top3_list" style="text-align: center">
-							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[2]}" > ${top3Imgs[2]}</a>
+							<a href="https://www.youtube.com/results?search_query=${top3EncodedNames[2]}" target="_blank"> ${top3Imgs[2]}</a>
 						</div>
 					</div>
 				</div>

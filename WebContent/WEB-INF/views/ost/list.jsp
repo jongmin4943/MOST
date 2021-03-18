@@ -132,10 +132,10 @@ var guestID = "${sessionScope.userID}";
 							<c:otherwise>
 								<c:forEach items="${requestScope.list}" var="outer" varStatus="vs">
 									<tr class="ost" data-movie-no="${vs.index}">
-										<td class="title${vs.index}">${outer[0]}</td>
-										<td class="artist${vs.index}">${outer[1]}</td>
-										<td class="album${vs.index}">${outer[2]}</td>
-										<td class="likeBtn">0</td>
+										<td class="title${vs.index}" style="vertical-align: middle;"><span>${outer[0]}</span></td>
+										<td class="artist${vs.index}" style="vertical-align: middle;"><span>${outer[1]}</span></td>
+										<td class="album${vs.index}" style="vertical-align: middle;"><span>${outer[2]}</span></td>
+										<td class="likeBtn" style="vertical-align: middle; text-align: center;">👁‍🗨</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

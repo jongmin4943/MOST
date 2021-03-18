@@ -2,6 +2,7 @@ package org.most.ost.cmd;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,13 +34,13 @@ public class ListMovieCmd implements OstCommand {
         String imgUrl = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+jObj.get("link").toString().substring(jObj.get("link").toString().indexOf("code=", 1)+5, jObj.get("link").toString().length());
 
         Document imgLoc = Jsoup.connect(imgUrl).get();
-        
+        String encodedTitle = URLEncoder.encode(title);
         Element imgTag = imgLoc.body().getElementById("targetImage");
         String imgSrc = null;
         if(imgTag != null) {
         	String imgTagStr = imgTag.toString();
         	String sizeSetting = " width=\"50%\"";
-        	imgSrc = imgTagStr.substring(0, imgTagStr.length()-1)+sizeSetting+">";
+        	imgSrc = "<a href='https://www.youtube.com/results?search_query="+encodedTitle+"' target='_blank'>"+imgTagStr.substring(0, imgTagStr.length()-1)+sizeSetting+"></a>";
         } else {
         	imgSrc = "<h2 style='border: 5px'>No Images of This Movie</h2>";
         }

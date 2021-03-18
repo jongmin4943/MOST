@@ -61,6 +61,9 @@ $(function() {
 	    	var imgUrl = null;
 	    	if(!flag2) {
 	    		flag2 = true;
+	    		$(".ost td").each(function(index, item){
+	    			$(item).children().children().unwrap();
+	    		});
 		    	var idx = $(this).attr("data-movie-no");
 		    	var likeBtn = $(this).children().eq(3);
 		    	var encodedAlbum = encodeURIComponent($(this).children().eq(2).text());
@@ -68,6 +71,7 @@ $(function() {
 		    	var artist = encodeURIComponent($(this).children().eq(1).text());
 		    	var encodedUserID = encodeURIComponent(guestID);
 		    	var commentOfOst = $(this).children().eq(0).text().substring(0, $(this).children().eq(0).text().indexOf("("));
+		    	var curTd = $(this).children();
 		    	$.get("listMovie.action?album="+encodedAlbum+"&title="+encodedTitle+"&artist="+artist+"&userID="+encodedUserID, function(data,status) {
 					var movie = JSON.parse(data.trim());
 					var movDir = movie.director.replace(/\|/g, ", ");
@@ -83,6 +87,9 @@ $(function() {
 					start = start.replace(/<b>/gi, "");
 					start = start.replace(/<\/b>/gi, "");
 					imgUrl = encodeURIComponent(movie.imgSrc[0]);
+					(curTd.eq(0)).html("<b><span>"+curTd.eq(0).text()+"</span></b>");
+					(curTd.eq(1)).html("<b><span>"+curTd.eq(1).text()+"</span></b>");
+					(curTd.eq(2)).html("<b><span>"+curTd.eq(2).text()+"</span></b>");
 					$("#movie").html(start);
 					$("#movieImg").html(movie.imgSrc[0]);
 					no = movie.no[0];
@@ -97,7 +104,6 @@ $(function() {
 			    	if(no == "-1"){
 				    	$("#comment").html('<div class=\"commentDetail\"></div>');
 					}
-					//console.log("ostList의 no = "+ no);
 			    	if(no != "-1"){
 			    		getComment();
 			    	}
