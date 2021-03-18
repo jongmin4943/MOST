@@ -28,3 +28,11 @@ ostNum int not null,
 content varchar(1000),
 date Timestamp default now()
 );
+
+create table notice(
+no int primary key auto_increment,
+title varchar(50) not null,
+content varchar(2048) not null,
+date Timestamp default now(),
+hit int
+);
