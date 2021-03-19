@@ -134,7 +134,7 @@ public class NaverAPIreader {
 		
 		for(Object job : jarr) {
 			JSONObject jsonObj = new JSONObject(job.toString());
-			System.out.println(jsonObj.get("title").toString());
+			//System.out.println(jsonObj.get("title").toString());
 			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
