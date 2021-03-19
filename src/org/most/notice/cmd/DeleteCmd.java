@@ -24,7 +24,8 @@ public class DeleteCmd implements NoticeCommand {
 				dao.delete(noList[i]);
 			}
 		}
-		mav.setViewName("/WEB-INF/views/notice/list.jsp");
+		mav.setViewName("list.action");
+		mav.setRedirect(true);
 		return mav;
 	}
 
