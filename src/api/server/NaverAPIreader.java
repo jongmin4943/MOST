@@ -21,7 +21,7 @@ public class NaverAPIreader {
 	private final static String CLIENT_SECRET = "IGuYQGDM6k";
 	
 	public static void main(String[] args) {
-		System.out.println(searchMovie("Into The Unknown (MR)", "아이노래 외국어 반주곡 (Into The Unknown)"));
+		System.out.println(searchMovie("Superman (영화 '슈퍼맨')", "상쾌한 팝 ost 클래식 영화 드라이브"));
 	}
 	
 	public static boolean movieCheck(String albumNm, String titleNm) {
@@ -38,44 +38,53 @@ public class NaverAPIreader {
 		String titleAfter = "";
 		String albumAfter = "";
 		if(titleNm.contains("영화")) {
-			if(titleNm.substring(titleNm.indexOf("영화")+4).contains("'")) {
-				titleAfter = titleNm.substring(titleNm.indexOf("영화")+4);
-				titleAfter = titleAfter.substring(0, titleAfter.indexOf("'"));
-				titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
-				res = getInfo(titleAfter);
-				if(res != null) {
-					return res;
-				}				
+			if(titleNm.substring(titleNm.indexOf("영화")+2).length() > 0) {
+				if(titleNm.substring(titleNm.indexOf("영화")+4).contains("'")) {
+					titleAfter = titleNm.substring(titleNm.indexOf("영화")+4);
+					titleAfter = titleAfter.substring(0, titleAfter.indexOf("'"));
+					titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+					res = getInfo(titleAfter);
+					if(res != null) {
+						return res;
+					}				
+				}
 			}
 		}
 		if(albumNm.contains("영화")) {
-			if(albumNm.substring(albumNm.indexOf("영화")+4).contains("'")) {
-				albumAfter = albumNm.substring(albumNm.indexOf("영화")+4);
-				albumAfter = albumAfter.substring(0, albumAfter.indexOf("'")+1);
-				albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
-				res = getInfo(albumAfter);
-				if(res != null) {
-					return res;
-				}				
+			if(albumNm.substring(albumNm.indexOf("영화")+2).length() > 0) {
+				if(albumNm.substring(albumNm.indexOf("영화")+4).contains("'")) {
+					albumAfter = albumNm.substring(albumNm.indexOf("영화")+4);
+					albumAfter = albumAfter.substring(0, albumAfter.indexOf("'")+1);
+					albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+					res = getInfo(albumAfter);
+					if(res != null) {
+						return res;
+					}									
+				}
 			}
 		}
 		
 		if(titleNm.toLowerCase().contains("from")) {
-			titleAfter = titleNm.substring(titleNm.toLowerCase().indexOf("from")+6);
-			titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
-			titleAfter.trim();
-			res = getInfo(titleAfter);
-			if(res != null) {
-				return res;
+			if(titleNm.substring(titleNm.indexOf("from")+4).length() > 0) {
+				titleAfter = titleNm.substring(titleNm.toLowerCase().indexOf("from")+6);
+				titleAfter = titleAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+				titleAfter.trim();
+				res = getInfo(titleAfter);
+				if(res != null) {
+					return res;
+				}
 			}
 		}
+		
 		if(albumNm.toLowerCase().contains("from")) {
-			albumAfter = albumNm.substring(albumNm.toLowerCase().indexOf("from")+6);
-			albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
-			albumAfter.trim();
-			res = getInfo(albumAfter);
-			if(res != null) {
-				return res;
+			if(albumNm.substring(albumNm.indexOf("from")+4).length() > 0) {
+				albumAfter = albumNm.substring(albumNm.toLowerCase().indexOf("from")+6);
+				albumAfter = albumAfter.replaceAll("[^a-zA-Zㄱ-ㅎ가-힣]+"," ");
+				albumAfter.trim();
+				res = getInfo(albumAfter);
+				if(res != null) {
+					return res;
+				}
 			}
 		}
 		
@@ -125,6 +134,7 @@ public class NaverAPIreader {
 		
 		for(Object job : jarr) {
 			JSONObject jsonObj = new JSONObject(job.toString());
+			System.out.println(jsonObj.get("title").toString());
 			if(("<b>"+movieNm+"</b>").toLowerCase().equals(jsonObj.get("title").toString().toLowerCase())) {
 				jsonAns = jsonObj;
 				break;
