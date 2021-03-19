@@ -60,16 +60,16 @@ body{
 							<td style="border-left:1px solid #ccc;" colspan="5"><span style='white-space:pre-wrap; word_wrap:break-word; word-break: break-all;'>${notice.content}</span></td>
 						</tr>
 					</table>
-					<div style="float:left;">
-						<c:if test="${not empty pre}">
-							<a href = "detail.action?no=${pre.no}"><span>이전글</span> ${pre.title}</a>
-						</c:if>
-					</div>
-					<div>
-						<c:if test="${not empty next}">
-							<a href = "detail.action?no=${next.no}">다음글 ${next.title}</a>
-						</c:if>
-					</div>
+					<c:if test="${not empty pre}">
+						<div style="border-bottom: 1px solid #ccc; margin-top:5px;">
+							<a href = "detail.action?no=${pre.no}"><span style="border:1px solid #ccc;">이전 글</span> ${pre.title}</a>
+						</div>
+					</c:if>
+					<c:if test="${not empty next}">
+						<div>
+							<a href = "detail.action?no=${next.no}"><span style="border:1px solid #ccc;">다음 글</span> ${next.title}</a>
+						</div>
+					</c:if>
 					<div style="text-align: right; margin: 20px 5px;">
 							<input class = "btn btn-info" type="button" value="목록" onclick="return goList()">
 						<c:if test="${sessionScope.userID eq 'admin'}">

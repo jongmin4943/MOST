@@ -9,7 +9,27 @@
 <title>MOST</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+
 <script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+var musics = new Array(
+		'${pageContext.request.contextPath}/music/Emile Mosseri, Han Ye-ri - Rain Song Minari (Original Motion Picture Soundtrack).mp3',
+		'${pageContext.request.contextPath}/music/Naomi Scott - Speechless (from Aladdin) (Official Video).mp3',
+		'${pageContext.request.contextPath}/music/La La Land Cast - Another Day of Sun.mp3'
+		);
+
+var minari = new Audio(musics[0]);
+var aladdin = new Audio(musics[1]);
+var lalaland = new Audio(musics[2]);
+$(function(){
+	$("#0music").mouseover(function(){minari.play()});
+	$("#0music").mouseleave(function(){minari.pause(); minari.currentTime = 0;});
+	$("#1music").mouseover(function(){aladdin.play()});
+	$("#1music").mouseleave(function(){aladdin.pause(); aladdin.currentTime = 0;});
+	$("#2music").mouseover(function(){lalaland.play()});
+	$("#2music").mouseleave(function(){lalaland.pause(); lalaland.currentTime = 0;});
+});
+</script>
 </head>
 
 <style>
@@ -42,7 +62,7 @@ body{
 	max-height: 700px;
 	min-height: 500px;
 	overflow: hidden;
-	margin: 0 20px 20px 20px;
+	margin: 0 15px 15px 15px;
 }
 .top3_list{
 	min-height: 550px;
@@ -121,9 +141,9 @@ body{
 				
 							
 				<h1>역대 <span style="color:RED;">최고</span> 인기 OST</h1>
-				<div id="top3Wrap" style="text-align:center">
+				<div id="top3Wrap" style="text-align:center; overflow: hidden;">
 					<c:forEach var="i" begin="0" end="2">
-						<div class="top3">
+						<div id="${i}music" class="top3">
 							<c:if test="${i eq 0}">
 								<span style="font-size:50px; font-weight: 700">🥇</span>
 								<span style="font-size:40px; font-weight: 600; color: gold">${top3Likes[i]}</span><span style="font-size:20px; font-weight: 500">likes</span><br>
