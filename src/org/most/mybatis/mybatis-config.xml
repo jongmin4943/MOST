@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="UserDto" type="org.most.user.model.UserDto"/> <!--긴 파일 명을 짧게 줄인다  -->
 		<typeAlias alias="OstDto" type="org.most.ost.model.OstDto"/>
+		<typeAlias alias="OstUserDto" type="org.most.ost.model.OstUserDto"/>
 		<typeAlias alias="CommentDto" type="org.most.comment.model.CommentDto"/>
 		<typeAlias alias="likedOstDto" type="org.most.likedOST.model.LikedOstDto"/>
 		<typeAlias alias="noticeDto" type="org.most.notice.model.NoticeDto"/>
@@ -15,7 +16,7 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="org.mariadb.jdbc.Driver"/>
-        <property name="url" value="jdbc:mariadb://localhost:3306/MOST"/>
+        <property name="url" value="jdbc:mariadb://localhost:3307/MOST"/>
         <property name="username" value="root"/>
         <property name="password" value="12345"/>
       </dataSource>
