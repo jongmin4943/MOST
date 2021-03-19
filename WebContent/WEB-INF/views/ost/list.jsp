@@ -76,8 +76,11 @@ var guestID = "${sessionScope.userID}";
 			
 			<div class="col-lg-4">
 				<div>
-					<h2 style="display: inline-block;">MovieInfo </h2>
-					<div style="color: #ccc; vertical-align:middle;display:inline-block; text-align: right;">사진 클릭시 <img src="${pageContext.request.contextPath}/img/youtube.png" width="7%"> 이동</div>
+					<div style="font-weight: 500; font-size:2rem; display: table;">
+					<div style="text-align:right; display: table-cell;">MovieInfo</div> 
+					<div style="display: table-cell; color: #ccc; text-align:right; font-weight: normal; font-size:15px;">사진 클릭시 <img src="${pageContext.request.contextPath}/img/youtube.png" width="7%"> 이동</div> 
+					</div>
+					
 				</div>
 				<div id="movieImg" style="text-align: center; clear: both;">
 					<img src="${pageContext.request.contextPath}/img/Ex1.jpg" class="img-thumbnail" width="100%">
