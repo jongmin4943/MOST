@@ -142,10 +142,6 @@ var guestID = "${sessionScope.userID}";
 						</c:choose>
 					</table>
 				</div>
-				<div align="center">
-					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다')">이전</span>
-					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다')">다음</span>
-				</div>
 				<div id="ostComment" style="text-align: center;">
 					~OST 의 댓글
 				</div>

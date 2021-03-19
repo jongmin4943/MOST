@@ -15,6 +15,7 @@ import org.most.notice.model.NoticeDao;
 import org.most.notice.model.NoticeDto;
 import org.most.ost.model.OstDao;
 import org.most.ost.model.OstDto;
+import org.most.ost.model.OstUserDto;
 
 public class HomeCmd implements HomeCommand {
 
@@ -71,8 +72,14 @@ public class HomeCmd implements HomeCommand {
 		req.setAttribute("cnt", cnt);
 		req.setAttribute("Notices", latestNotices);
 		mav.setViewName("/WEB-INF/views/home/home.jsp");
+		
+		if(userID != null) {
+			List<OstUserDto> userList = new LikedOstDao().selectUsersLikes(userID);
+			req.getServletContext().setAttribute("userChoice", userList);
+		}
+		
+		
 		return mav;
-
 	}
 
 }

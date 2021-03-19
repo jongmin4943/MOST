@@ -2,11 +2,13 @@ package org.most.likedOST.model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.most.ost.model.OstUserDto;
 
 public class LikedOstDao {
 	private SqlSession mybatis;
@@ -31,5 +33,8 @@ public class LikedOstDao {
 	}
 	public String selectUserOst(String userID) {
 		return mybatis.selectOne("LikedOstMapper.selectUserOst", userID);
+	}
+	public List<OstUserDto> selectUsersLikes(String userID){
+		return mybatis.selectList("LikedOstMapper.selectUsersChoice", userID);
 	}
 }

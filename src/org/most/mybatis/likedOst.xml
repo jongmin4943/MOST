@@ -16,5 +16,7 @@
 	<delete id="deleteAll">
 		delete from likedOst where userID = #{userID}
 	</delete>
-	
+	<select id="selectUsersChoice" resultType="OstUserDto">
+		select * from ostList o join likedOst l on o.no = l.ostNum where l.userID = #{userID}
+	</select>
 </mapper>
