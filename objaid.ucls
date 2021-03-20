@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="api.server.NaverAPIreader" project="MOST" 
+    file="/MOST/src/api/server/NaverAPIreader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1498" y="128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="org.most.admin.cmd.AdminCommand" project="MOST" 
+    file="/MOST/src/org/most/admin/cmd/AdminCommand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1046" y="551"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="org.most.admin.cmd.ListCmd" project="MOST" 
+    file="/MOST/src/org/most/admin/cmd/ListCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="604" y="755"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.most.admin.cmd.DeleteCmd" project="MOST" 
+    file="/MOST/src/org/most/admin/cmd/DeleteCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="598" y="590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.most.admin.cmd.SearchedListCmd" project="MOST" 
+    file="/MOST/src/org/most/admin/cmd/SearchedListCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="601" y="418"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.most.controller.AdminController" project="MOST" 
+    file="/MOST/src/org/most/controller/AdminController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1460" y="620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.most.controller.DispatcherServlet" project="MOST" 
+    file="/MOST/src/org/most/controller/DispatcherServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1904" y="90"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.most.controller.ModelAndView" project="MOST" 
+    file="/MOST/src/org/most/controller/ModelAndView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2314" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.most.controller.Controller" project="MOST" 
+    file="/MOST/src/org/most/controller/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1925" y="370"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.most.controller.HomeController" project="MOST" 
+    file="/MOST/src/org/most/controller/HomeController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1414" y="369"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.most.controller.NoticeController" project="MOST" 
+    file="/MOST/src/org/most/controller/NoticeController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1892" y="749"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.most.controller.OstController" project="MOST" 
+    file="/MOST/src/org/most/controller/OstController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2290" y="749"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.most.controller.UserController" project="MOST" 
+    file="/MOST/src/org/most/controller/UserController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2360" y="377"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="org.most.home.cmd.HomeCommand" project="MOST" 
+    file="/MOST/src/org/most/home/cmd/HomeCommand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1026" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="org.most.home.cmd.HomeCmd" project="MOST" 
+    file="/MOST/src/org/most/home/cmd/HomeCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="622" y="100"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.most.notice.cmd.ListCmd" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/ListCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1422" y="1410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.most.notice.cmd.ModifyCmd" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/ModifyCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1437" y="1150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.most.notice.cmd.WriteCmd" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/WriteCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1872" y="1150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.most.notice.cmd.DeleteCmd" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/DeleteCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1887" y="1414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="20" language="java" name="org.most.notice.cmd.NoticeCommand" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/NoticeCommand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1822" y="969"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="21" language="java" name="org.most.notice.cmd.DetailCmd" project="MOST" 
+    file="/MOST/src/org/most/notice/cmd/DetailCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2290" y="1278"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="org.most.ost.cmd.ListCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/ListCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2870" y="1292"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="org.most.ost.cmd.MyListCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/MyListCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2885" y="948"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="org.most.ost.cmd.OstCommand" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/OstCommand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2817" y="727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="org.most.ost.cmd.ListLikeCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/ListLikeCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3324" y="944"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="org.most.ost.cmd.CommentDeleCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/CommentDeleCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2891" y="1116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="org.most.ost.cmd.CommentModiCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/CommentModiCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3342" y="1124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="org.most.ost.cmd.ListMovieCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/ListMovieCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3329" y="1308"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="org.most.ost.cmd.CommentCmd" project="MOST" 
+    file="/MOST/src/org/most/ost/cmd/CommentCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3784" y="940"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="org.most.user.cmd.DeleteCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/DeleteCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3462" y="156"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="org.most.user.cmd.DuplicateCheckCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/DuplicateCheckCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3453" y="308"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="org.most.user.cmd.ResetPwCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/ResetPwCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3460" y="456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="org.most.user.cmd.LogoutCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/LogoutCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3923" y="220"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="34" language="java" name="org.most.user.cmd.UserCommand" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/UserCommand.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2827" y="459"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="35" language="java" name="org.most.user.cmd.InsertCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/InsertCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3920" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="org.most.user.cmd.SelectCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/SelectCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3445" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="org.most.user.cmd.ModifyCmd" project="MOST" 
+    file="/MOST/src/org/most/user/cmd/ModifyCmd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3924" y="384"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="org.most.likedOST.model.LikedOstDao" project="MOST" 
+    file="/MOST/src/org/most/likedOST/model/LikedOstDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3388" y="1496"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="org.most.ost.model.OstDao" project="MOST" 
+    file="/MOST/src/org/most/ost/model/OstDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3708" y="1232"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="org.most.user.model.UserDao" project="MOST" 
+    file="/MOST/src/org/most/user/model/UserDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3034" y="154"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="org.most.notice.model.NoticeDao" project="MOST" 
+    file="/MOST/src/org/most/notice/model/NoticeDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1074" y="902"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="42">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="43">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <realization id="44">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <realization id="45">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="46">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="47" name="cmdMapper"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="49">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <realization id="50">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="51">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="52">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="53" name="cmdMapper"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="55">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="57">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="58">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="59">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="60">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="61" name="cmdMapper"/>      
+      <multiplicity id="62" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="64">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="65">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="66">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <realization id="67">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <realization id="68">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="70">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="71">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="73">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <association id="74">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="75" name="cmdMapper"/>      
+      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="77">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <association id="78">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="79" name="cmdMapper"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="81">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="82">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="83">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="84">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
