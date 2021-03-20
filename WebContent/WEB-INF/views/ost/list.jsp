@@ -65,7 +65,6 @@ var no = "-1";
 var guestID = "${sessionScope.userID}";
 </script>
 <script src="${pageContext.request.contextPath}/js/ostList.js"></script>
-<script src="${pageContext.request.contextPath}/js/comment.js"></script>
 </head>
 <body>
 	<jsp:include page="${initParam.navbar}"></jsp:include>
@@ -76,7 +75,7 @@ var guestID = "${sessionScope.userID}";
 			
 			<div class="col-lg-4">
 				<div>
-					<div style="font-weight: 500; font-size:2rem; display: table;">
+					<div style="font-weight: 500; font-size:2rem; display: table; width:100%;">
 					<div style="text-align:right; display: table-cell;">MovieInfo</div> 
 					<div style="display: table-cell; color: #ccc; text-align:right; font-weight: normal; font-size:15px;">사진 클릭시 <img src="${pageContext.request.contextPath}/img/youtube.png" width="7%"> 이동</div> 
 					</div>

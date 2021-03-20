@@ -51,6 +51,7 @@ body{
 	vertical-align: middle;
 }
 .weeklyOST{
+	width : 100%;
 	max-height: 900px;
 	float:left;
 	overflow: hidden;

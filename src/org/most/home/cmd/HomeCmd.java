@@ -73,16 +73,6 @@ public class HomeCmd implements HomeCommand {
 		req.setAttribute("Notices", latestNotices);
 		mav.setViewName("/WEB-INF/views/home/home.jsp");
 		
-		if(userID != null) {
-			List<OstUserDto> userList = new LikedOstDao().selectUsersLikes(userID);
-			List<String> encodedOstName = new ArrayList<>();
-			for(OstUserDto a : userList) {
-				encodedOstName.add(URLEncoder.encode(a.getOstName()));
-			}
-			req.getServletContext().setAttribute("userChoice", userList);
-			req.getServletContext().setAttribute("eon", encodedOstName);
-		}
-		
 		
 		return mav;
 	}

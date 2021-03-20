@@ -2,6 +2,9 @@ package org.most.ost.cmd;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,21 +14,17 @@ import org.json.JSONObject;
 import org.most.comment.model.CommentDao;
 import org.most.comment.model.CommentDto;
 import org.most.controller.ModelAndView;
+import org.most.likedOST.model.LikedOstDao;
 import org.most.likedOST.model.LikedOstDto;
 import org.most.ost.model.OstDao;
 import org.most.ost.model.OstDto;
+import org.most.ost.model.OstUserDto;
 
 public class ListLikeCmd implements OstCommand {
 
 	@Override
 	public ModelAndView action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		/**
-		 * list[] = select no, title, artist, album from ostList
-		 * 	 foreach comaprison to cur(title, artist, album)
-		 * 		* if cur(title, artist, album) =| get that no ==> add the cur to likedOst only
-		 * 		* else: add cur to ostList and likedOst
-		 * */
 		String title = req.getParameter("title");
 		String artist = req.getParameter("artist");
 		String album = req.getParameter("album");
@@ -60,8 +59,13 @@ public class ListLikeCmd implements OstCommand {
         	}
 		} else {
 			String imgSrc = req.getParameter("imgSrc");
-			String newImgSrc = imgSrc.substring(0, imgSrc.lastIndexOf("width"));
-			newImgSrc += "></a>";
+			String newImgSrc = "";
+			if(!imgSrc.contains("width")) {
+				newImgSrc = imgSrc;
+			} else {
+				newImgSrc = imgSrc.substring(0, imgSrc.lastIndexOf("width"));
+				newImgSrc += "></a>";
+			}
 			
 			OstDto oDto = new OstDto("0", title, album, artist, newImgSrc);
 			no = dao.insert(oDto);
@@ -73,6 +77,16 @@ public class ListLikeCmd implements OstCommand {
 			jObj.append("currUserStatus", "like");//꽉찬 하트
 			
 		}//end if
+		
+		if(userID != null) {
+			List<OstUserDto> userList = new LikedOstDao().selectUsersLikes(userID);
+			List<String> encodedOstName = new ArrayList<>();
+			for(OstUserDto a : userList) {
+				encodedOstName.add(URLEncoder.encode(a.getOstName()));
+			}
+			req.getServletContext().setAttribute("userChoice", userList);
+			req.getServletContext().setAttribute("eon", encodedOstName);
+		}
 		
 		out.print(jObj);
 		return null;

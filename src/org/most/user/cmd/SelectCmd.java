@@ -1,12 +1,17 @@
 package org.most.user.cmd;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.most.controller.ModelAndView;
+import org.most.likedOST.model.LikedOstDao;
+import org.most.ost.model.OstUserDto;
 import org.most.user.model.UserDao;
 import org.most.user.model.UserDto;
 
@@ -39,6 +44,15 @@ public class SelectCmd implements UserCommand {
 				mav.setViewName(header);
 				mav.setRedirect(true);
 				req.getSession(true).setAttribute("userID", userID);
+				if(userID != null) {
+					List<OstUserDto> userList = new LikedOstDao().selectUsersLikes(userID);
+					List<String> encodedOstName = new ArrayList<>();
+					for(OstUserDto a : userList) {
+						encodedOstName.add(URLEncoder.encode(a.getOstName()));
+					}
+					req.getServletContext().setAttribute("userChoice", userList);
+					req.getServletContext().setAttribute("eon", encodedOstName);
+				}
 			} else {
 //				System.out.println("비밀번호 틀림");
 				req.setAttribute("loginFail", "fail");
